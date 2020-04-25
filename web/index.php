@@ -13,7 +13,7 @@ $menucontrole = new MenuController();
 $menu = $menucontrole->Menu($tipo, $doc);
 
 //Verifica se a sessão do usuário foi iniciada. Caso contrário, informa que deve fazer login.
-if (!isset($_SESSION['usuario'])){ 
+if (!(isset($_SESSION['usuario']))){ 
 	header('location: ../web/script/naologado.php');
 }
 ?>

@@ -1,42 +1,47 @@
 <!DOCTYPE html>
 <?php
-//@include_once 'Models/Usuario.php';
-//$user = new Usuario("03433386960", "Ivan", "1233456");
-//$user->getNome();
 ?>
 <html lang="pt-BR">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="robots" content="noindex">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+        <link href="web/css/styles.css" rel="stylesheet" />
+        <script src="web/js/funcoes.js" type="text/javascript"></script>
+        <link href="web/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+        <script src="web/js/all.min.js"></script>
         <title>CMANAGER</title>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="collapse navbar-collapse">            
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="web/index.php">Home</a>
+        <nav class = 'navbar navbar-expand-lg py-3 navbar-static-top navbar-light' style = 'background-color: #e3f2fd;'>
+            <a href = 'index.php' class = 'navbar-brand'>
+                <img src = 'web/img/logo-cmanager-pequeno.png' width = '45' alt = '' class = 'd-inline-block align-middle mr-2'>
+                <span class = 'text-uppercase font-weight-bold'>CMANAGER</span>
+            </a>
+
+            <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarTogglerDemo01' aria-controls='navbarTogglerDemo01' aria-expanded='false' aria-label='Toggle navigation'><span class='navbar-toggler-icon'></span></button>
+
+            <div class='collapse navbar-collapse' id='navbarTogglerDemo01'>
+                <ul class = 'navbar-nav ml-auto'>
+                    <li class = 'nav-item active'>
+                        <ul class='navbar-nav mr-auto'>
+                            <li class='nav-item'>
+                                <a class='nav-link' href='web/index.php')" . ">Inicial</a>
+                            </li>
+                            <li class='nav-item'>
+                                <a class='nav-link' href='web/login/'>Entrar</a>
+                            </li>
+                            <li class='nav-item dropdown'>
+                                <a class='nav-link dropdown-toggle' href='#' id='navbarDropdownMenuLink' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>O que Fzemos?</a>
+                                <div class='dropdown-menu' aria-labelledby='navbarDropdownMenuLink'> 
+                                    <a class='dropdown-item' href="#">Nosso Trabalho</a>
+                                    <a class='dropdown-item' href='#'" . ">Condominios</a>
+                                    <a class='dropdown-item' href='#'" . ">Parceiros</a>
+                                </div>
+                            </li>
+                            <li class='nav-item'>
+                                <a class='nav-link' href='#' onclick=" ."Conteudo(" . $value['link'] . ")" . ">Contato</a>
+                            </li>
+                        </ul>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="web/login/">Entrar</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">O que fazemos?</a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Nosso Trabalho</a>
-                            <a class="dropdown-item" href="#">Condominios</a>
-                            <a class="dropdown-item" href="#">Parceiros</a>          
-                        </div>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Contato</a>
-                    </li>                
                 </ul>
             </div>
         </nav>

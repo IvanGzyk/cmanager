@@ -72,8 +72,8 @@ Class UsuarioController {
 
         $existe_email = "SELECT email FROM Contato WHERE email = '$dados[4]'";
         $resultado_email = mysqli_query($con, $existe_email);
-		
-		$existe_emailAlternativo = "SELECT emailAlternativo FROM Contato WHERE email = '$dados[5]'";
+
+        $existe_emailAlternativo = "SELECT emailAlternativo FROM Contato WHERE email = '$dados[5]'";
         $resultado_emailAlternativo = mysqli_query($con, $existe_emailAlternativo);
 
         if (mysqli_num_rows($resultado_cpfCnpj) > 0) {
@@ -83,8 +83,8 @@ Class UsuarioController {
         if (mysqli_num_rows($resultado_email) > 0) {
             $erro = '<div class="alert alert-danger alert-dismissible fade show" role="alert">#CAD007 - O E-MAIL PRINCIPAL já está atrelado em outra conta. Por favor, digite outro e-mail.';
             return $erro;
-		}
-		if (mysqli_num_rows($resultado_email) > 0) {
+        }
+        if (mysqli_num_rows($resultado_email) > 0) {
             $erro = '<div class="alert alert-danger alert-dismissible fade show" role="alert">#CAD008 - O E-MAIL ALTERNATIVO já está atrelado em outra conta. Por favor, digite outro e-mail.';
             return $erro;
         } else {
@@ -96,29 +96,29 @@ Class UsuarioController {
             $result1 = mysqli_query($con, $cpf_cnpj);
             $result2 = mysqli_query($con, $contato);
             $result3 = mysqli_query($con, $usuario);
-			
-		$mail = new PHPMailer();
-        $mail->IsSMTP();
-		$mail->SMTPAuth = true;
-		$mail->SMTPSecure = 'ssl';
-        $mail->Host = "mail.cmanager.com.br";
-		$mail->Port = 465;
-        $mail->Username = 'no-reply@cmanager.com.br';
-        $mail->Password = '8JHK&3mu';
-		$mail->CharSet="UTF-8";
 
-        // Remetente
-        $mail->From = "no-reply@cmanager.com.br";
-        $mail->FromName = "CManager";
+            $mail = new PHPMailer();
+            $mail->IsSMTP();
+            $mail->SMTPAuth = true;
+            $mail->SMTPSecure = 'ssl';
+            $mail->Host = "mail.cmanager.com.br";
+            $mail->Port = 465;
+            $mail->Username = 'no-reply@cmanager.com.br';
+            $mail->Password = '8JHK&3mu';
+            $mail->CharSet = "UTF-8";
 
-        // Destinatário
-        $mail->AddAddress(''.$dados[4].'');
-        $mail->IsHTML(true);
-        $mail->Subject = "Cadastro Concluído";
-        $mail->Body = '
+            // Remetente
+            $mail->From = "no-reply@cmanager.com.br";
+            $mail->FromName = "CManager";
+
+            // Destinatário
+            $mail->AddAddress('' . $dados[4] . '');
+            $mail->IsHTML(true);
+            $mail->Subject = "Cadastro Concluído";
+            $mail->Body = '
 <link href="http://cmanager.com.br/web/css/bootstrap.css" rel="stylesheet" type="text/css"/>
 <body><img src="http://cmanager.com.br/web/img/email/cabecalho.jpg"  />
-<p class="small">Olá, '.$dados[1].'.</p>
+<p class="small">Olá, ' . $dados[1] . '.</p>
 <p class="small">O seu cadastro no <b>Portal CManager</b> foi concluído com sucesso.</p>
 <p  class="small">Lembre-se, o seu acesso será feito mediante CPF e senha cadastrados.<br />Caso necessite de uma recuperação de acesso, basta <a href="http://cmanager.com.br/web/login/recuperar.php">clicar aqui</a>.</p>
 <p class="small">Aproveite mais essa facilidade que só a CManager oferece para você!</p><br />
@@ -126,7 +126,7 @@ Class UsuarioController {
 <img src="http://cmanager.com.br/web/img/email/rodape.jpg"/>';
 
             if ($result1 && $result2 && $result3) {
-				$mail->Send();
+                $mail->Send();
                 $sucesso = '<div class="alert alert-success alert-dismissible fade show" role="alert">#CAD010 - Usuário cadastrado com sucesso. Para acessar a sua conta, basta <a href="index.php" class="alert-link">clicar aqui</a>.';
                 return $sucesso;
             } else {
@@ -154,12 +154,12 @@ Class UsuarioController {
         $row = mysqli_fetch_array($resultado_localiza, MYSQLI_ASSOC);
 
         $cpfCnpj = $row['cpf_cnpj'];
-		
-		$localiza_nome = "SELECT nome FROM CadastrCpf_Cnpj WHERE cpf_cnpj = '$cpfCnpj'";
+
+        $localiza_nome = "SELECT nome FROM CadastrCpf_Cnpj WHERE cpf_cnpj = '$cpfCnpj'";
         $resultado_nome = mysqli_query($con, $localiza_nome);
         $row1 = mysqli_fetch_array($resultado_nome, MYSQLI_ASSOC);
-		
-		$nome = $row1['nome'];
+
+        $nome = $row1['nome'];
 
         $token = sha1(uniqid(mt_rand(), true));
         $dado_cript = base64_encode($cpfCnpj);
@@ -169,29 +169,29 @@ Class UsuarioController {
 
         $mail = new PHPMailer();
         $mail->IsSMTP();
-		$mail->SMTPAuth = true;
-		$mail->SMTPSecure = 'ssl';
+        $mail->SMTPAuth = true;
+        $mail->SMTPSecure = 'ssl';
         $mail->Host = "mail.cmanager.com.br";
-		$mail->Port = 465;
+        $mail->Port = 465;
         $mail->Username = 'no-reply@cmanager.com.br';
         $mail->Password = '8JHK&3mu';
-		$mail->CharSet="UTF-8";
+        $mail->CharSet = "UTF-8";
 
         // Remetente
         $mail->From = "no-reply@cmanager.com.br";
         $mail->FromName = "CManager";
 
         // Destinatário
-        $mail->AddAddress(''.$dados[0].'');
+        $mail->AddAddress('' . $dados[0] . '');
         $mail->IsHTML(true);
         $mail->Subject = "Recuperação de Acesso";
         $mail->Body = '
 <link href="http://cmanager.com.br/web/css/bootstrap.css" rel="stylesheet" type="text/css"/>
 <body><img src="http://cmanager.com.br/web/img/email/cabecalho.jpg"  />
-<p class="small">Olá, '.$nome.'.</p>
+<p class="small">Olá, ' . $nome . '.</p>
 <p class="small">Você solicitou através do <b>Portal CManager</b> a recuperação de acesso à plataforma.<br />
 Por favor, pedimos que siga os procedimentos abaixo para a recuperação da sua conta.</p>
-<p  class="small">1 - <a href="http://cmanager.com.br/web/login/redefinir_acesso.php?token='.$token.'&cpfCnpj='.$dado_cript.'">Clique aqui</a> para ser redirecionado a página de recuperação.<br />2 - Valide os seus dados e crie uma nova senha.<br />3 - Pronto! Seu acesso foi recuperado.</p>
+<p  class="small">1 - <a href="http://cmanager.com.br/web/login/redefinir_acesso.php?token=' . $token . '&cpfCnpj=' . $dado_cript . '">Clique aqui</a> para ser redirecionado a página de recuperação.<br />2 - Valide os seus dados e crie uma nova senha.<br />3 - Pronto! Seu acesso foi recuperado.</p>
 <p class="small">O link é válido para um único uso.<br />
 Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/login/recuperar.php">clique aqui</a>.</p><br />
 <p class="small"><font color="#333333"><b>Atenção: Esta é uma mensagem automática. Não é necessário respondê-la.</b></font></p>
@@ -273,12 +273,24 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
         return $user;
     }
 
+    function SelectCon() {
+        return $condo;
+    }
+
     function Relatorio($nome, $tipo, $doc, $id_tipo, $dados) {
         $Usuario = unserialize($_SESSION['usuario']);
         //Recebe o Array com os dados do usuario que logou...
         $Usuario = unserialize($_SESSION['usuario']);
         $db = new Conexao();
         $con = $db->con;
+        $condominio = "SELECT * FROM Usuario
+                    INNER JOIN CadastrCpf_Cnpj ON CadastrCpf_Cnpj.cpf_cnpj = cpfCnpj
+                    WHERE tipoUser = '4';";
+
+        $result = mysqli_query($con, $condominio);
+        while ($row = mysqli_fetch_row($result)) {
+            
+        }
         if ($id_tipo == 0 || $dados == "true") {
             $query = "SELECT  Usuario.id, CadastrCpf_Cnpj.nome, Tipo.tipo, cpfCnpj, senha, ativo FROM Usuario
             INNER JOIN CadastrCpf_Cnpj ON CadastrCpf_Cnpj.cpf_cnpj = cpfCnpj
@@ -301,7 +313,7 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
             INNER JOIN Tipo ON Tipo.id = tipoUser
             WHERE cpfCnpj = 03433386960;"; //cpf do usuario
         } else if ($id_tipo == 3) {
-            $query = "SELECT  Usuario.id, CadastrCpf_Cnpj.nome, Tipo.tipo, cpfCnpj, senha, ativo FROM Usuario
+            $query = "SELECT  * FROM Usuario
             INNER JOIN CadastrCpf_Cnpj ON CadastrCpf_Cnpj.cpf_cnpj = cpfCnpj
             INNER JOIN Tipo ON Tipo.id = tipoUser
             WHERE CadastrCpf_Cnpj.nome LIKE '%$nome%'
@@ -316,7 +328,18 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
         $result = mysqli_query($con, $query);
         $tipo = "";
         $relatorio = "";
+        $nome_condo = "";
         while ($row = mysqli_fetch_row($result)) {
+
+            $condominio = "SELECT nome FROM Usuario
+                    INNER JOIN CadastrCpf_Cnpj ON CadastrCpf_Cnpj.cpf_cnpj = '".$row[3]."'
+                    WHERE tipoUser = '4';";
+
+            $result_cond = mysqli_query($con, $condominio);
+            while ($row_cond = mysqli_fetch_row($result_cond)) {
+                $nome_condo = ($row_cond);
+            }
+            ///print_r($row);
             $apartamento = "";
             $query_ap = "SELECT blc, Predio.ap FROM apUser INNER JOIN Predio ON apUser.ap = Predio.id WHERE cpf_cnpj = '$row[3]';";
             $result_ap = mysqli_query($con, $query_ap);
@@ -325,16 +348,16 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
             }
             $tipo = $row[2];
             $id = $row[0];
-            if($id_tipo == 0){
-            $atualiza = "'../views/usuario/form_update.php?atualiza=" . $id . "&tipo=".$id_tipo."'";
-            }else{
-            $atualiza = "'../views/usuario/form_update.php?atualiza=" . $id . "'";                
+            if ($id_tipo == 0) {
+                $atualiza = "'../views/usuario/form_update.php?atualiza=" . $id . "&tipo=" . $id_tipo . "'";
+            } else {
+                $atualiza = "'../views/usuario/form_update.php?atualiza=" . $id . "'";
             }
             $deleta = "'../views/usuario/delete.php?deleta=" . $id . "'";
             $relatorio .= "<tr>";
             $relatorio .= "<td>$row[1]</td>"; //nome
             $relatorio .= "<td>$row[2]</td>"; //tipo
-            $relatorio .= "<td>$row[3]</td>"; //doc
+            $relatorio .= "<td>$nome_condo</td>"; //doc
             $relatorio .= "<td>$apartamento</td>"; //Apartamento
             $relatorio .= "<td>$row[5]</td>"; //ativo
             $relatorio .= '<td><input type="button" value="Atualiza" class="btn btn-primary" onclick="Conteudo(' . $atualiza . ')"></td>'; //lincar em uma função de Update.php row[0]
@@ -350,6 +373,7 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
         $db = new Conexao();
         $con = $db->con;
         $opcao_cond = "<option value=''></option>";
+        $condo = array();
         $condominio = "SELECT * FROM Usuario
                     INNER JOIN CadastrCpf_Cnpj ON CadastrCpf_Cnpj.cpf_cnpj = cpfCnpj
                     WHERE tipoUser = '4';";
@@ -417,12 +441,13 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
         }
         return $user;
     }
-	
-	function Desconecta() {
-		session_start();
-    	session_destroy();
-		header("Refresh: 5;url=../../web/login/index.php");
-	}
+
+    function Desconecta() {
+        session_start();
+        session_destroy();
+        header("Refresh: 5;url=../../web/login/index.php");
+    }
+
 }
 
 ?>

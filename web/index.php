@@ -63,10 +63,6 @@ if (!isset($_SESSION['usuario'])){
     </body>
 </html>
 
-<script language="javascript" type="text/javascript">
-        Conteudo('../views/consumo/views.php');
-    </script>
-
 <?php
 if (isset($_POST['condominio'])) {
     $cond = $_POST['condominio'];

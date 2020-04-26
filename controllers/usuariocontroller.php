@@ -4,6 +4,7 @@ include_once '../../config/conexao.php';
 include_once '../../models/usuario.php';
 include_once '../../models/condominio.php';
 include_once '../../config/class.phpmailer.php';
+include_once '../../config/class.smtp.php';
 
 Class UsuarioController {
 
@@ -95,9 +96,37 @@ Class UsuarioController {
             $result1 = mysqli_query($con, $cpf_cnpj);
             $result2 = mysqli_query($con, $contato);
             $result3 = mysqli_query($con, $usuario);
-            ;
+			
+		$mail = new PHPMailer();
+        $mail->IsSMTP();
+		$mail->SMTPAuth = true;
+		$mail->SMTPSecure = 'ssl';
+        $mail->Host = "mail.cmanager.com.br";
+		$mail->Port = 465;
+        $mail->Username = 'no-reply@cmanager.com.br';
+        $mail->Password = '8JHK&3mu';
+		$mail->CharSet="UTF-8";
+
+        // Remetente
+        $mail->From = "no-reply@cmanager.com.br";
+        $mail->FromName = "CManager";
+
+        // Destinatário
+        $mail->AddAddress(''.$dados[4].'');
+        $mail->IsHTML(true);
+        $mail->Subject = "Cadastro Concluído";
+        $mail->Body = '
+<link href="http://cmanager.com.br/web/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+<body><img src="http://cmanager.com.br/web/img/email/cabecalho.jpg"  />
+<p class="small">Olá, '.$dados[1].'.</p>
+<p class="small">O seu cadastro no <b>Portal CManager</b> foi concluído com sucesso.</p>
+<p  class="small">Lembre-se, o seu acesso será feito mediante CPF e senha cadastrados.<br />Caso necessite de uma recuperação de acesso, basta <a href="http://cmanager.com.br/web/login/recuperar.php">clicar aqui</a>.</p>
+<p class="small">Aproveite mais essa facilidade que só a CManager oferece para você!</p><br />
+<p class="small"><font color="#333333"><b>Atenção: Esta é uma mensagem automática. Não é necessário respondê-la.</b></font></p>
+<img src="http://cmanager.com.br/web/img/email/rodape.jpg"/>';
 
             if ($result1 && $result2 && $result3) {
+				$mail->Send();
                 $sucesso = '<div class="alert alert-success alert-dismissible fade show" role="alert">#CAD010 - Usuário cadastrado com sucesso. Para acessar a sua conta, basta <a href="index.php" class="alert-link">clicar aqui</a>.';
                 return $sucesso;
             } else {
@@ -125,6 +154,12 @@ Class UsuarioController {
         $row = mysqli_fetch_array($resultado_localiza, MYSQLI_ASSOC);
 
         $cpfCnpj = $row['cpf_cnpj'];
+		
+		$localiza_nome = "SELECT nome FROM CadastrCpf_Cnpj WHERE cpf_cnpj = '$cpfCnpj'";
+        $resultado_nome = mysqli_query($con, $localiza_nome);
+        $row1 = mysqli_fetch_array($resultado_nome, MYSQLI_ASSOC);
+		
+		$nome = $row1['nome'];
 
         $token = sha1(uniqid(mt_rand(), true));
         $dado_cript = base64_encode($cpfCnpj);
@@ -134,22 +169,33 @@ Class UsuarioController {
 
         $mail = new PHPMailer();
         $mail->IsSMTP();
-        $mail->Host = "SMTP DO DOMINIO";
-        $mail->SMTPAuth = true;
-        $mail->Username = 'USUARIO DO EMAIL';
-        $mail->Password = 'SENHA';
+		$mail->SMTPAuth = true;
+		$mail->SMTPSecure = 'ssl';
+        $mail->Host = "mail.cmanager.com.br";
+		$mail->Port = 465;
+        $mail->Username = 'no-reply@cmanager.com.br';
+        $mail->Password = '8JHK&3mu';
+		$mail->CharSet="UTF-8";
 
         // Remetente
-        $mail->From = "cadastro@cmanager.com.br";
-        $mail->FromName = "Recuperação de acesso - CManager";
+        $mail->From = "no-reply@cmanager.com.br";
+        $mail->FromName = "CManager";
 
         // Destinatário
-        $mail->AddAddress('$dados[0]');
+        $mail->AddAddress(''.$dados[0].'');
         $mail->IsHTML(true);
-        $mail->Subject = "Recuperação de Acesso - CManager";
+        $mail->Subject = "Recuperação de Acesso";
         $mail->Body = '
-		http://cmanager.com.br/web/login/redefinir_acesso?token=' . $token . '&cpfCnpj=' . $dado_cript . '
-		';
+<link href="http://cmanager.com.br/web/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+<body><img src="http://cmanager.com.br/web/img/email/cabecalho.jpg"  />
+<p class="small">Olá, '.$nome.'.</p>
+<p class="small">Você solicitou através do <b>Portal CManager</b> a recuperação de acesso à plataforma.<br />
+Por favor, pedimos que siga os procedimentos abaixo para a recuperação da sua conta.</p>
+<p  class="small">1 - <a href="http://cmanager.com.br/web/login/redefinir_acesso.php?token='.$token.'&cpfCnpj='.$dado_cript.'">Clique aqui</a> para ser redirecionado a página de recuperação.<br />2 - Valide os seus dados e crie uma nova senha.<br />3 - Pronto! Seu acesso foi recuperado.</p>
+<p class="small">O link é válido para um único uso.<br />
+Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/login/recuperar.php">clique aqui</a>.</p><br />
+<p class="small"><font color="#333333"><b>Atenção: Esta é uma mensagem automática. Não é necessário respondê-la.</b></font></p>
+<img src="http://cmanager.com.br/web/img/email/rodape.jpg"/>';
 
         if ($update_resultado) {
             $mail->Send();

@@ -259,8 +259,18 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
         return $user;
     }
 
-    function Atualiza($doc, $nome, $tipo, $senha, $condominio) {
+    function AtualizaPeloAdmin($doc, $nome, $tipo, $senha, $condominio) {
         $user = new Usuario($doc, $nome, $senha, $tipo, $condominio);
+        return $user;
+    }
+
+    function AtualizaPeloSindico($doc, $nome, $senha, $condominio) {
+        $user = new Usuario($doc, $nome, $senha, '', $condominio);
+        return $user;
+    }
+
+    function Atualiza($nome, $senha) {
+        $user = new Usuario('', $nome, $senha, '', '');
         return $user;
     }
 
@@ -295,7 +305,7 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
             $query = "SELECT  Usuario.id, CadastrCpf_Cnpj.nome, Tipo.tipo, cpfCnpj, senha, ativo FROM Usuario
             INNER JOIN CadastrCpf_Cnpj ON CadastrCpf_Cnpj.cpf_cnpj = cpfCnpj
             INNER JOIN Tipo ON Tipo.id = tipoUser
-            WHERE cpfCnpj = " . $Usuario['doc'] . ";"; //cpf do usuario
+            WHERE cpfCnpj = '" . $Usuario['doc'] . "';"; //cpf do usuario
         } else if ($id_tipo == 1) {
             $query = "SELECT  Usuario.id, CadastrCpf_Cnpj.nome, Tipo.tipo, cpfCnpj, senha, ativo FROM Usuario
             INNER JOIN CadastrCpf_Cnpj ON CadastrCpf_Cnpj.cpf_cnpj = cpfCnpj
@@ -327,17 +337,56 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
 
         $result = mysqli_query($con, $query);
         $tipo = "";
-        $relatorio = "";
+        ?>
+        <?php
+
+        $relatorio = '
+        <legend>Relatório de Usuarios</legend>';
+        if (($id_tipo == 3 || $id_tipo == 1) && $dados != "true") {
+            $novo = "'../views/usuario/form.php'";
+            $relatorio .= '<input type="button" value="NOVO" class="btn btn-primary" onclick="Conteudo(' . $novo . ')">';
+        }
+        $relatorio .= '
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <td>Nome</td>
+                        <td>Tipo</td>
+                        <td>Condominio</td>
+                        <td>Apartamento</td>
+                        <td>Ativo</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </thead>';
+        if ($id_tipo == 1 || $id_tipo == 3) {
+            $relatorio .= '
+            <thead>
+                <tr>
+                    <td class="serch"><form action="#" method="Post"><input type="search" name="nome"></form></td>
+                    <td class="serch"><form action="#" method="Post"><input type="search" name="tipo"></form></td>
+                    <td class="serch"><form action="#" method="Post"><input type="search" name="condominio"></form></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </thead> ';
+        }
+
+        $relatorio .= ' 
+            <tbody>';
+
         $nome_condo = "";
         while ($row = mysqli_fetch_row($result)) {
 
             $condominio = "SELECT nome FROM Usuario
-                    INNER JOIN CadastrCpf_Cnpj ON CadastrCpf_Cnpj.cpf_cnpj = '".$row[3]."'
+                    INNER JOIN CadastrCpf_Cnpj ON CadastrCpf_Cnpj.cpf_cnpj = '" . $row[3] . "'
                     WHERE tipoUser = '4';";
 
             $result_cond = mysqli_query($con, $condominio);
             while ($row_cond = mysqli_fetch_row($result_cond)) {
-                $nome_condo = ($row_cond);
+                $nome_condo = $row_cond[0];
             }
             ///print_r($row);
             $apartamento = "";
@@ -348,11 +397,11 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
             }
             $tipo = $row[2];
             $id = $row[0];
-            if ($id_tipo == 0) {
+           // if ($id_tipo == 0) {
                 $atualiza = "'../views/usuario/form_update.php?atualiza=" . $id . "&tipo=" . $id_tipo . "'";
-            } else {
-                $atualiza = "'../views/usuario/form_update.php?atualiza=" . $id . "'";
-            }
+           // } else {
+            //    $atualiza = "'../views/usuario/form_update.php?atualiza=" . $id . "'";
+            //}
             $deleta = "'../views/usuario/delete.php?deleta=" . $id . "'";
             $relatorio .= "<tr>";
             $relatorio .= "<td>$row[1]</td>"; //nome
@@ -361,11 +410,14 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
             $relatorio .= "<td>$apartamento</td>"; //Apartamento
             $relatorio .= "<td>$row[5]</td>"; //ativo
             $relatorio .= '<td><input type="button" value="Atualiza" class="btn btn-primary" onclick="Conteudo(' . $atualiza . ')"></td>'; //lincar em uma função de Update.php row[0]
-            if ($id_tipo == 3) {
+            if ($id_tipo == 3 && $dados != "true") {
                 $relatorio .= '<td><input type="button" value="Apaga" class="btn btn-primary" onclick="Conteudo(' . $deleta . ')"></td>'; //lincar em uma função de Delete.php row[0]
             }
             $relatorio .= "</tr>";
         }
+        $relatorio .= '  
+            </tbody>
+        </table>';
         return $relatorio;
     }
 
@@ -449,5 +501,4 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
     }
 
 }
-
 ?>

@@ -22,7 +22,7 @@ if (!isset($_SESSION['usuario'])){
 <html lang="pt-BR">
     <head>
         <meta charset="utf-8" />
-        <title>#</title>
+        <title>Cmanager</title>
         <link href="css/styles.css" rel="stylesheet" />
         <script src="js/funcoes.js" type="text/javascript"></script>
         <link href="css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />

@@ -24,7 +24,7 @@
                     <li class = 'nav-item active'>
                         <ul class='navbar-nav mr-auto'>
                             <li class='nav-item'>
-                                <a class='nav-link' href='web/index.php')" . ">Inicial</a>
+                                <a class='nav-link' href='index.php')" . ">Inicial</a>
                             </li>
                             <li class='nav-item'>
                                 <a class='nav-link' href='web/login/'>Entrar</a>

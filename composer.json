@@ -1,12 +1,11 @@
 {
-    "name": "i.a.gzyk/cmanager",
+    "name": "vendor/cmanager",
+    "description": "Description of project cmanager.",
     "authors": [
         {
             "name": "I.A.Gzyk",
-            "email": "ivangzyk@hotmail.com"
+            "email": "your@email.here"
         }
     ],
-    "require": {
-        "mpdf/mpdf": "^8.0"
-    }
+    "require": {}
 }

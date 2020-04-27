@@ -1,0 +1,13 @@
+{
+    "name": "i.a.gzyk/cmanager",
+    "authors": [
+        {
+            "name": "I.A.Gzyk",
+            "email": "ivangzyk@hotmail.com"
+        }
+    ],
+    "require": {
+        "mpdf/mpdf": "^8.0",
+        "chillerlan/php-qrcode": "^3.2"
+    }
+}

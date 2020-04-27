@@ -27,7 +27,7 @@ class MenuController {
             $tipo = $row[0];
         }
         $query = "";
-        $query_acesso = "SELECT * FROM Menu;";
+        $query_acesso = "SELECT * FROM Menu order by ordem;";
         $result_acesso = mysqli_query($con, $query_acesso);
         $menu_select = array();
         $carrega_menu = array();

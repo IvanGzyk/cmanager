@@ -323,7 +323,7 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
             INNER JOIN Tipo ON Tipo.id = tipoUser
             WHERE cpfCnpj = 03433386960;"; //cpf do usuario
         } else if ($id_tipo == 3) {
-            $query = "SELECT  * FROM Usuario
+            $query = "SELECT Usuario.id, CadastrCpf_Cnpj.nome, Tipo.tipo, cpfCnpj, senha, ativo FROM Usuario
             INNER JOIN CadastrCpf_Cnpj ON CadastrCpf_Cnpj.cpf_cnpj = cpfCnpj
             INNER JOIN Tipo ON Tipo.id = tipoUser
             WHERE CadastrCpf_Cnpj.nome LIKE '%$nome%'
@@ -402,6 +402,11 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
            // } else {
             //    $atualiza = "'../views/usuario/form_update.php?atualiza=" . $id . "'";
             //}
+            if($row[5] == 1){
+                $row[5] = 'Sim';
+            }else{
+                $row[5] = 'Não';
+            }
             $deleta = "'../views/usuario/delete.php?deleta=" . $id . "'";
             $relatorio .= "<tr>";
             $relatorio .= "<td>$row[1]</td>"; //nome

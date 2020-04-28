@@ -7,7 +7,6 @@ Class CondominioController {
 
     function Create($condominio, $cpf_cnpj, $apartamento, $bloco) {
         $condo = new Condominio($condominio, $cpf_cnpj, $bloco, $apartamento);
-
         return $condo;
     }
 
@@ -17,6 +16,11 @@ Class CondominioController {
 
     function Apaga($id) {
         header('Location:../views/condominio/views.php');
+    }
+    
+    function CreateCondominio($condominio, $cpf_cnpj){
+        $condo = new Condominio($condominio, $cpf_cnpj, '', '');
+        return $condo;
     }
 
 }

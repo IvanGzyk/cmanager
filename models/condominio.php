@@ -46,5 +46,17 @@ class Condominio{
     function setApartamento($apartamento) {
         $this->apartamento = $apartamento;
     }
+    
+    function setEnderesso($rua, $numero, $bairro, $cidade, $estado, $cep){
+        $enderesso = new Endereco($rua, $numero, $bairro, $cidade, $estado, $cep);
+        return $enderesso;
+    }
+    
+    function setSalao($cpf_cnpj, $salao, $regra, $aplica){
+        $salao = new Salao($cpf_cnpj, $salao);
+        $regra_salao = $salao->setRegra($regra);
+        $aplica_salao = $salao->setAplica($aplica);
+        return $salao;
+    }
 }
 ?>

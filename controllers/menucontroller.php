@@ -7,10 +7,9 @@ class MenuController {
         $db = new Conexao();
         $con = $db->con;
 
-        $menu = "<nav class = 'navbar navbar-expand-lg py-3 navbar-static-top navbar-light' style = 'background-color: #e3f2fd;'>
+        $menu = "<nav class = 'navbar navbar-expand-lg py-2 navbar-static-top navbar-light' style='background-color: #e3f2fd;'>
         <a href = 'index.php' class = 'navbar-brand'>
-        <img src = 'img/logo-cmanager-pequeno.png' width = '45' alt = '' class = 'd-inline-block align-middle mr-2'>
-        <span class = 'text-uppercase font-weight-bold'>CMANAGER</span>
+        <img src = 'img/logo-menu.png' width = '197' height = '72' class = 'd-inline-block align-middle mr-2'>
         </a>
 		
    		<button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarTogglerDemo01' aria-controls='navbarTogglerDemo01' aria-expanded='false' aria-label='Toggle navigation'><span class='navbar-toggler-icon'></span></button>

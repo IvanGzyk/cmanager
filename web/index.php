@@ -44,7 +44,7 @@ if (!isset($_SESSION['usuario'])){
                 <footer class="py-3 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-end justify-content-end small">
-                            <div class="text-muted">Copyright &copy; 2020 - Condominium Manager. Todos os direitos reservados.</div>
+                            <div class="text-muted">Copyright &copy; 2020 Condominium Manager. Todos os direitos reservados.</div>
                         </div>
                     </div>
                 </footer>

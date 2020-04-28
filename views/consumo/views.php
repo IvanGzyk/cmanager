@@ -4,154 +4,52 @@
     $db = new Conexao();
 	
 	date_default_timezone_set('America/Sao_Paulo');
-	$referencia = date('m-Y');
   
     $consumo = "SELECT * FROM ConsumoDeAgua ORDER BY id DESC";
     $resultado = mysqli_query($db->con, $consumo);
 	$row = mysqli_fetch_array($resultado, MYSQLI_ASSOC);
 	
 	$cubico = $row['valorMedido'] / 1000;
-	$cubico_int = number_format($cubico,0,",",".");
-	$valor = 0;
-	$multiplicacao = 0;
+	$cubico_int = number_format($cubico,0,",","");
+	$unidades = 112;
 	
-	if($cubico_int >= '0' && $cubico_int <= '5'){
-		$valor += '38.77';
-	}else if($cubico_int == '6'){
-		$valor += '38.77';
-		$valor += '1.20';
-	}else if($cubico_int ==	'7'){
-		$valor += '38.77';
-		$valor += '1.20' * 2;
-	}else if($cubico_int == '8'){
-		$valor += '38.77';
-		$valor += '1.20' * 3;
-	}else if($cubico_int == '9'){
-		$valor += '38.77';
-		$valor += '1.20' * 4;
-	}else if($cubico_int == '10'){
-		$valor += '38.77';
-		$valor += '1.20' * 5;
-	}else if($cubico_int == '11'){
-		$valor += '38.77';
-		$valor += '1.20' * 5;
-		$valor += '6.68' * 1;
-	}else if($cubico_int == '12'){
-		$valor += '38.77';
-		$valor += '1.20' * 5;
-		$valor += '6.68' * 2;
-	}else if($cubico_int == '13'){
-		$valor += '38.77';
-		$valor += '1.20' * 5;
-		$valor += '6.68' * 3;
-	}else if($cubico_int == '14'){
-		$valor += '38.77';
-		$valor += '1.20' * 5;
-		$valor += '6.68' * 4;
-	}else if($cubico_int == '15'){
-		$valor += '38.77';
-		$valor += '1.20' * 5;
-		$valor += '6.68' * 5;
-	}else if($cubico_int == '16'){
-		$valor += '38.77';
-		$valor += '1.20' * 5;
-		$valor += '6.68' * 5;
-		$valor += '6.72' * 1;
-	}else if($cubico_int == '17'){
-		$valor += '38.77';
-		$valor += '1.20' * 5;
-		$valor += '6.68' * 5;
-		$valor += '6.72' * 2;
-	}else if($cubico_int == '18'){
-		$valor += '38.77';
-		$valor += '1.20' * 5;
-		$valor += '6.68' * 5;
-		$valor += '6.72' * 3;
-	}else if($cubico_int == '19'){
-		$valor += '38.77';
-		$valor += '1.20' * 5;
-		$valor += '6.68' * 5;
-		$valor += '6.72' * 4;
-	}else if($cubico_int == '20'){
-		$valor += '38.77';
-		$valor += '1.20' * 5;
-		$valor += '6.68' * 5;
-		$valor += '6.72' * 5;
-	}else if($cubico_int == '21'){
-		$valor += '38.77';
-		$valor += '1.20' * 5;
-		$valor += '6.68' * 5;
-		$valor += '6.72' * 5;
-		$valor += '6.77' * 1;
-	}else if($cubico_int == '22'){
-		$valor += '38.77';
-		$valor += '1.20' * 5;
-		$valor += '6.68' * 5;
-		$valor += '6.72' * 5;
-		$valor += '6.77' * 2;
-	}else if($cubico_int == '23'){
-		$valor += '38.77';
-		$valor += '1.20' * 5;
-		$valor += '6.68' * 5;
-		$valor += '6.72' * 5;
-		$valor += '6.77' * 3;
-	}else if($cubico_int == '24'){
-		$valor += '38.77';
-		$valor += '1.20' * 5;
-		$valor += '6.68' * 5;
-		$valor += '6.72' * 5;
-		$valor += '6.77' * 4;
-	}else if($cubico_int == '25'){
-		$valor += '38.77';
-		$valor += '1.20' * 5;
-		$valor += '6.68' * 5;
-		$valor += '6.72' * 5;
-		$valor += '6.77' * 5;
-	}else if($cubico_int == '26'){
-		$valor += '38.77';
-		$valor += '1.20' * 5;
-		$valor += '6.68' * 5;
-		$valor += '6.72' * 5;
-		$valor += '6.77' * 6;
-	}else if($cubico_int == '27'){
-		$valor += '38.77';
-		$valor += '1.20' * 5;
-		$valor += '6.68' * 5;
-		$valor += '6.72' * 5;
-		$valor += '6.77' * 7;
-	}else if($cubico_int == '28'){
-		$valor += '38.77';
-		$valor += '1.20' * 5;
-		$valor += '6.68' * 5;
-		$valor += '6.72' * 5;
-		$valor += '6.77' * 8;
-	}else if($cubico_int == '29'){
-		$valor += '38.77';
-		$valor += '1.20' * 5;
-		$valor += '6.68' * 5;
-		$valor += '6.72' * 5;
-		$valor += '6.77' * 9;
-	}else if($cubico_int == '30'){
-		$valor += '38.77';
-		$valor += '1.20' * 5;
-		$valor += '6.68' * 5;
-		$valor += '6.72' * 5;
-		$valor += '6.77' * 10;
-	}else if($cubico_int > '30'){
-		$valor += '38.77';
-		$valor += '1.20' * 5;
-		$valor += '6.68' * 5;
-		$valor += '6.72' * 5;
-		$valor += '6.77' * 10;
-			for($i=31; $i <= $cubico_int; $i++){
-				$valor = $valor + '11.46';
+	if($cubico_int >= '0' && $cubico_int <= '560'){
+		$valor = 4342.24;
+	}else if($cubico_int >= '560' && $cubico_int <= '1120'){
+		$valor = 4342.24;
+			for ($i=561; $i <= $cubico_int; $i++) {
+    			$valor += 1.20;
 			}
-		}
+	}else if($cubico_int >= '1121' && $cubico_int <= '1680'){
+		$valor = 5014.24;
+			for ($i=1121; $i <= $cubico_int; $i++) {
+    			$valor += 6.68;
+			}
+	}else if($cubico_int >= '1681' && $cubico_int <= '2240'){
+		$valor = 8755.04;
+			for ($i=1681; $i <= $cubico_int; $i++) {
+    			$valor += 6.72;
+			}
+	}else if($cubico_int >= '2241' && $cubico_int <= '3360'){
+		$valor = 12518.24;
+			for ($i=2241; $i <= $cubico_int; $i++) {
+    			$valor += 6.77;
+			}
+	}else if($cubico_int > '3360'){
+		$valor = 20100.64;
+			for ($i=3361; $i <= $cubico_int; $i++) {
+    			$valor += 11.46;
+			}
+	}
+	
+	$porcentagem = 85 / 100;
+	$esgoto = $porcentagem * $valor;
 	
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+<meta charset="utf-8" />
         <link href="../../web/css/styles.css" rel="stylesheet" />
         <script src="../../web/js/all.min.js"></script>
     </head>
@@ -169,20 +67,22 @@
                                 <div class="card mb-4">
                                     <div class="card-header align-items-center">Consumo de água <small>(referencia: <?php echo date('m/Y'); ?>)</small></div>
                                     <div class="card-body">
-									<h1 class="text-center"><?php echo $cubico_int; ?> m³ <small>(<?php echo $row['valorMedido']; ?> L)</small></h1>
+									<h3 class="text-center"><?php echo $cubico_int; ?> m³ <small>(<?php echo $row['valorMedido']; ?> Litros)</small></h3>
 									</div>
-                                    <div class="card-footer small text-muted text-right">Última atualização em: 
+                                    <div class="card-footer small text-right">Última atualização em: 
                                     <?php echo date("d/m/Y H:i", strtotime($row['atualizacao'])); ?>
                                     </div>
                                 </div>
                              
                              <div class="col-lg-14">
                                 <div class="card mb-4">
-                                    <div class="card-header">Valor aproximado da água (R$)</div>
+                                    <div class="card-header">Valor estimado da fatura (R$)</div>
                                     <div class="card-body">
-									<h1 class="text-center">R$ <?php echo number_format($valor,2,",","."); ?></h1>
+									<h3 class="text-center">
+                                    TOTAL: R$ <?php echo number_format($valor + $esgoto,2,",","."); ?>
+                                    </h3>
 									</div>
-                                    <div class="card-footer small text-muted text-right">Baseado nos dados da SANEPAR - Resolução Nº 006 de 16/04/2019</div>
+                                    <div class="card-footer small text-center">ÁGUA: R$ <?php echo number_format($valor,2,",","."); ?> - ESGOTO: R$ <?php echo number_format($esgoto,2,",","."); ?> - POR UNIDADE: R$ <?php echo number_format(($valor + $esgoto) / $unidades,2,",","."); ?></div>
                                 </div>
                             </div>
                            </div>

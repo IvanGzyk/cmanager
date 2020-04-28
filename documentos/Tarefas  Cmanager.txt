@@ -1,6 +1,6 @@
 OK - Corrigir Views Usuario para mostrar apenas oque enteressa.
 OK Incluir Cadastro de contato junto com Usuario.
-Gerar cadastro de condominio.
+OK Gerar cadastro de condominio.
 Gerar cadastro de regras para salão.
 Gerar cadastro de salão.
 Gerar Formulario de Reservas de salão.

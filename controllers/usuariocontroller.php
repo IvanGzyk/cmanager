@@ -454,7 +454,7 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
         $db = new Conexao();
         $con = $db->con;
         $opcaoBL = "<option value=''></option>";
-        $tipo = "SELECT * FROM Predio WHERE condominio = 13457853000107 GROUP BY blc;";
+        $tipo = "SELECT * FROM Predio WHERE condominio = '13.457.853/0001-07' GROUP BY blc;";
         $result = mysqli_query($con, $tipo);
         while ($row = mysqli_fetch_row($result)) {
             $opcaoBL .= "<option value='$row[2]'>$row[2]</option> ";
@@ -466,7 +466,7 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
         $db = new Conexao();
         $con = $db->con;
         $opcaoAp = "<option value=''></option>";
-        $tipo = "SELECT * FROM Predio WHERE condominio = 13457853000107 GROUP BY ap;";
+        $tipo = "SELECT * FROM Predio WHERE condominio = '13.457.853/0001-07' GROUP BY ap;";
         $result = mysqli_query($con, $tipo);
         while ($row = mysqli_fetch_row($result)) {
             $opcaoAp .= "<option value='$row[3]'>$row[3]</option> ";

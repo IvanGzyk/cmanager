@@ -1,5 +1,5 @@
 OK - Corrigir Views Usuario para mostrar apenas oque enteressa.
-Incluir Cadastro de contato junto com Usuario.
+OK Incluir Cadastro de contato junto com Usuario.
 Gerar cadastro de condominio.
 Gerar cadastro de regras para salão.
 Gerar cadastro de salão.

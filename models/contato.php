@@ -1,4 +1,5 @@
 <?php
+
 class Contato {
 
     private $telefone;

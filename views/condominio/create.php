@@ -26,10 +26,6 @@ if (isset($_GET['cond'])) {
     header("Location:http://localhost/cmanager/Web/index.php");
 }
 $condominio = $cond->Create($_POST['nome'], $_POST['salva'], $_POST['apt'], $_POST['blc']);
-?><pre><?php
-//print_r($condominio);
-?></pre><?php
-//exit();
     $nome = $condominio->getCondo();
     $doc = $condominio->getCpfCnpj();
     $apt = $condominio->getApartamento();

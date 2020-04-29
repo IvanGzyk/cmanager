@@ -8,6 +8,7 @@
     ],
     "require": {
         "mpdf/mpdf": "^8.0",
-        "chillerlan/php-qrcode": "^3.2"
+        "chillerlan/php-qrcode": "^3.2",
+        "openboleto/openboleto": "dev-master"
     }
 }

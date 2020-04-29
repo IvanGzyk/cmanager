@@ -2,9 +2,11 @@
 
 class Reservas{
     private $data;
+    private $cpf;
     
-    function __construct($data) {
+    function __construct($data, $cpf) {
         $this->data = $data;
+        $this->cpf = $cpf;
     }
 
     function getData() {
@@ -13,6 +15,14 @@ class Reservas{
 
     function setData($data) {
         $this->data = $data;
+    }
+    
+    function getCpf() {
+        return $this->cpf;
+    }
+
+    function setCpf($cpf): void {
+        $this->cpf = $cpf;
     }
 }
 ?>

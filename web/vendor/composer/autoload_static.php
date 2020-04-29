@@ -61,11 +61,22 @@ class ComposerStaticInit7c565e29c95a93937837ab26977503c5
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'O' => 
+        array (
+            'OpenBoleto\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/openboleto/openboleto/src',
+            ),
+        ),
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit7c565e29c95a93937837ab26977503c5::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit7c565e29c95a93937837ab26977503c5::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit7c565e29c95a93937837ab26977503c5::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }

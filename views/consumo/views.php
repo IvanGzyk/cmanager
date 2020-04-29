@@ -52,6 +52,7 @@
 <meta charset="utf-8" />
         <link href="../../web/css/styles.css" rel="stylesheet" />
         <script src="../../web/js/all.min.js"></script>
+        <script src="charts-consumo.js"></script>
     </head>
     <body>
             <div id="layoutSidenav_content">
@@ -89,8 +90,8 @@
                             
                             <div class="col-lg-6">
                                 <div class="card mb-4">
-                                    <div class="card-header"><i class="fas fa-chart-bar mr-1"></i> Dashboard de consumo mensal</div>
-                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="54"></canvas></div>
+                                    <div class="card-header"><i class="fas fa-chart-bar mr-1"></i> Dashboard de consumo mensal em litros (últimos 6 meses)</div>
+                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="49"></canvas></div>
                                     
                                 </div>
                             </div>
@@ -103,65 +104,64 @@
         <script src="../../web/js/bootstrap.bundle.min.js"></script>
         <script src="../../web/js/scripts.js"></script>
         <script src="../../web/js/Chart.min.js"></script>
-         <script>
-        $(document).ready(function(){
-  	$.ajax({
-    url: "../views/consumo/dashboard.php",
-    method: "GET",
-    success: function(data) {
-      console.log(data);
-      var data = [];
-      var valor = [];
+        <script>
+		$('document').ready(function () {
 
-      for(var i in data) {
-        data.push(data[i].referencia);
-        valor.push(data[i].valorMedido);
-      }
-	  
-	  	var ctx = document.getElementById("myBarChart");
-	  	var myLineChart = new Chart(ctx, {
-  		type: 'bar',
-  		data: {
-    	labels: [data],
-    	datasets: [{
-      		label: data,
-      		backgroundColor: "rgba(2,117,216,1)",
-      		borderColor: "rgba(2,117,216,1)",
-      		data: valor
-    	}],
- 		},
-  		options: {
-    	scales: {
-      	xAxes: [{
-        time: {
-          unit: 'month'
-        },
-        gridLines: {
-          display: false
-        },
-        ticks: {
-          maxTicksLimit: 6
+    	$.ajax({
+        type: "POST",
+        url: "../views/consumo/dashboard.php",
+        dataType: "json",
+        success: function (data) {
+
+            var data_array = [];
+            var valor_array = [];
+
+            for (var i = 0; i < data.length; i++) {
+
+                data_array.push(data[i].referencia);
+                valor_array.push(data[i].valorMedido);
+
+			}
+            grafico(data_array,valor_array);
         }
-      }],
-      yAxes: [{
-        ticks: {
-          min: 0,
-          max: 15000,
-          maxTicksLimit: 5
+    });
+
+})
+
+function grafico(referencia,valorMedido) {
+	
+	Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+	Chart.defaults.global.defaultFontColor = '#292b2c';
+
+	var ctx = document.getElementById("myBarChart");
+	var myLineChart = new Chart(ctx, {
+  	type: 'bar',
+        data: {
+            labels: referencia,
+
+
+            datasets: [{
+                label: "Valor em (L)",
+      			backgroundColor: "rgba(2,117,216,1)",
+      			borderColor: "rgba(2,117,216,1)",
+                data: valorMedido
+            }]
         },
-        gridLines: {
-          display: true
+
+       options: {
+            scales: {
+                xAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+			},
+    		legend: {
+      			display: false
+   			}
         }
-      }],
-    },
-    legend: {
-      display: false
-    }
-  }
-});
-	}
-  });
-});
-        </script>
+    });
+}
+</script>
     </body>
 </html>

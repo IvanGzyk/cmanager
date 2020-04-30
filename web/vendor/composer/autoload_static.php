@@ -20,6 +20,10 @@ class ComposerStaticInit7c565e29c95a93937837ab26977503c5
             'chillerlan\\Settings\\' => 20,
             'chillerlan\\QRCode\\' => 18,
         ),
+        'b' => 
+        array (
+            'benhall14\\' => 10,
+        ),
         'P' => 
         array (
             'Psr\\Log\\' => 8,
@@ -46,6 +50,10 @@ class ComposerStaticInit7c565e29c95a93937837ab26977503c5
         'chillerlan\\QRCode\\' => 
         array (
             0 => __DIR__ . '/..' . '/chillerlan/php-qrcode/src',
+        ),
+        'benhall14\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/benhall14/php-calendar/src',
         ),
         'Psr\\Log\\' => 
         array (

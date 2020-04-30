@@ -4,8 +4,53 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "73bb8761c8ba5e446d3e45ffef07e256",
+    "content-hash": "23c95adfdf84ac4af4b472579ff91c91",
     "packages": [
+        {
+            "name": "benhall14/php-calendar",
+            "version": "1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/benhall14/php-calendar.git",
+                "reference": "5dbf8e63b0778c0d7549ee4d935d2627b850319f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/benhall14/php-calendar/zipball/5dbf8e63b0778c0d7549ee4d935d2627b850319f",
+                "reference": "5dbf8e63b0778c0d7549ee4d935d2627b850319f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "benhall14\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Benjamin Hall",
+                    "email": "ben@conobe.co.uk",
+                    "homepage": "https://github.com/benhall14",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple PHP class to generate calendars.",
+            "homepage": "https://github.com/benhall14/php-calendar",
+            "keywords": [
+                "calendar",
+                "calendars",
+                "date",
+                "time"
+            ],
+            "time": "2019-08-07T17:36:24+00:00"
+        },
         {
             "name": "chillerlan/php-qrcode",
             "version": "3.2.3",

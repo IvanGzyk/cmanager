@@ -1,9 +1,7 @@
 <?php
-	
 include_once '../controllers/menucontroller.php';
 
 session_start();
-
 //Recebe o Array com os dados do usuario que logou...
 $Usuario = unserialize($_SESSION['usuario']);
 //Pega o id do Tipo...
@@ -13,8 +11,8 @@ $menucontrole = new MenuController();
 $menu = $menucontrole->Menu($tipo, $doc);
 
 //Verifica se a sessão do usuário foi iniciada. Caso contrário, informa que deve fazer login.
-if (!isset($_SESSION['usuario'])){ 
-	header('location: ../web/script/naologado.php');
+if (!isset($_SESSION['usuario'])) {
+    header('location: ../web/script/naologado.php');
 }
 ?>
 
@@ -25,6 +23,7 @@ if (!isset($_SESSION['usuario'])){
         <title>Cmanager</title>
         <link href="css/styles.css" rel="stylesheet" />
         <script src="js/funcoes.js" type="text/javascript"></script>
+        <link href="vendor/benhall14/php-calendar/html/css/calendar.css" rel="stylesheet" type="text/css"/>
         <link href="css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
         <script src="js/all.min.js"></script>
     </head>
@@ -62,44 +61,5 @@ if (!isset($_SESSION['usuario'])){
         <script src="js/datatables-demo.js"></script>
     </body>
 </html>
-
 <?php
-if (isset($_POST['condominio'])) {
-    $cond = $_POST['condominio'];
-    ?>
-    <script language="javascript" type="text/javascript">
-        Conteudo('../views/condominio/form_1.php?cond=<?= $cond ?>');
-    </script>
-    <?php
-}
-if (isset($_GET['cond'])) {
-    $cond = $_GET['cond'];
-    ?>
-    <script language="javascript" type="text/javascript">
-        Conteudo('../views/condominio/form_1.php?cond=<?= $cond ?>');
-    </script>
-    <?php
-}
-
-if (isset($_POST['nome'])) {
-    ?>
-    <script language="javascript" type="text/javascript">
-        Conteudo('../views/usuario/views.php?nome=<?= $_POST['nome'] ?>');
-    </script>
-    <?php
-}
-if (isset($_POST['tipo'])) {
-    ?>
-    <script language="javascript" type="text/javascript">
-        Conteudo('../views/usuario/views.php?tipo=<?= $_POST['tipo'] ?>');
-    </script>
-    <?php
-}
-if (isset($_POST['doc'])) {
-    ?>
-    <script language="javascript" type="text/javascript">
-        Conteudo('../views/usuario/views.php?doc=<?= $_POST['doc'] ?>');
-    </script>
-    <?php
-}
-?>
+include_once 'script/funcoes.php';

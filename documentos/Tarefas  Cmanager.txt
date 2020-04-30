@@ -11,3 +11,7 @@ OK - Gerar cadastro de salão.
 
 OBS:
 Class Reservas acrecentado $cpf para identificar o morador que fez a reserva.
+
+O cadastro de regras para o salão sera feito pelos administradores, 
+os sindicos deverão fazer um pedido para implementação de regra e os administradores 
+ficarão responsaveis pela implementação.

@@ -2,8 +2,8 @@ OK - Corrigir Views Usuario para mostrar apenas oque enteressa.
 OK - Incluir Cadastro de contato junto com Usuario.
 OK - Gerar cadastro de condominio.
 OK - Gerar cadastro de salão.
+OK - Gerar Formulario de Reservas de salão.
 - Gerar cadastro de regras para salão.
-- Gerar Formulario de Reservas de salão.
 - Gerar cadastro de Multas.
 - Gerar Financeiro(Dashboard, Relatório,Perestação de contas, gerar boleto).
 - Gerar uma pagina de reclame aqui, sugest�es.(Falta tabela no DER).
@@ -15,3 +15,6 @@ Class Reservas acrecentado $cpf para identificar o morador que fez a reserva.
 O cadastro de regras para o salão sera feito pelos administradores, 
 os sindicos deverão fazer um pedido para implementação de regra e os administradores 
 ficarão responsaveis pela implementação.
+
+
+Reserva tabela, acrecentar usuario chave cpf

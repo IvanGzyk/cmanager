@@ -30,7 +30,7 @@ class salaocontroller {
         $db = new Conexao();
         $reserva = "";
         $usuario = unserialize($_SESSION['usuario']);
-        $query = "SELECT * FROM Salao INNER JOIN Usuario on Usuario.condominio = Salao.condominio";
+        $query = "SELECT * FROM Salao INNER JOIN Usuario on Usuario.condominio = Salao.condominio GROUP BY Salao.id";
         $execute = mysqli_query($db->con, $query);
         while ($row = mysqli_fetch_row($execute)) {
             $objeto = new Calendar();
@@ -55,15 +55,13 @@ class salaocontroller {
                         'start' => $row_reservas[2],
                         'end' => $row_reservas[2],
                         'summary' => 'Reservado',
-                        'mask' => true,
-                        'classes' => ['myclass', 'abc']
+                        'mask' => true
                     );
                 }
-                $objeto->addEvent($reservas);
+                $objeto->addEvents($reservas);
             }
-            $reserva = $objeto->draw(date($data));
+            echo $objeto->draw(date($data));
         }
-        return $reserva;
     }
 
     function CadastraRegras() {

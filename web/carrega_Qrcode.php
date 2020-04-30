@@ -25,7 +25,7 @@ if (isset($_GET['pdf'])) {
                     <div class="card mb-2">
                         <div class="card-body">Você poderá gerar o QRCode em PDF para que os condominos possam realizar o cadastro através do aparelho celular.<br />Para isto, clique em "GERAR QRCODE EM PDF". Em seguida, divulgue-o nos arredores do condomínio.</div>
                     </div>
-                    <div class="w-100 p-2"><a href="carrega_Qrcode.php?pdf=true"><button type="button" class="btn btn-info btn-sm float-right">GERAR QRCODE EM PDF</button></a><br /></div>
+                    <div class="w-100 p-2"><a href="carrega_Qrcode.php?pdf=true" target="_blank"><button type="button" class="btn btn-info btn-sm float-right">GERAR QRCODE EM PDF</button></a><br /></div>
 
                     <div class="row p-2 d-flex justify-content-center">
                         <div class="col-lg-4">

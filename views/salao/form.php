@@ -23,6 +23,5 @@ while ($row = mysqli_fetch_row($result)) {
             </div>
         </div>
         <input type="submit" value="Gravar" class="btn btn-primary">
-        </div>
     </form>
 </div>

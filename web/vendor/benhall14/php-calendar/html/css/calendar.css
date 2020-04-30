@@ -1,9 +1,11 @@
 .calendar{
-    background: #2CA8C2;
-    color: #FFF;
-    width:100%;
+    background: #e3f2fd;
+    color: black;
+    width:80%;
     font-family: 'Oxygen';
     table-layout:fixed;
+    margin-left: 10%;
+    
 }
 
 .calendar.purple{
@@ -44,7 +46,7 @@
 }
 
 .calendar-header th {
-    padding: 10px;
+    padding: 1px;
     text-align: center;
     background: rgba(0, 0, 0, 0.1);
 }
@@ -81,5 +83,5 @@
 .calendar tbody tr td.mask-start,
 .calendar tbody tr td.mask,
 .calendar tbody tr td.mask-end {
-    background: #C23B22;
+    background: #aeb3b9;
 }

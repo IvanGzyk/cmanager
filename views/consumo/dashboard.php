@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 	include_once '../../config/conexao.php';
 
     $db = new Conexao();

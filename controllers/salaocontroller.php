@@ -60,6 +60,7 @@ class salaocontroller {
                 }
                 $objeto->addEvents($reservas);
             }
+            ?><legend>Salão de festas: <?= $row[2]?></legend><?php
             echo $objeto->draw(date($data));
         }
     }

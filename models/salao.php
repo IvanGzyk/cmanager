@@ -33,9 +33,10 @@ class Salao extends Regra {
 
     function setReservas($salao, $cpf, $data) {
         $db = new Conexao();
-        $query = "SELECT * FROM Reservas WHERE dataReserva <> $data";
+        $query = "SELECT * FROM Reservas WHERE dataReserva = '$data' AND salao = $salao";
         $result = mysqli_query($db->con, $query);
-        if (mysqli_num_rows($result) == 1) {
+        $cont = mysqli_num_rows($result);
+        if ($cont > 0) {
             return false;
         } else {
             $reservas = new Reservas($salao, $data, $cpf);

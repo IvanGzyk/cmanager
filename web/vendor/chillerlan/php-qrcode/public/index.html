@@ -151,7 +151,7 @@
                         onUninitialized: $(output).update(),
                         onLoading: $(output).update('[portlandia_screaming.gif]'),
                         onFailure: response => $(output).update(response.responseJSON.error),
-                        onSuccess: response => $(output).update(response.responseJSON.qrcode),
+                        onSuccess: response => $(output).update(response.responseJSON.qrcode)
                     });
                 });
             })('qrcode-settings', 'qrcode-output', './qrcode.php');

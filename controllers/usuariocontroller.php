@@ -286,8 +286,8 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
     function SelectCon() {
         return $condo;
     }
-
-    function Relatorio($nome, $tipo, $doc, $id_tipo, $dados) {
+	
+	function Relatorio($nome, $tipo, $doc, $id_tipo, $dados) {
         $Usuario = unserialize($_SESSION['usuario']);
         //Recebe o Array com os dados do usuario que logou...
         $Usuario = unserialize($_SESSION['usuario']);
@@ -323,7 +323,7 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
             INNER JOIN Tipo ON Tipo.id = tipoUser
             WHERE cpfCnpj = 03433386960;"; //cpf do usuario
         } else if ($id_tipo == 3) {
-            $query = "SELECT Usuario.id, CadastrCpf_Cnpj.nome, Tipo.tipo, cpfCnpj, senha, ativo FROM Usuario
+            $query = "SELECT  * FROM Usuario
             INNER JOIN CadastrCpf_Cnpj ON CadastrCpf_Cnpj.cpf_cnpj = cpfCnpj
             INNER JOIN Tipo ON Tipo.id = tipoUser
             WHERE CadastrCpf_Cnpj.nome LIKE '%$nome%'
@@ -340,11 +340,10 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
         ?>
         <?php
 
-        $relatorio = '
-        <legend>Relatório de Usuarios</legend>';
+        $relatorio = '';
         if (($id_tipo == 3 || $id_tipo == 1) && $dados != "true") {
             $novo = "'../views/usuario/form.php'";
-            $relatorio .= '<input type="button" value="NOVO" class="btn btn-primary" onclick="Conteudo(' . $novo . ')">';
+            $relatorio .= '<div class="w-100"><button type="button" class="btn btn-info btn-sm float-right" onclick="Conteudo(' . $novo . ')">CADASTRAR NOVO USUÁRIO</button><br><br></div>';
         }
         $relatorio .= '
             <table class="table table-hover">
@@ -354,9 +353,7 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
                         <td>Tipo</td>
                         <td>Condominio</td>
                         <td>Apartamento</td>
-                        <td>Ativo</td>
-                        <td></td>
-                        <td></td>
+                        <td>Status</td>
                     </tr>
                 </thead>';
         if ($id_tipo == 1 || $id_tipo == 3) {
@@ -402,11 +399,6 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
            // } else {
             //    $atualiza = "'../views/usuario/form_update.php?atualiza=" . $id . "'";
             //}
-            if($row[5] == 1){
-                $row[5] = 'Sim';
-            }else{
-                $row[5] = 'Não';
-            }
             $deleta = "'../views/usuario/delete.php?deleta=" . $id . "'";
             $relatorio .= "<tr>";
             $relatorio .= "<td>$row[1]</td>"; //nome
@@ -414,9 +406,9 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
             $relatorio .= "<td>$nome_condo</td>"; //doc
             $relatorio .= "<td>$apartamento</td>"; //Apartamento
             $relatorio .= "<td>$row[5]</td>"; //ativo
-            $relatorio .= '<td><input type="button" value="Atualiza" class="btn btn-primary" onclick="Conteudo(' . $atualiza . ')"></td>'; //lincar em uma função de Update.php row[0]
+            $relatorio .= '<td><input type="button" value="Atualizar" class="btn btn-info btn-sm" onclick="Conteudo(' . $atualiza . ')">'; //lincar em uma função de Update.php row[0]
             if ($id_tipo == 3 && $dados != "true") {
-                $relatorio .= '<td><input type="button" value="Apaga" class="btn btn-primary" onclick="Conteudo(' . $deleta . ')"></td>'; //lincar em uma função de Delete.php row[0]
+                $relatorio .= '&nbsp;<input type="button" value="Deletar" class="btn btn-danger btn-sm" onclick="Conteudo(' . $deleta . ')"></td>'; //lincar em uma função de Delete.php row[0]
             }
             $relatorio .= "</tr>";
         }

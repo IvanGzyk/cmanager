@@ -29,6 +29,18 @@ while ($row = mysqli_fetch_row($result)){
     $opcao_apt = "<input type='text' class='form-control form-control-lg' name='apt' value='$apt'>";
 }
 ?>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+        <link href="../../web/css/styles.css" rel="stylesheet" />
+        <script src="../web/js/all.min.js"></script>
+    </head>
+    <body>
+            <div id="layoutSidenav_content">
+                    <div class="container-fluid">
+                        <h1 class="mt-3">Atualizar Apartamento</h1>
+                        <div class="card mb-2"></div>
 <div class="usuario_form">
     <fieldset>
         <form action="../views/condominio/update.php?id=<?=$id?>" method="POST">
@@ -40,15 +52,19 @@ while ($row = mysqli_fetch_row($result)){
                 Cnpj:<?//=$opcao_cnpj?>
             </div>-->
             
-            <div class="form-group">
-                Bloco:<?=$opcao_blc?>
+            <div class="form-row">
+   		  	<div class="form-group col-md-6">
+            <label>Bloco</label>
+            <?=$opcao_blc?>
             </div>
-            
-            <div class="form-group">
-                Apartamento:<?=$opcao_apt?>
+            <div class="form-group col-md-6">
+            <label>Apartamento</label>
+            <?=$opcao_apt?>
             </div>
-            
-            <input type="submit" value="Gravar" class="btn btn-primary">
+            </div>
+            <input type="submit" value="Atualizar Apartamento" class="btn btn-primary float-right">
         </form>
     </fieldset>
 </div>
+</body>
+</html>

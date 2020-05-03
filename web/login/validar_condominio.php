@@ -11,7 +11,7 @@ if ($_POST) {
 <html lang="pt-BR">
 <head>
     <meta charset="utf-8">
-    <title>Validar Condomínio - Condominium Manager</title>
+    <title>CManager - Gestão de Condomínios</title>
     <link href="../../web/css/bootstrap.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="../../web/css/login.css">
 </head>

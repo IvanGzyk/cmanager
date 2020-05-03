@@ -11,7 +11,7 @@ if ($_POST) {
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<title>Recuperar Acesso - Condominium Manager</title>
+<title>CManager - Gestão de Condomínios</title>
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../css/login.css">
 </head>

@@ -36,7 +36,8 @@ $execute_doc = mysqli_query($db->con, $cadastra_contato);
 $execute_user = mysqli_query($db->con, $query_Usuario);
 $execute_BlAp = mysqli_query($db->con, $query_ApBl);
 
-
-
-header('Location:../../web/');
+echo '<script>
+        alert("O cadastro realizado com sucesso.");
+		window.location.href = "../../web/index.php";
+        </script>';
 ?>

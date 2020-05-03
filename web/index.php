@@ -20,7 +20,7 @@ if (!isset($_SESSION['usuario'])) {
 <html lang="pt-BR">
     <head>
         <meta charset="utf-8" />
-        <title>Cmanager</title>
+        <title>CManager - Gestão de Condomínios</title>
         <link href="css/styles.css" rel="stylesheet" />
         <script src="js/funcoes.js" type="text/javascript"></script>
         <link href="vendor/benhall14/php-calendar/html/css/calendar.css" rel="stylesheet" type="text/css"/>

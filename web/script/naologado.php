@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="utf-8">
-    <title>#</title>
+    <title>CManager - Gestão de Condomínios</title>
     <link href="../css/bootstrap.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>

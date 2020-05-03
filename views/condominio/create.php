@@ -23,7 +23,10 @@ if (isset($_GET['cond'])) {
 
     $execute_1 = mysqli_query($db->con, $query_condominio);
     $execute_2 = mysqli_query($db->con, $query_endereco);
-    header("Location:http://localhost/cmanager/Web/index.php");
+    echo '<script>
+        alert("Condomínio cadastrado com sucesso.");
+		window.location.href = "../../web/index.php";
+        </script>';
 }
 $condominio = $cond->Create($_POST['nome'], $_POST['salva'], $_POST['apt'], $_POST['blc']);
     $nome = $condominio->getCondo();
@@ -35,6 +38,9 @@ $condominio = $cond->Create($_POST['nome'], $_POST['salva'], $_POST['apt'], $_PO
 
     $execute = mysqli_query($db->con, $query);
 
-    header("Location:../../web/index.php?cond=$doc");
-    ?>
+echo '<script>
+        alert("Apartamento cadastrado com sucesso.");
+		window.location.href = "../../web/index.php";
+        </script>';
+?>
 

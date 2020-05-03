@@ -16,5 +16,10 @@ while ($row = mysqli_fetch_row($result)) {
 }
 $insere = "INSERT INTO Salao (condominio, Salao) VALUES ('$cnpj','$nome_salao')";
 $execute = mysqli_query($db->con, $insere);
-header("Location:../../web/index.php");
 
+echo '<script>
+        alert("Salão reservado com sucesso.");
+		window.location.href = "../../web/index.php";
+        </script>';
+
+?>

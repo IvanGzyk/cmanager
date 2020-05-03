@@ -15,14 +15,14 @@ if ($reservar != false) {
     $sql = mysqli_query($db->con, $inserir);
     ?>
     <script language="javascript" type="text/javascript">
-        alert('Reserva feita com sucesso');
+        alert('Reserva feita com sucesso.');
         location.href = '../../web/index.php';
     </script>
     <?php
 } else {
     ?>
     <script language="javascript" type="text/javascript">
-        alert('Esta data ja esta reservada, tente outro dia.');
+        alert('Esta data já possui reserva. Por favor, tente outro dia.');
         location.href = '../../web/index.php';
     </script>
     <?php

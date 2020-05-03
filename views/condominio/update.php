@@ -12,6 +12,9 @@ $atualizaPredio = "update Predio set blc= '$blc' , ap= '$apt' where id = '$id'";
 
 $execute = mysqli_query($db->con, $atualizaPredio);
 
-header('Location:../../web/');
+echo '<script>
+        alert("Atualização de apartamento realizada com sucesso.");
+		window.location.href = "../../web/index.php";
+        </script>';
 
 ?>

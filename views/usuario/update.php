@@ -55,5 +55,8 @@ if ($TipoDeAtualiza == "Admin") {
 $execute_doc = mysqli_query($db->con, $atualizaCpfCnpj);
 $execute_user = mysqli_query($db->con, $atualizaUsuario);
 
-header('Location:../../web/');
+echo '<script>
+        alert("Atualização de usuário realizada com sucesso.");
+		window.location.href = "../../web/index.php";
+        </script>';
 ?>

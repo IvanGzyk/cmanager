@@ -14,12 +14,12 @@ while ($row = mysqli_fetch_row($result)) {
     $nome_salao = $cadastro->getSalao();
     $cnpj = $cadastro->getCpf_cnpj();
 }
-$insere = "INSERT INTO Salao (condominio, Salao) VALUES ('$cnpj','$nome_salao')";
+$insere = "INSERT INTO `Salao` (`condominio`, `Salao`) VALUES ('$cnpj','$nome_salao')";
 $execute = mysqli_query($db->con, $insere);
 
 echo '<script>
-        alert("Salão reservado com sucesso.");
-		window.location.href = "../../web/index.php";
+        alert("Salão Cadastrado com sucesso.");
+		window.location.href = "../../web/index.php?condominio='.$cnpj.'&Salao='.$nome_salao.'&regras=true";
         </script>';
 
 ?>

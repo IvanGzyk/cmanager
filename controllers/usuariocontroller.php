@@ -302,12 +302,12 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
             
         }
         if ($id_tipo == 0 || $dados == "true") {
-            $query = "SELECT  Usuario.id, CadastrCpf_Cnpj.nome, Tipo.tipo, cpfCnpj, senha, ativo FROM Usuario
+            $query = "SELECT * FROM Usuario
             INNER JOIN CadastrCpf_Cnpj ON CadastrCpf_Cnpj.cpf_cnpj = cpfCnpj
             INNER JOIN Tipo ON Tipo.id = tipoUser
             WHERE cpfCnpj = '" . $Usuario['doc'] . "';"; //cpf do usuario
         } else if ($id_tipo == 1) {
-            $query = "SELECT  Usuario.id, CadastrCpf_Cnpj.nome, Tipo.tipo, cpfCnpj, senha, ativo FROM Usuario
+            $query = "SELECT * FROM Usuario
             INNER JOIN CadastrCpf_Cnpj ON CadastrCpf_Cnpj.cpf_cnpj = cpfCnpj
             INNER JOIN Tipo ON Tipo.id = tipoUser
             WHERE CadastrCpf_Cnpj.nome LIKE '%$nome%'
@@ -318,12 +318,12 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
             AND    
             condominio = 13457853000107;"; //cnpj do condominio
         } else if ($id_tipo == 2) {
-            $query = "SELECT  Usuario.id, CadastrCpf_Cnpj.nome, Tipo.tipo, cpfCnpj, senha, ativo FROM Usuario
+            $query = "SELECT * FROM Usuario
             INNER JOIN CadastrCpf_Cnpj ON CadastrCpf_Cnpj.cpf_cnpj = cpfCnpj
             INNER JOIN Tipo ON Tipo.id = tipoUser
             WHERE cpfCnpj = 03433386960;"; //cpf do usuario
         } else if ($id_tipo == 3) {
-            $query = "SELECT  * FROM Usuario
+            $query = "SELECT * FROM Usuario
             INNER JOIN CadastrCpf_Cnpj ON CadastrCpf_Cnpj.cpf_cnpj = cpfCnpj
             INNER JOIN Tipo ON Tipo.id = tipoUser
             WHERE CadastrCpf_Cnpj.nome LIKE '%$nome%'
@@ -399,9 +399,14 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
            // } else {
             //    $atualiza = "'../views/usuario/form_update.php?atualiza=" . $id . "'";
             //}
+                if($row[5] == 1){
+                    $row[5] = "ativo";
+                }else{
+                    $row[5] = "Pendente";
+                }
             $deleta = "'../views/usuario/delete.php?deleta=" . $id . "'";
             $relatorio .= "<tr>";
-            $relatorio .= "<td>$row[1]</td>"; //nome
+            $relatorio .= "<td>$row[8]</td>"; //nome
             $relatorio .= "<td>$row[2]</td>"; //tipo
             $relatorio .= "<td>$nome_condo</td>"; //doc
             $relatorio .= "<td>$apartamento</td>"; //Apartamento

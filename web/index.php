@@ -1,6 +1,5 @@
 <?php
 include_once '../controllers/menucontroller.php';
-
 session_start();
 //Recebe o Array com os dados do usuario que logou...
 $Usuario = unserialize($_SESSION['usuario']);

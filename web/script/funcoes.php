@@ -7,6 +7,15 @@ if (isset($_POST['condominio'])) {
     </script>
     <?php
 }
+if (isset($_GET['regras'])) {
+    $cond = $_GET['condominio'];
+    $salao = $_GET['Salao'];
+    ?>
+    <script language="javascript" type="text/javascript">
+        Conteudo('../views/salao/form_regras.php?condominio=<?= $cond ?>&Salao=<?= $salao?>');
+    </script>
+    <?php
+}
 if (isset($_GET['cond'])) {
     $cond = $_GET['cond'];
     ?>

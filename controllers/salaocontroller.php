@@ -30,7 +30,9 @@ class salaocontroller {
         $db = new Conexao();
         $reserva = "";
         $usuario = unserialize($_SESSION['usuario']);
-        $query = "SELECT * FROM Salao INNER JOIN Usuario on Usuario.condominio = Salao.condominio GROUP BY Salao.id";
+        $doc = $usuario['doc'];
+        $query = "SELECT * FROM Salao INNER JOIN Usuario on Usuario.condominio = Salao.condominio WHERE Usuario.cpfCnpj LIKE '$doc' GROUP BY Salao.id";
+        
         $execute = mysqli_query($db->con, $query);
         while ($row = mysqli_fetch_row($execute)) {
             $objeto = new Calendar();

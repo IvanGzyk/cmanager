@@ -18,3 +18,6 @@ ficarão responsaveis pela implementação.
 
 
 Reserva tabela, acrecentar usuario chave cpf
+
+Regras de salão deverão conter regras para aluguel, por exemplo se um condomino ja alugou esse mês não podeá alugar mais.
+ 

@@ -3,8 +3,8 @@ OK - Incluir Cadastro de contato junto com Usuario.
 OK - Gerar cadastro de condominio.
 OK - Gerar cadastro de salão.
 OK - Gerar Formulario de Reservas de salão.
-- Gerar cadastro de regras para salão.
-- Gerar cadastro de Multas.
+OK - Gerar cadastro de regras para salão.
+OK - Gerar cadastro de Multas.
 - Gerar Financeiro(Dashboard, Relatório,Perestação de contas, gerar boleto).
 - Gerar uma pagina de reclame aqui, sugest�es.(Falta tabela no DER).
 

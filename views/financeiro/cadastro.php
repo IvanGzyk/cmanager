@@ -1,8 +1,19 @@
 <?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+session_start();
+include_once '../../config/conexao.php';
+include_once '../../controllers/financeirocontroller.php';
+$db = new Conexao();
+$financeiro = new financeirocontroller();
+$condominio = "";
+$valor = $_POST[valor];
+$data = $_POST[data];
+$entrada_saida = $_POST[entrada_saida];
+$descricao = $_POST[descricao];
+$usuario = unserialize($_SESSION['usuario']);
+$doc = $usuario['doc'];
+$query = "SELECT condominio FROM Usuario WHERE cpfCnpj = '$doc'";
+$result = mysqli_query($db->con, $query);
+while ($row = mysqli_fetch_row($result)){
+    $condominio = $row[0];
+}
+$financeiro->CadastrpFinanceiro($condominio, $data, $valor, $descricao, $entrada_saida);

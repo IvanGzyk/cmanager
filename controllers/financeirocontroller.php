@@ -18,5 +18,15 @@ class financeirocontroller {
 		window.location.href = "../../web/index.php";
         </script>';
     }
+    
+    function CadastrpFinanceiro($condominio, $data, $valor, $descricao, $entrada_saida){
+        $db = new Conexao();
+        $inserir = "INSERT INTO Financeira (condominio, data, valor, descricao, entrada_saida) VALUES ('$condominio', '$data', '$valor', '$descricao', '$entrada_saida');";
+        $execut = mysqli_query($db->con, $inserir);
+        echo '<script>
+        alert("Financeiro Cadastrado com sucesso!");
+		window.location.href = "../../web/index.php";
+        </script>';
+    }
 
 }

@@ -32,7 +32,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>Valor:</label>
-                                <input class='form-control' type="number" name="valor">
+                                <input class='form-control' type="text" name="valor">
                                 <label>Data:</label>
                                 <input class='form-control' type="date" name="data">
                                 <label>Tipo:</label>

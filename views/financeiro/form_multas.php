@@ -29,22 +29,17 @@ while ($row = mysqli_fetch_row($result)){
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>Data:</label>
-                                <input type="date" name="data">
-                                
+                                <input type="date" name="data" class='form-control'>
                                 <label>Valor:</label>
-                                <input type="number" name="valor">
-                            </div>
-                            <div class="form-group col-md-6">
+                                <input type="text" name="valor" class='form-control'>
                                 <label>Apartamento:</label>
                                 <select name='ap' class='form-control'>
                                     <?=$option?>
                                 </select>
                             </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-6">
                                 <label>Descrição:</label>
-                                <textarea class="form-control" rows="5"  name="descricao"></textarea>
+                                <textarea class="form-control" rows="7"  name="descricao"></textarea>
                             </div>
                         </div>
                         <input type="submit" value="Salvar" class="btn btn-primary float-right">

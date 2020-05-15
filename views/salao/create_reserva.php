@@ -1,13 +1,13 @@
 <?php
-
 include '../../controllers/salaocontroller.php';
 include_once '../../config/conexao.php';
-    
+
 $db = new Conexao();
 $usuario = unserialize($_SESSION['usuario']);
 $salao = new salaocontroller();
 $reservar = $salao->ReservaSalao($_POST['salao'], $_POST['data'], $usuario['doc']);
 if ($reservar != false) {
+    $aluguel = "";
     $salao = $reservar->getSalao();
     $data = $reservar->getData();
     $user = $reservar->getCpf();
@@ -27,25 +27,40 @@ if ($reservar != false) {
         $cont = mysqli_num_rows($result);
         if ($cont == 0) {
             $inserir = "INSERT INTO Reservas (salao, dataReserva, usuario)VALUES ('$salao', '$data', '$user');";
+            $query = "SELECT condominio, valor FROM Salao where id = $salao";
+            $result = mysqli_query($db->con, $query);
+            while ($row = mysqli_fetch_row($result)) {
+                $aluguel = $row[1];
+                $financeiro = "INSERT INTO Financeira (condominio, salao, data, valor, descricao, entrada_saida) VALUES ('$row[0]', '$salao', '$data', '$row[1]', 'Aluguel', 'entrada');";
+                $execute = mysqli_query($db->con, $financeiro);
+            }
         } else {
             ?>
             <script language="javascript" type="text/javascript">
-                alert('Você ja possui uma reserva abaixo do plazo de <?=$plazo?> dias, Procure seu Sindico.');
+                alert('Você ja possui uma reserva abaixo do plazo de <?= $plazo ?> dias, Procure seu Sindico.');
                 location.href = '../../web/index.php';
             </script>
             <?php
         }
     } else {
         $inserir = "INSERT INTO Reservas (salao, dataReserva, usuario)VALUES ('$salao', '$data', '$user');";
+        $query = "SELECT condominio, valor FROM Salao where id = $salao";
+        $result = mysqli_query($db->con, $query);
+        while ($row = mysqli_fetch_row($result)) {
+            $aluguel = $row[1];
+            $financeiro = "INSERT INTO Financeira (condominio, salao, data, valor, descricao, entrada_saida) VALUES ('$row[0]', '$salao', '$data', '$row[1]', 'Aluguel', 'entrada');";
+            $execute = mysqli_query($db->con, $financeiro);
+        }
     }
     $sql = mysqli_query($db->con, $inserir);
+    $mes = date_create($data);
+    $mes = date_format($mes, 'M');
     ?>
     <script language="javascript" type="text/javascript">
-        alert('Reserva feita com sucesso.');
+        alert('Reserva feita com sucesso! O valor de R$<?= $aluguel?> sera cobrado no mes de <?=$mes?>');
         location.href = '../../web/index.php';
     </script>
     <?php
-
 } else {
     ?>
     <script language="javascript" type="text/javascript">
@@ -53,5 +68,4 @@ if ($reservar != false) {
         location.href = '../../web/index.php';
     </script>
     <?php
-
 }

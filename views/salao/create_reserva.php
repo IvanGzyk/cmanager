@@ -22,7 +22,9 @@ if ($reservar != false) {
     }
     if ($plazo > 0) {
         $query_reservas = "SELECT * FROM `Reservas` WHERE 
-        `dataReserva` BETWEEN CURDATE() AND CURDATE() + INTERVAL $plazo DAY AND salao = $salao;";
+        `dataReserva` BETWEEN '$data' AND '$data' + INTERVAL $plazo DAY "
+                . "OR `dataReserva` BETWEEN '$data' - INTERVAL $plazo DAY AND '$data'"
+                . "AND salao = $salao;";
         $result = mysqli_query($db->con, $query_reservas);
         $cont = mysqli_num_rows($result);
         if ($cont == 0) {

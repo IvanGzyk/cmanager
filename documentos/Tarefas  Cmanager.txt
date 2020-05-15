@@ -20,4 +20,5 @@ ficarão responsaveis pela implementação.
 Reserva tabela, acrecentar usuario chave cpf
 
 Regras de salão deverão conter regras para aluguel, por exemplo se um condomino ja alugou esse mês não podeá alugar mais.
- 
+
+Criado um script para atualizar o saldo dos condominios diariamente, esse script sera colocado no servidor rodando atraves do crontab.

@@ -3,7 +3,7 @@
 
     $db = new Conexao();
 
-	$executar = "SELECT referencia, valorMedido FROM ConsumoDeAgua ORDER BY referencia DESC LIMIT 6";
+	$executar = "SELECT nome_mes, valorMedido, valor FROM ConsumoDeAgua ORDER BY id DESC LIMIT 6";
 
 	$resultado = mysqli_query($db->con, $executar);
 

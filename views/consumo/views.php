@@ -3,6 +3,10 @@
 
     $db = new Conexao();
 	
+	session_start();
+	$Usuario = unserialize($_SESSION['usuario']);
+	$doc = $Usuario['doc'];
+	
 	date_default_timezone_set('America/Sao_Paulo');
   
     $consumo = "SELECT * FROM ConsumoDeAgua ORDER BY id DESC";
@@ -62,11 +66,11 @@
                         <div class="card mb-2">
                             <div class="card-body">Acompanhe o consumo total de água do condomínio.<br />Caso encontre irregularidades, acione o botão <font color="#FF0000"><b>REPORTAR VAZAMENTO</b></font> para que um aviso rápido seja enviado ao seu síndico.</div>
                         </div>
-                        <div class="w-100 p-2"><button type="button" class="btn btn-danger btn-sm float-right">REPORTAR VAZAMENTO</button><br /></div>
+                        <div class="w-100 p-2"><br /></div>
                         <div class="row p-3">
                             <div class="col-lg-6">
                                 <div class="card mb-4">
-                                    <div class="card-header align-items-center">Consumo de água <small>(referencia: <?php echo date('m/Y'); ?>)</small></div>
+                                    <div class="card-header align-items-center">Consumo de água <small>(referencia: <?php echo date('m/Y'); ?>)</small> <button type="button" class="btn btn-danger btn-sm float-right" data-toggle="modal" data-target="#vazamento">REPORTAR VAZAMENTO</button></div>
                                     <div class="card-body">
 									<h3 class="text-center"><?php echo $cubico_int; ?> m³ <small>(<?php echo $row['valorMedido']; ?> Litros)</small></h3>
 									</div>
@@ -100,6 +104,27 @@
                     </div>             
                 </main>
             </div>
+            
+            <div class="modal fade" id="vazamento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h6 class="modal-title" id="myModalLabel"><font color="#FF0000">Reporte de possível vazamento de água</font></h6>
+						</div>
+						<div class="modal-body">
+<small>A sua solicitação será encaminhada para averiguação do síndico.</small><br />
+<small><b>Você deseja realmente criar o alerta de vazamento?</b></small></div>
+						<div class="modal-footer">
+                        <?php
+						echo "<a class='btn btn-danger btn-sm' href='alerta-notificacao.php?cpfCnpj=" .$doc. "'>Enviar alerta</a><br>";
+						?>
+                        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancelar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+            
         <script src="../../web/js/jquery-3.4.1.min.js"></script>
         <script src="../../web/js/bootstrap.bundle.min.js"></script>
         <script src="../../web/js/scripts.js"></script>
@@ -115,20 +140,22 @@
 
             var data_array = [];
             var valor_array = [];
+			var reais_array = [];
 
             for (var i = 0; i < data.length; i++) {
 
-                data_array.push(data[i].referencia);
+                data_array.push(data[i].nome_mes);
                 valor_array.push(data[i].valorMedido);
+				reais_array.push(data[i].valor);
 
 			}
-            grafico(data_array,valor_array);
+            grafico(data_array,valor_array,reais_array);
         }
     });
 
 })
 
-function grafico(referencia,valorMedido) {
+function grafico(nome_mes,valorMedido,valor) {
 	
 	Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 	Chart.defaults.global.defaultFontColor = '#292b2c';
@@ -137,7 +164,7 @@ function grafico(referencia,valorMedido) {
 	var myLineChart = new Chart(ctx, {
   	type: 'bar',
         data: {
-            labels: referencia,
+            labels: nome_mes, 
 
 
             datasets: [{
@@ -145,7 +172,13 @@ function grafico(referencia,valorMedido) {
       			backgroundColor: "rgba(2,117,216,1)",
       			borderColor: "rgba(2,117,216,1)",
                 data: valorMedido
-            }]
+            }, {
+            	label: "Valor em R$",
+				backgroundColor: "rgba(2,35,102,35)",
+      			borderColor: "rgba(2,35,102,35)",
+            	data: valor
+        }]
+			
         },
 
        options: {
@@ -153,11 +186,14 @@ function grafico(referencia,valorMedido) {
                 xAxes: [{
                     ticks: {
                         beginAtZero: true
-                    }
+                    },
+					gridLines: {
+						display: false
+					}
                 }]
 			},
     		legend: {
-      			display: false
+      			display: true
    			}
         }
     });

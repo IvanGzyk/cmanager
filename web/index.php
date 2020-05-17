@@ -28,7 +28,7 @@ if (!isset($_SESSION['usuario'])) {
         <script src="js/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
     </head>
-    <body>
+    <body style="overflow-x:hidden;">
         <!-- Carregar menu aqui-->
         <?= $menu ?>
 
@@ -79,7 +79,9 @@ $puxa_nome = "SELECT nome FROM CadastrCpf_Cnpj WHERE cpf_cnpj = '$doc'";
 $result = mysqli_query($con, $puxa_nome);
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
-if ($row_msg['status'] == '0') {
+@$status = $row_msg['status'];
+
+if (@$status == '0') {
 ?>
 
 <div class="modal fade" id="notificacao" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -101,8 +103,9 @@ Por favor, confira as informações abaixo:</small><br /><br />
 						</div>
 						<div class="modal-footer">
                         <?php
-						echo "<a class='btn btn-success btn-sm' href='update-notificacao.php?id=" . $row_msg['id'] . "'>CONFIRMAR RECEBIMENTO</a><br>";
+						echo "<a class='btn btn-success btn-sm' href='update-notificacao.php?id=" . $row_msg['id'] . "'>Confirmar Recebimento</a><br>";
 						?>
+                        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Lembrar mais tarde</button>
 						</div>
 					</div>
 				</div>

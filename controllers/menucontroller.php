@@ -67,9 +67,9 @@ class MenuController {
 
                     $menu .= " <li class='nav-item dropdown'>";
                     if ($value['titulo'] == 'doc') {
-                        $menu .= "<a class = 'nav-link dropdown-toggle' id = 'userDropdown' href = '#' role = 'button' data-toggle = 'dropdown' aria-haspopup = 'true' aria-expanded = 'false' > " . $icon . " &nbsp;" . $doc . "</a>";
+                        $menu .= "<a class = 'nav-link dropdown-toggle' id = 'userDropdown' href = '#void' role = 'button' data-toggle = 'dropdown' aria-haspopup = 'true' aria-expanded = 'false' > " . $icon . " &nbsp;" . $doc . "</a>";
                     } else {
-                        $menu .= "<a class='" . $value['class'] . "' href='#' id='navbarDropdownMenuLink' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>" . $value['titulo'] . "</a>";
+                        $menu .= "<a class='" . $value['class'] . "' href='#void' id='navbarDropdownMenuLink' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>" . $value['titulo'] . "</a>";
                     }
                     $menu .= "<div class='dropdown-menu' aria-labelledby='navbarDropdownMenuLink'>";
                     while ($row_pai = mysqli_fetch_row($result_pai)) {
@@ -82,7 +82,7 @@ class MenuController {
                     $menu .= "</div></li>";
                 } else if ($value['pai'] == null) {
                     if ($value['titulo'] == 'Página Inicial') {
-                        $menu .= "<li class='nav-item'><a class=" . $value['class'] . " href='" . $value['link'] . "'>" . $value['titulo'] . "</a></li>";
+                        $menu .= "<li class='nav-item'><a class=" . $value['class'] . " href='index.php'>" . $value['titulo'] . "</a></li>";
                     } else
                         $menu .= "<li class='nav-item'><a class='" . $value['class'] . "' href='#' onclick=" . "Conteudo(" . $value['link'] . ")" . ">" . $value['titulo'] . "</a></li>";
                 }

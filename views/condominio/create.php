@@ -18,11 +18,13 @@ if (isset($_GET['cond'])) {
     $cidade = $endereço->getCidade();
     $estado = $endereço->getEstado();
     $cep = $endereço->getCep();
+    $senha = md5($cnpj);
     $query_condominio = "INSERT INTO CadastrCpf_Cnpj (cpf_cnpj, nome) VALUES ('$cnpj', '$nome');";
     $query_endereco = "INSERT INTO Endereco (cpf_cnpj, Rua, numero, bairro, cidade, estado, cep) VALUES ('$cnpj', '$rua', '$numero', '$bairro', '$cidade', '$estado', '$cep');";
-
+    $query_usuario = "INSERT INTO Usuario (cpfCnpj, tipoUser, condominio, senha) VALUES ('$cnpj', '4', '$cnpj', '$senha');";
     $execute_1 = mysqli_query($db->con, $query_condominio);
     $execute_2 = mysqli_query($db->con, $query_endereco);
+    $execute_3 = mysqli_query($db->con, $query_usuario);
     echo '<script>
         alert("Condomínio cadastrado com sucesso.");
 		window.location.href = "../../web/index.php";

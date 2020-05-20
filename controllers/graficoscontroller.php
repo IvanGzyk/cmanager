@@ -29,7 +29,7 @@ class graficoscontroller {
         <?php
     }
 
-    function carrega_grafico_barras2($valores, $titulo, $titulo2, $data, $data2, $id) {
+    function carrega_grafico_barras2($valores, $titulo, $titulo2, $data, $data2,$cor1, $cor2, $id) {
         ?>
         <canvas id="<?= $id ?>" style="margin-top:30px"></canvas>
         <script>
@@ -40,12 +40,12 @@ class graficoscontroller {
                     labels: <?= $valores ?>,
                     datasets: [{
                             label: '<?= $titulo ?>',
-                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            backgroundColor: <?= $cor1 ?>,
                             borderColor: 'rgba(54, 162, 235, 1)',
                             data: <?= $data ?>
                         }, {
                             label: '<?= $titulo2 ?>',
-                            backgroundColor: '#7E70C6',
+                            backgroundColor: <?= $cor2 ?>,
                             borderColor: 'rgb(255, 99, 132)',
                             data: <?= $data2 ?>
                         }]

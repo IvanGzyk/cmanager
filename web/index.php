@@ -26,7 +26,7 @@ if (!isset($_SESSION['usuario'])) {
         <link href="css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
         <script src="js/all.min.js"></script>
         <script src="js/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
     </head>
     <body style="overflow-x:hidden;">
         <!-- Carregar menu aqui-->
@@ -36,10 +36,9 @@ if (!isset($_SESSION['usuario'])) {
             <div id="layoutSidenav_content">
                 <main>
                     <div id="principal">
-                        conteúdo aqui
+                        <?php include_once '../views/financeiro/views.php'; ?>
                     </div>
                 </main>
-
 
                 <footer class="py-3 bg-light mt-auto">
                     <div class="container-fluid">
@@ -82,40 +81,40 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 @$status = $row_msg['status'];
 
 if (@$status == '0') {
-?>
+    ?>
 
-<div class="modal fade" id="notificacao" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h6 class="modal-title" id="myModalLabel">Notificação de Recebimento de Correspondência</h6>
-						</div>
-						<div class="modal-body">
-<small><b>Olá, <?php echo $row['nome']; ?>!</b></small><br /><br />
-<small>Consta(m) correspondência(s) dos correios na portaria do condomínio.<br />
-Por favor, confira as informações abaixo:</small><br /><br />
-<small><b>Data do recebimento: </b></small>
-<small><?php echo $row_msg['data_registro']; ?></small><br />
-<small><b>Mensagem: </b></small>
-<small><?php echo $row_msg['mensagem']; ?></small><br /><br />
-<small>Favor, retirar o quanto antes na portaria do condomínio.</small><br />
-<small>Para confirmar o recebimento, clique em <font color="#FF0000"><b>"Confirmar Recebimento"</b></font>.</small>
-						</div>
-						<div class="modal-footer">
-                        <?php
-						echo "<a class='btn btn-success btn-sm' href='update-notificacao.php?id=" . $row_msg['id'] . "'>Confirmar Recebimento</a><br>";
-						?>
-                        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Lembrar mais tarde</button>
-						</div>
-					</div>
-				</div>
-			</div>
-             <script>
-				$(document).ready(function () {
-					$('#notificacao').modal('show');
-				});
-			</script>
+    <div class="modal fade" id="notificacao" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="myModalLabel">Notificação de Recebimento de Correspondência</h6>
+                </div>
+                <div class="modal-body">
+                    <small><b>Olá, <?php echo $row['nome']; ?>!</b></small><br /><br />
+                    <small>Consta(m) correspondência(s) dos correios na portaria do condomínio.<br />
+                        Por favor, confira as informações abaixo:</small><br /><br />
+                    <small><b>Data do recebimento: </b></small>
+                    <small><?php echo $row_msg['data_registro']; ?></small><br />
+                    <small><b>Mensagem: </b></small>
+                    <small><?php echo $row_msg['mensagem']; ?></small><br /><br />
+                    <small>Favor, retirar o quanto antes na portaria do condomínio.</small><br />
+                    <small>Para confirmar o recebimento, clique em <font color="#FF0000"><b>"Confirmar Recebimento"</b></font>.</small>
+                </div>
+                <div class="modal-footer">
+                    <?php
+                    echo "<a class='btn btn-success btn-sm' href='update-notificacao.php?id=" . $row_msg['id'] . "'>Confirmar Recebimento</a><br>";
+                    ?>
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Lembrar mais tarde</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('#notificacao').modal('show');
+        });
+    </script>
 
-<?php
+    <?php
 }
 ?>

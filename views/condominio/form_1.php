@@ -6,8 +6,7 @@ $con = $db->con;
 $opcao_cond = "";
 $condo = $_GET['cond'];
 $condominio = "SELECT * FROM CadastrCpf_Cnpj
-WHERE cpf_cnpj = $condo;";
-
+WHERE cpf_cnpj = '$condo';";
 $result = mysqli_query($con, $condominio);
 while ($row = mysqli_fetch_row($result)){
     $cnpj = $row[0];

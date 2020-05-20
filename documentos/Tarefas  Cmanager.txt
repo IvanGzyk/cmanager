@@ -6,7 +6,7 @@ OK - Gerar Formulario de Reservas de salão.
 OK - Gerar cadastro de regras para salão.
 OK - Gerar cadastro de Multas.
 - Gerar Financeiro(Dashboard, Relatório,Perestação de contas, gerar boleto).
-- Gerar uma pagina de reclame aqui, sugest�es.(Falta tabela no DER).
+- Gerar uma pagina de reclame aqui, sugestoes.(Falta tabela no DER).
 
 
 OBS:

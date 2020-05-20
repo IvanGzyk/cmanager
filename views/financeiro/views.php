@@ -67,7 +67,7 @@ $soma1 = json_encode($soma1);
                                     <i class="fas fa-chart-bar mr-1"></i>
                                     Financeiro 2
                                 </div>
-                                <?php $grafico->carrega_grafico_barras2($data, $tipo, $tipo1, $soma, $soma1, $id) ?>
+                                <?php $grafico->carrega_grafico_barras2($data, $tipo, $tipo1, $soma, $soma1, "'#8A2BE2'", "'#FF6347'", $id) ?>
                                 <!--<div class="card-body"><canvas id="myBarChart" width="100%" height="49"></canvas></div>-->
 
                             </div>

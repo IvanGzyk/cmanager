@@ -29,7 +29,7 @@ class graficoscontroller {
         <?php
     }
 
-    function carrega_grafico_barras2($valores, $titulo, $titulo2, $data, $data2,$cor1, $cor2, $id) {
+    function carrega_grafico_barras2($valores, $titulo, $titulo2, $data, $data2, $cor1, $cor2, $id) {
         ?>
         <canvas id="<?= $id ?>" style="margin-top:30px"></canvas>
         <script>
@@ -54,7 +54,7 @@ class graficoscontroller {
         <?php
     }
 
-    function grafico_pizza($valores, $titulo, $data, $id) {
+    function grafico_pizza($valores, $titulo, $data, $id, $cores) {
         ?>
         <canvas id="<?= $id ?>" style="margin-top:30px"></canvas>
         <script>
@@ -65,7 +65,7 @@ class graficoscontroller {
                     labels: <?= $valores ?>,
                     datasets: [{
                             label: '<?= $titulo ?>',
-                            /*backgroundColor: ['rgb(255, 99, 132)', 'rgb(255, 199, 132)', 'rgb(55, 99, 132)'],*/
+                            backgroundColor: <?= $cores ?>,
                             data: <?= $data ?>
                         }]
                 }
@@ -94,6 +94,26 @@ class graficoscontroller {
                 }
             });
         </script>
+        <?php
+    }
+
+    function grafic_linha($valores, $titulo, $data, $id, $color) {
+        ?>
+        <canvas id="<?= $id ?>" style="margin-top:30px"></canvas>
+        <script>
+            var ctx = document.getElementById('<?= $id ?>').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: <?= $valores ?>,
+                    datasets: [{
+                            label: '<?= $titulo ?>',
+                            backgroundColor: <?= $color ?>,
+                            borderColor: "#2E8B57",
+                            data: <?= $data ?>
+                        }]
+                }
+            });</script>
         <?php
     }
 

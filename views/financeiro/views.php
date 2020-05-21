@@ -1,34 +1,7 @@
 <!DOCTYPE html>
 <?php
 include_once '../controllers/graficoscontroller.php';
-include_once '../config/conexao.php';
-$grafico = new graficoscontroller();
-$db = new Conexao();
-$query = "SELECT data, SUM(valor) soma, entrada_saida FROM `Financeira` GROUP BY data, `entrada_saida`";
-$executa = mysqli_query($db->con, $query);
-$data = array();
-$soma = array();
-$tipo = '';
-$soma1 = array();
-$id = 'Chart';
-$tipo1 = '';
-while ($row = mysqli_fetch_row($executa)) {
-    if (in_array($row[0], $data)) {
-        
-    } else {
-        $data[] = $row[0];
-    }
-    if ($row[2] == 'entrada') {
-        $soma[] = $row[1];
-        $tipo = 'entrada';
-    } else {
-        $soma1[] = $row[1];
-        $tipo1 = 'saida';
-    }
-}
-$data = json_encode($data);
-$soma = json_encode($soma);
-$soma1 = json_encode($soma1);
+include_once '../views/financeiro/constroe_dados_grafico.php';
 ?>
 <html lang="pt-BR">
     <head>
@@ -53,11 +26,12 @@ $soma1 = json_encode($soma1);
                     <div class="row p-3">
                         <div class="col-lg-6">
                             <div class="card mb-4">
-                                <div class="card-header align-items-center">
-                                    Financeiro 1
-                                    <small>(referencia: <?php echo date('m/Y'); ?>)</small>
-                                </div>                                
-
+                                <div class="card-header">
+                                    <i class="fas fa-chart-bar mr-1"></i>
+                                    Balanço ultimo mês.
+                                    <small>(referencia: <?php echo date('m/Y', strtotime('-1 months', strtotime(date('Y-m')))); ?>)</small>
+                                </div>
+                                <?php $grafico->grafico_pizza($valores, $valores, $dados, $id1, $cores); ?>  
                             </div>
                         </div>
 
@@ -65,14 +39,32 @@ $soma1 = json_encode($soma1);
                             <div class="card mb-4">
                                 <div class="card-header">
                                     <i class="fas fa-chart-bar mr-1"></i>
-                                    Financeiro 2
+                                    Balanço ultimos 6 mêses.
                                 </div>
                                 <?php $grafico->carrega_grafico_barras2($data, $tipo, $tipo1, $soma, $soma1, "'#8A2BE2'", "'#FF6347'", $id) ?>
-                                <!--<div class="card-body"><canvas id="myBarChart" width="100%" height="49"></canvas></div>-->
-
                             </div>
                         </div>
 
+                    </div>
+                    <div class="row p-3">
+                        <div class="col-lg-6">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-chart-bar mr-1"></i>
+                                    Balanço ultimos 30 dias.
+                                </div>
+                                <?php $grafico->carrega_grafico_barras2($data2, $tipo2, $tipo21, $soma2, $soma21, "'#8A2BE2'", "'#FF6347'", $id2) ?>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-chart-bar mr-1"></i>
+                                    Acompanhamento do saldo dos ultimos 6 meses.
+                                </div>
+                                <?= $grafico->grafic_linha($valores3, $titulo3, $data3, $id3, $color3); ?>
+                            </div>
+                        </div>
                     </div>
                 </div>             
             </main>

@@ -1,6 +1,5 @@
 <?php
 include_once '../config/conexao.php';
-$grafico = new graficoscontroller();
 $db = new Conexao();
 $usuario = unserialize($_SESSION['usuario']);
 $doc = $usuario['doc'];
@@ -40,10 +39,12 @@ $soma1 = array();
 $tipo = '';
 $tipo1 = '';
 $id = 'Chart';
-$query = "SELECT data, round(SUM(valor),2) soma, entrada_saida FROM `Financeira` 
+$query = "SELECT date_format(data, '%m-%Y') data, round(SUM(valor),2) soma, entrada_saida FROM `Financeira` 
 WHERE 
 condominio = '$cnpj'
-GROUP BY date_format(data, '%m-Y'), `entrada_saida`;";
+AND
+data BETWEEN CURDATE() - INTERVAL 180 DAY AND CURDATE()
+GROUP BY date_format(data, '%m-%Y'), `entrada_saida`;";
 $executa = mysqli_query($db->con, $query);
 while ($row = mysqli_fetch_row($executa)) {
     if (in_array($row[0], $data)) {
@@ -70,7 +71,7 @@ $soma21 = array();
 $tipo2 = '';
 $tipo21 = '';
 $id2 = 'Chart_2';
-$query = "SELECT data, round(SUM(valor),2) soma, entrada_saida FROM `Financeira` 
+$query = "SELECT date_format(data, '%d-%M') data, round(SUM(valor),2) soma, entrada_saida FROM `Financeira` 
 WHERE 
 data BETWEEN CURDATE() - INTERVAL '30' DAY AND CURDATE() 
 AND 
@@ -101,7 +102,7 @@ $titulo3 = "Saldo";
 $data3 = array(); 
 $id3 = 'Chart_3'; 
 $color3 = "'#00FA9A'";
-$query = "SELECT mes, saldo FROM SaldoMes 
+$query = "SELECT date_format(mes, '%d-%m-%Y') mes, saldo FROM SaldoMes 
 WHERE 
 condominio = '$cnpj'
 AND

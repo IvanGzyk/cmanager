@@ -30,19 +30,19 @@ $tabela = $usuario->Relatorio($nome, $tipo, $doc, $id_tipo, $dados);
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-<meta charset="utf-8" />
+    <head>
+        <meta charset="utf-8" />
         <link href="../../web/css/styles.css" rel="stylesheet" />
         <script src="../web/js/all.min.js"></script>
     </head>
     <body>
-            <div id="layoutSidenav_content">
-                    <div class="container-fluid">
-                        <h1 class="mt-3">Gerenciar Usuários</h1>
-                        <div class="card mb-2"></div>
-                        
-                        <?php echo $tabela; ?>
-      
-                        </div>
-                    </div>            
+        <div id="layoutSidenav_content">
+            <div class="container-fluid">
+                <h1 class="mt-3">Gerenciar Usuários</h1>
+                <div class="card mb-2"></div>
+
+                <?php echo $tabela; ?>
+
             </div>
+        </div>            
+    </div>

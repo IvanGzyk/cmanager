@@ -291,12 +291,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/openboleto/openboleto.git",
-                "reference": "ee143c58304115e32396b1d55860f7cbf4dcc565"
+                "reference": "6d03d30bb15ac5c854f2201eacb324bda0df3d97"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/openboleto/openboleto/zipball/ee143c58304115e32396b1d55860f7cbf4dcc565",
-                "reference": "ee143c58304115e32396b1d55860f7cbf4dcc565",
+                "url": "https://api.github.com/repos/openboleto/openboleto/zipball/6d03d30bb15ac5c854f2201eacb324bda0df3d97",
+                "reference": "6d03d30bb15ac5c854f2201eacb324bda0df3d97",
                 "shasum": ""
             },
             "require": {
@@ -332,7 +332,7 @@
                 "boleto",
                 "boleto bancario"
             ],
-            "time": "2020-04-15T19:21:21+00:00"
+            "time": "2020-05-12T14:42:39+00:00"
         },
         {
             "name": "paragonie/random_compat",

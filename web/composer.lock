@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "23c95adfdf84ac4af4b472579ff91c91",
+    "content-hash": "d0b69161907aa2b3b0457bef813cfbe2",
     "packages": [
         {
             "name": "benhall14/php-calendar",
@@ -286,53 +286,45 @@
             "time": "2020-01-17T21:11:47+00:00"
         },
         {
-            "name": "openboleto/openboleto",
-            "version": "dev-master",
+            "name": "pagseguro/pagseguro-php-sdk",
+            "version": "6.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/openboleto/openboleto.git",
-                "reference": "6d03d30bb15ac5c854f2201eacb324bda0df3d97"
+                "url": "https://github.com/pagseguro/pagseguro-php-sdk.git",
+                "reference": "de63ce3d582ba5727c42d8d4e67030da9439bff6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/openboleto/openboleto/zipball/6d03d30bb15ac5c854f2201eacb324bda0df3d97",
-                "reference": "6d03d30bb15ac5c854f2201eacb324bda0df3d97",
+                "url": "https://api.github.com/repos/pagseguro/pagseguro-php-sdk/zipball/de63ce3d582ba5727c42d8d4e67030da9439bff6",
+                "reference": "de63ce3d582ba5727c42d8d4e67030da9439bff6",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.6"
+                "ext-curl": "*",
+                "lib-curl": "*",
+                "lib-openssl": "*",
+                "php": "^7.1.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.0"
             },
             "type": "library",
             "autoload": {
-                "psr-0": {
-                    "OpenBoleto\\": "src/"
+                "psr-4": {
+                    "PagSeguro\\": "source/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "Apache-2.0"
             ],
             "authors": [
                 {
-                    "name": "José Frederico",
-                    "email": "contato@livetechtecnologia.com.br"
-                },
-                {
-                    "name": "Daniel Garajau",
-                    "email": "daniel@garajau.com.br"
-                },
-                {
-                    "name": "Rogerio Muniz",
-                    "email": "rogerio@quilhasoft.com.br"
+                    "name": "PagSeguro"
                 }
             ],
-            "description": "Biblioteca para geração de boletos bancários.",
-            "homepage": "http://github.com/openboleto/openboleto",
-            "keywords": [
-                "boleto",
-                "boleto bancario"
-            ],
-            "time": "2020-05-12T14:42:39+00:00"
+            "description": "Biblioteca de integração com o PagSeguro",
+            "time": "2018-12-11T11:37:37+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -497,9 +489,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "openboleto/openboleto": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

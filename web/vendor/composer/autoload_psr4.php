@@ -11,6 +11,7 @@ return array(
     'chillerlan\\QRCode\\' => array($vendorDir . '/chillerlan/php-qrcode/src'),
     'benhall14\\' => array($vendorDir . '/benhall14/php-calendar/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
+    'PagSeguro\\' => array($vendorDir . '/pagseguro/pagseguro-php-sdk/source'),
     'Mpdf\\' => array($vendorDir . '/mpdf/mpdf/src'),
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
 );

@@ -289,55 +289,47 @@
         ]
     },
     {
-        "name": "openboleto/openboleto",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "name": "pagseguro/pagseguro-php-sdk",
+        "version": "6.0.0",
+        "version_normalized": "6.0.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/openboleto/openboleto.git",
-            "reference": "ee143c58304115e32396b1d55860f7cbf4dcc565"
+            "url": "https://github.com/pagseguro/pagseguro-php-sdk.git",
+            "reference": "de63ce3d582ba5727c42d8d4e67030da9439bff6"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/openboleto/openboleto/zipball/ee143c58304115e32396b1d55860f7cbf4dcc565",
-            "reference": "ee143c58304115e32396b1d55860f7cbf4dcc565",
+            "url": "https://api.github.com/repos/pagseguro/pagseguro-php-sdk/zipball/de63ce3d582ba5727c42d8d4e67030da9439bff6",
+            "reference": "de63ce3d582ba5727c42d8d4e67030da9439bff6",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.6"
+            "ext-curl": "*",
+            "lib-curl": "*",
+            "lib-openssl": "*",
+            "php": "^7.1.3"
         },
-        "time": "2020-04-15T19:21:21+00:00",
+        "require-dev": {
+            "phpunit/phpunit": "^7.0"
+        },
+        "time": "2018-12-11T11:37:37+00:00",
         "type": "library",
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
-            "psr-0": {
-                "OpenBoleto\\": "src/"
+            "psr-4": {
+                "PagSeguro\\": "source/"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "MIT"
+            "Apache-2.0"
         ],
         "authors": [
             {
-                "name": "José Frederico",
-                "email": "contato@livetechtecnologia.com.br"
-            },
-            {
-                "name": "Daniel Garajau",
-                "email": "daniel@garajau.com.br"
-            },
-            {
-                "name": "Rogerio Muniz",
-                "email": "rogerio@quilhasoft.com.br"
+                "name": "PagSeguro"
             }
         ],
-        "description": "Biblioteca para geração de boletos bancários.",
-        "homepage": "http://github.com/openboleto/openboleto",
-        "keywords": [
-            "boleto",
-            "boleto bancario"
-        ]
+        "description": "Biblioteca de integração com o PagSeguro"
     },
     {
         "name": "paragonie/random_compat",

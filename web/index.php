@@ -27,7 +27,6 @@ if (!isset($_SESSION['usuario'])) {
         <script src="js/all.min.js"></script>
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
-    </head>
     <body style="overflow-x:hidden;">
         <!-- Carregar menu aqui-->
         <?= $menu ?>
@@ -36,20 +35,43 @@ if (!isset($_SESSION['usuario'])) {
             <div id="layoutSidenav_content">
                 <main>
                     <div id="principal">
+                    <br>
+                    <?php
+include_once '../config/conexao.php';
+
+$db = new Conexao();
+$con = $db->con;
+
+$query = "SELECT * FROM Noticias ORDER BY id DESC";
+$result = mysqli_query($con, $query);
+$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+@$id = $row['id'];
+@$tipo = $row['tipo'];
+@$titulo = $row['titulo'];
+@$data = $row['data_postagem'];
+@$ver = "'../views/noticias/noticias.php?id=" . $id . "'";
+
+if(mysqli_num_rows($result) == 0){
+	echo '<center><div class="alert alert-danger alert-dismissible fade show text-left" style="width: 94%;" role="alert">Não foi encontrada nenhuma notícia.<button type="button" class="close" data-dismiss="alert" aria-label="Fechar"><span aria-hidden="true">&times;</span></button></div></center>';
+}else{
+	echo '<center><div class="alert alert-warning alert-dismissible fade show text-left" style="width: 94%;" role="alert">Há uma nova notícia disponível! <a href="#" onclick="Conteudo(' . $ver .')"class="alert-link">['.$tipo.'] - '.$titulo.'</a><button type="button" class="close" data-dismiss="alert" aria-label="Fechar"><span aria-hidden="true">&times;</span></button></div></center>';
+}
+                    ?>
+                    <br>
                         <?php include_once '../views/financeiro/views.php'; ?>
                     </div>
                 </main>
+                </div>
+                </div>
 
                 <footer class="py-3 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-end justify-content-end small">
-                            <div class="text-muted">Copyright &copy; 2020 Condominium Manager. Todos os direitos reservados.</div>
+                            <div class="text-muted">Copyright &copy; 2020 Condominium Manager - CManager. Todos os direitos reservados.</div>
                         </div>
                     </div>
                 </footer>
-
-            </div>
-        </div>
         <script src="js/scripts.js"></script>
         <script src="js/Chart.min.js"></script>
         <script src="js/chart-area-demo.js"></script>
@@ -118,3 +140,5 @@ if (@$status == '0') {
     <?php
 }
 ?>
+</head>
+</html>

@@ -25,7 +25,7 @@ $dataatual = date('m/y');
             <div class="container-fluid">
                 <h1 class="mt-3">Agenda do Salão de Festas</h1>
                 <div class="card mb-2">
-                    <div class="card-body">Para ver os dias disponiveis, escolha o mes desejado.<br />E click em Reservar Salão para seguir para o formulario de reservas.</div>
+                    <div class="card-body">Para consultar os dias disponíveis para locação, basta escolher o mês desejado.<br />Ao escolher, clique em "Reservar Salão" para seguir com o processo de reserva.</div>
                 </div>
                 <br><br>
                 <div class="container">

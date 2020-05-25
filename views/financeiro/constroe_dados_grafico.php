@@ -57,7 +57,7 @@ while ($row = mysqli_fetch_row($executa)) {
         $tipo = 'entrada';
     } else {
         $soma1[] = $row[1];
-        $tipo1 = 'saida';
+        $tipo1 = 'saída';
     }
 }
 $data = json_encode($data);
@@ -89,7 +89,7 @@ while ($row = mysqli_fetch_row($executa)) {
         $tipo2 = 'entrada';
     } else {
         $soma21[] = $row[1];
-        $tipo21 = 'saida';
+        $tipo21 = 'saída';
     }
 }
 $data2 = json_encode($data2);
@@ -98,7 +98,7 @@ $soma21 = json_encode($soma21);
 
 //Grafico de linha 1
 $valores3 = array(); 
-$titulo3 = "Saldo";
+$titulo3 = "saldo";
 $data3 = array(); 
 $id3 = 'Chart_3'; 
 $color3 = "'#00FA9A'";

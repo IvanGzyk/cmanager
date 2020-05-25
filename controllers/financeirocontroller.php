@@ -2,11 +2,6 @@
 
 include_once '../config/conexao.php';
 
-/**
- * Description of financeirocontroller
- *
- * @author I.A.Gzyk
- */
 class financeirocontroller {
 
     function GerarMultas($cpf, $apartamento, $valor, $data, $descricao) {
@@ -53,7 +48,7 @@ class financeirocontroller {
                         <td>Descrição</td>
                         <td>Valor</td>
                         <td>Data</td>
-                        <td>Tippo</td>
+                        <td>Tipo</td>
                     </tr>
                 </thead>
                 <tbody>';
@@ -67,7 +62,7 @@ class financeirocontroller {
         while ($row = mysqli_fetch_row($result)) {
             $relatorio .= "<tr>";
             $relatorio .= "<td>$row[0]</td>";
-            $relatorio .= "<td>R$ $row[1]</td>";
+            $relatorio .= "<td>R$ ".number_format ($row[1], 2,',','.')."</td>";
             $relatorio .= "<td>$row[2]</td>";
             $relatorio .= "<td>$row[3]</td>";
             $relatorio .= "</tr>";

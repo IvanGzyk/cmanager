@@ -40,8 +40,7 @@ if ($_POST) {
 <div class="form-group">
 <select class="form-control" name="tipo">
 <option value="0">Condomino</option>
-<option value="1">Sindico</option> 
-<option value="2">Fornecedor</option> 
+<option value="1">Síndico</option>  
 <option value="3">Administrador</option></select>
 </div>
 

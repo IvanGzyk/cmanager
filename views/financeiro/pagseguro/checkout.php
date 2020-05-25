@@ -10,18 +10,18 @@ $PagSeguro = new PagSeguro();
 $venda = array("codigo"=>"1",
 			   "valor"=>100.00,
 			   "descricao"=>"VENDA DE NONONONONONO",
-			   "nome"=>"",
-			   "email"=>"",
-			   "telefone"=>"(XX) XXXX-XXXX",
-			   "rua"=>"",
-			   "numero"=>"",
-			   "bairro"=>"",
-			   "cidade"=>"",
-			   "estado"=>"XX", //2 LETRAS MAIÚSCULAS
-			   "cep"=>"XX.XXX-XXX",
-			   "codigo_pagseguro"=>"");
+			   "nome"=>"Teste",
+			   "email"=>"ivangzyk@sandbox.pagseguro.com.br",
+			   "telefone"=>"(41) 3258-4064",
+			   "rua"=>"dos eucaliptos",
+			   "numero"=>"0",
+			   "bairro"=>"Jd. das americas",
+			   "cidade"=>"Curicica",
+			   "estado"=>"PB", //2 LETRAS MAIÚSCULAS
+			   "cep"=>"81.910-300",
+			   "codigo_pagseguro"=>" ");
 			   
-$PagSeguro->executeCheckout($venda,"http://SEUSITE/pedido/".$_GET['codigo']);
+$PagSeguro->executeCheckout($venda,"http://localhost/cmanager/Web/".$_GET['codigo']);
 
 //----------------------------------------------------------------------------
 

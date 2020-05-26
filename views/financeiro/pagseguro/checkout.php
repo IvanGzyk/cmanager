@@ -1,5 +1,5 @@
 <?php
-header("access-control-allow-origin: https://pagseguro.uol.com.br");
+header("access-control-allow-origin: https://sandbox.pagseguro.uol.com.br");
 header("Content-Type: text/html; charset=UTF-8",true);
 date_default_timezone_set('America/Sao_Paulo');
 
@@ -11,7 +11,7 @@ $venda = array("codigo"=>"1",
 			   "valor"=>100.00,
 			   "descricao"=>"VENDA DE NONONONONONO",
 			   "nome"=>"Teste",
-			   "email"=>"ivangzyk@sandbox.pagseguro.com.br",
+			   "email"=>"ivangzyk@hotmail",
 			   "telefone"=>"(41) 3258-4064",
 			   "rua"=>"dos eucaliptos",
 			   "numero"=>"0",
@@ -21,7 +21,7 @@ $venda = array("codigo"=>"1",
 			   "cep"=>"81.910-300",
 			   "codigo_pagseguro"=>" ");
 			   
-$PagSeguro->executeCheckout($venda,"http://localhost/cmanager/Web/".$_GET['codigo']);
+$PagSeguro->executeCheckout($venda,"http://cmanager.com.br/views/financeiro/pagseguro/checkout.php".$_GET['codigo']);
 
 //----------------------------------------------------------------------------
 

@@ -2,10 +2,10 @@
 
 class PagSeguro {
 
-    private $email = "ivangzyk@gmail.com";
+    private $email ="ivangzyk@gmail.com";
     private $token_sandbox = "6EC03CE1480B42FC8AE980E1A83BB255";
     private $token_oficial = "710e1100-a3a1-4df1-b952-535ff57d0ae1cb1bd94a4da2a1c4c4a90bde3a7fca2634ee-bbe7-4f76-ab31-4bcd60ed0287";
-    private $url_retorno = "http://cmanager.com.br/views/financeiro/pagseguro/notificacao.php";
+    private $retorno = "http://cmanager.com.br/views/financeiro/pagseguro/notificacao.php";
     //URL OFICIAL
     //COMENTE AS 4 LINHAS ABAIXO E DESCOMENTE AS URLS DA SANDBOX PARA REALIZAR TESTES
     /*

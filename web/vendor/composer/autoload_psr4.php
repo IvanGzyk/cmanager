@@ -10,8 +10,8 @@ return array(
     'chillerlan\\Settings\\' => array($vendorDir . '/chillerlan/php-settings-container/src'),
     'chillerlan\\QRCode\\' => array($vendorDir . '/chillerlan/php-qrcode/src'),
     'benhall14\\' => array($vendorDir . '/benhall14/php-calendar/src'),
+    'Sounoob\\pagseguro\\' => array($vendorDir . '/sounoob/pagseguro-php-sdk/source', $vendorDir . '/sounoob/pagseguro-php-sdk-boleto/source', $vendorDir . '/sounoob/pagseguro-php-sdk-core/source', $vendorDir . '/sounoob/pagseguro-php-sdk-search-transaction/source'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
-    'PagSeguro\\' => array($vendorDir . '/pagseguro/pagseguro-php-sdk/source'),
     'Mpdf\\' => array($vendorDir . '/mpdf/mpdf/src'),
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
 );

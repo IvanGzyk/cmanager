@@ -24,10 +24,13 @@ class ComposerStaticInit7c565e29c95a93937837ab26977503c5
         array (
             'benhall14\\' => 10,
         ),
+        'S' => 
+        array (
+            'Sounoob\\pagseguro\\' => 18,
+        ),
         'P' => 
         array (
             'Psr\\Log\\' => 8,
-            'PagSeguro\\' => 10,
         ),
         'M' => 
         array (
@@ -56,13 +59,16 @@ class ComposerStaticInit7c565e29c95a93937837ab26977503c5
         array (
             0 => __DIR__ . '/..' . '/benhall14/php-calendar/src',
         ),
+        'Sounoob\\pagseguro\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sounoob/pagseguro-php-sdk/source',
+            1 => __DIR__ . '/..' . '/sounoob/pagseguro-php-sdk-boleto/source',
+            2 => __DIR__ . '/..' . '/sounoob/pagseguro-php-sdk-core/source',
+            3 => __DIR__ . '/..' . '/sounoob/pagseguro-php-sdk-search-transaction/source',
+        ),
         'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
-        ),
-        'PagSeguro\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/pagseguro/pagseguro-php-sdk/source',
         ),
         'Mpdf\\' => 
         array (

@@ -10,6 +10,6 @@
         "mpdf/mpdf": "^8.0",
         "chillerlan/php-qrcode": "^3.2",
         "benhall14/php-calendar": "^1.2",
-        "pagseguro/pagseguro-php-sdk": "^6.0"
+        "sounoob/pagseguro-php-sdk": "^1.1"
     }
 }

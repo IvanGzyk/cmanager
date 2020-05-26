@@ -51,11 +51,12 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 @$titulo = $row['titulo'];
 @$data = $row['data_postagem'];
 @$ver = "'../views/noticias/noticias.php?id=" . $id . "'";
+@$noticia = "'../views/noticias/views_noticia.php'";
 
 if(mysqli_num_rows($result) == 0){
 	echo '<center><div class="alert alert-danger alert-dismissible fade show text-left" style="width: 94%;" role="alert">Não foi encontrada nenhuma notícia.<button type="button" class="close" data-dismiss="alert" aria-label="Fechar"><span aria-hidden="true">&times;</span></button></div></center>';
 }else{
-	echo '<center><div class="alert alert-warning alert-dismissible fade show text-left" style="width: 94%;" role="alert">Há uma nova notícia disponível! <a href="#" onclick="Conteudo(' . $ver .')"class="alert-link">['.$tipo.'] - '.$titulo.'</a><button type="button" class="close" data-dismiss="alert" aria-label="Fechar"><span aria-hidden="true">&times;</span></button></div></center>';
+	echo '<center><div class="alert alert-warning" style="width: 94%;" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Fechar"><span aria-hidden="true">&times;</span></button><h5 class="alert-heading text-left">Uma nova notícia está disponível!</h5><hr><p class="mb-0 text-left">Título da notícia: ['.$tipo.'] - '.$titulo.' <a class="btn btn-info btn-sm float-right" href="#" onclick="Conteudo(' . $ver .')">Visualizar notícia</a></p></div></center>';
 }
                     ?>
                     <br>

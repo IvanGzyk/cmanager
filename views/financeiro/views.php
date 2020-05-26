@@ -23,7 +23,7 @@ $financeiro = new financeirocontroller();
                         <div class="col-lg-6">
                             <div class="card mb-4">
                                 <div class="card-header">
-                                    <i class="fas fa-chart-pie mr-1"></i>Gráficos financeiro <small>(referência: <?php echo date('m/Y', strtotime('-1 months', strtotime(date('Y-m')))); ?>)</small><button type="button" class="btn btn-info btn-sm float-right" data-toggle="modal" data-target="#extrato">EXTRATO DETALHADO</button>
+                                    <i class="fas fa-chart-pie mr-1"></i>Gráfico financeiro <small>(referência: <?php echo date('m/Y', strtotime('-1 months', strtotime(date('Y-m')))); ?>)</small><button type="button" class="btn btn-info btn-sm float-right" data-toggle="modal" data-target="#extrato">EXTRATO DETALHADO</button>
                                 
                                 </div>
                                 <?php $financeiro->grafico_pizza($valores, $valores, $dados, $id1, $cores); ?>  

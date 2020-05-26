@@ -2,18 +2,18 @@
 include '../../web/vendor/autoload.php';
 
 \Sounoob\pagseguro\config\Config::setAccountCredentials('ivangzyk@gmail.com', '710e1100-a3a1-4df1-b952-535ff57d0ae1cb1bd94a4da2a1c4c4a90bde3a7fca2634ee-bbe7-4f76-ab31-4bcd60ed0287');
-/*
+
 $boleto = new \Sounoob\pagseguro\Boleto();
 /*
  * Campos obrigatórios
  */
-/*
+
 //Valor de cada boleto. Caso sua conta não absorver a taxa do boleto, será acrescentado 1 real no valor do boleto.
 $boleto->setAmount('5.12');
 //Descrição do boleto
 $boleto->setDescription('Assinatura SDK SNoob');
 //O CPF do comprador
-$boleto->setCustomerCPF('01234567890');//Se for CNPJ use $boleto->setCustomerCNPJ('33085736000169');
+$boleto->setCustomerCPF('01234567890'); //Se for CNPJ use $boleto->setCustomerCNPJ('33085736000169');
 //Nome do comprador
 $boleto->setCustomerName('Noob Master');
 //Email do comprador
@@ -25,13 +25,13 @@ $boleto->setCustomerPhone('41', '98909084');
 /*
  * Campos opcionais
  */
-/*
+
 //Data de vencimento do boleto no formato de Ano-Mês-Dia. Essa data precisa ser no futuro, e no máximo 30 dias apatir do dia atual.
 $boleto->setFirstDueDate(date("Y-m-d", strtotime("+3 days", time())));
 //Esse é o numero de boletos a ser gerado.
 $boleto->setNumberOfPayments(2);
 //Uma referência de quem é o boleto (note que terá multiplos boletos com a mesma referência)
-$boleto->setReference('boonuos');//**
+$boleto->setReference('boonuos'); //**
 //Instruções para quem irá receber o pagamento
 $boleto->setInstructions('Aloprar o comprador se ele tentar pagar atrasado');
 //CEP do comprador
@@ -51,27 +51,32 @@ $data = $boleto->send();
 
 //Você terá uma array de objeto, precisará de uma estrutura de laço para percorrer um a um.
 foreach ($data->boletos as $row) {
-    /*echo 'A transação de código ' .// $row->code .
-        ' que vence em ' . //$row->dueDate .
-        ' gerou um boleto que pode ser acessado no link ' . $row->paymentLink .
-        ' ou pago com o código de barras ' . //$row->barcode .
-        '<hr>';*//*
-    $link = $row->paymentLink;
-    echo "<div class='w-100'><button type='button' class='btn btn-info btn-sm float-right'><a href='$link'>IMPRIMIR BOLETO</a></button><br><br></div>";
-}
-*/
-$transactions = new \Sounoob\pagseguro\SearchTransaction();
-//Data inicial padrão 2017-10-15T19:11
-$transactions->setInitialDate(date("Y-m-d\TH:i", strtotime("-30 days", time())));//Opcional caso passe a referência
-//Data final padrão 2017-11-15T19:11
-$transactions->setFinalDate(date("Y-m-d\TH:i", strtotime("now", time())));//Opcional
-//Referência
-//$transactions->setReference('boonuos');//Opcional caso passe o initialDate
-//Executa a conexão e captura a resposta do PagSeguro.
-$transactions->send();
 
-?><pre><?php
-print_r($transactions);
-?></pre><?php
-exit;
+    //print_r($row);
+    $transactionV2 = new \Sounoob\pagseguro\TransactionDetails("$row->code", 'v2');
+
+    function map($param) {
+
+        if (is_object($param)) {
+            $param = get_object_vars($param);
+        }
+
+        if (is_array($param)) {
+            return array_map(__FUNCTION__, $param);
+        }
+
+        return $param;
+    }
+
+    $array = map($transactionV2);
+    ?><pre><?php print_r($array); ?></pre><?php
+    exit();
+    /* echo 'A transação de código ' . $row->code .
+      ' que vence em ' . $row->dueDate .
+      ' gerou um boleto que pode ser acessado no link ' . $row->paymentLink .
+      ' ou pago com o código de barras ' . $row->barcode .
+      '<hr>'; */
+    //$link = $row->paymentLink;
+    //echo "<div class='w-100'><button type='button' class='btn btn-info btn-sm float-right'><a href='$link'>IMPRIMIR BOLETO</a></button><br><br></div>";
+}
 

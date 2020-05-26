@@ -35,7 +35,7 @@ class NotificationTransaction extends PagSeguro
      * @param string $version
      * @throws \Exception
      */
-    public function __construct($code, $version = 'v3')
+    public function __construct($code, $version = 'v2')
     {
         parent::__construct();
 

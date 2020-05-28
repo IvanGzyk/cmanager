@@ -264,4 +264,44 @@ class financeirocontroller {
         }
     }
 
+    function CarregoBletos($doc) {
+        include_once '../../config/conexao.php';
+        $db = new Conexao();
+        $ap = "";
+        $data_venc = "";
+        $link = "";
+        $status = "";
+        $relatorio = "";
+        $query = "SELECT ap FROM apUser WHERE cpf_cnpj = '".$doc."';";
+        $result = mysqli_query($db->con, $query);
+        while ($row = mysqli_fetch_row($result)){
+            $ap = $row[0];
+            $query_boleto = "SELECT venc, link, status FROM boleto where ap = ' ".$ap."';";
+            $result_boleto = mysqli_query($db->con, $query_boleto);
+            while ($row_boleto = mysqli_fetch_row($result_boleto)){
+                $data_venc = $row_boleto[0];
+                $link = $row_boleto[1];
+                if($row_boleto[2] != 3 || $row_boleto[2] != 4){
+                    $status = "Aguardando pagamento";
+                }else{
+                    $status = "Pago";
+                }
+                $relatorio .= '
+                <table">
+                <tbody>
+                <thead>
+                <tr>
+                <td>'.$data_venc.' </td>
+                <td><a href="'.$link.'"><button type="button" class="btn btn-info btn-sm float-right">GERAR BOLETO</button></a></td>
+                <td>'.$status.' </td>
+                </tr>
+                </thead>  
+                </tbody>
+                </table>';
+            }
+        }
+        return $relatorio;
+    }
 }
+?>
+        

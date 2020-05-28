@@ -3,11 +3,11 @@
 class Reservas{
     private $salao;
     private $data;
-    private $cpf;
+    private $apartamento;
     
-    function __construct($salao, $data, $cpf) {
+    function __construct($salao, $data, $apartamento) {
         $this->data = $data;
-        $this->cpf = $cpf;
+        $this->apartamento = $apartamento;
         $this->salao = $salao;
     }
 
@@ -19,12 +19,12 @@ class Reservas{
         $this->data = $data;
     }
     
-    function getCpf() {
-        return $this->cpf;
+    function getApartamento() {
+        return $this->apartamento;
     }
 
-    function setCpf($cpf): void {
-        $this->cpf = $cpf;
+    function setApartamento($cpf): void {
+        $this->apartamento = $apartamento;
     }
     function getSalao() {
         return $this->salao;

@@ -31,7 +31,7 @@ class Salao extends Regra {
         $this->salao = $salao;
     }
 
-    function setReservas($salao, $cpf, $data) {
+    function setReservas($salao, $apartamento, $data) {
         $db = new Conexao();
         $query = "SELECT * FROM Reservas WHERE dataReserva = '$data' AND salao = $salao";
         $result = mysqli_query($db->con, $query);
@@ -39,7 +39,7 @@ class Salao extends Regra {
         if ($cont > 0) {
             return false;
         } else {
-            $reservas = new Reservas($salao, $data, $cpf);
+            $reservas = new Reservas($salao, $data, $apartamento);
             return $reservas;
         }
     }

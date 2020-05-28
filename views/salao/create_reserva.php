@@ -5,12 +5,21 @@ include_once '../../config/conexao.php';
 $db = new Conexao();
 $usuario = unserialize($_SESSION['usuario']);
 $salao = new salaocontroller();
-$reservar = $salao->ReservaSalao($_POST['salao'], $_POST['data'], $usuario['doc']);
+$ap = "";
+$query = "SELECT ap FROM apUser WHERE
+    
+cpf_cnpj = '".$usuario['doc']."'";
+$result = mysqli_query($db->con, $query);
+while ($row = mysqli_fetch_row($result)){
+    $ap = $row[0];
+}
+
+$reservar = $salao->ReservaSalao($_POST['salao'], $_POST['data'], $ap);
 if ($reservar != false) {
     $aluguel = "";
     $salao = $reservar->getSalao();
     $data = $reservar->getData();
-    $user = $reservar->getCpf();
+    $apartamento = $reservar->getApartamento();
     $query_regras = "SELECT * FROM `salaoRegra` WHERE `salao` = $salao";
     $result = mysqli_query($db->con, $query_regras);
     $plazo = 0;
@@ -28,7 +37,7 @@ if ($reservar != false) {
         $result = mysqli_query($db->con, $query_reservas);
         $cont = mysqli_num_rows($result);
         if ($cont == 0) {
-            $inserir = "INSERT INTO Reservas (salao, dataReserva, usuario)VALUES ('$salao', '$data', '$user');";
+            $inserir = "INSERT INTO Reservas (salao, dataReserva, apartamento)VALUES ('$salao', '$data', '$apartamento');";
             $query = "SELECT condominio, valor FROM Salao where id = $salao";
             $result = mysqli_query($db->con, $query);
             while ($row = mysqli_fetch_row($result)) {
@@ -45,7 +54,7 @@ if ($reservar != false) {
             <?php
         }
     } else {
-        $inserir = "INSERT INTO Reservas (salao, dataReserva, usuario)VALUES ('$salao', '$data', '$user');";
+        $inserir = "INSERT INTO Reservas (salao, dataReserva, apartamento)VALUES ('$salao', '$data', '$apartamento');";
         $query = "SELECT condominio, valor FROM Salao where id = $salao";
         $result = mysqli_query($db->con, $query);
         while ($row = mysqli_fetch_row($result)) {

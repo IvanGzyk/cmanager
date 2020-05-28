@@ -1,10 +1,9 @@
 <?php
 
-include_once '../config/conexao.php';
-
 class financeirocontroller {
 
     function GerarMultas($cpf, $apartamento, $valor, $data, $descricao) {
+        include_once '../../config/conexao.php';
         $db = new Conexao();
         $query = "SELECT condominio FROM Usuario WHERE cpfCnpj = '$cpf'";
         $execute = mysqli_query($db->con, $query);
@@ -29,6 +28,7 @@ class financeirocontroller {
     }
 
     function CadastrpFinanceiro($condominio, $data, $valor, $descricao, $entrada_saida) {
+        //include_once '../config/conexao.php';
         $db = new Conexao();
         $query = "";
         $inserir = "INSERT INTO Financeira (condominio, data, valor, descricao, entrada_saida) VALUES ('$condominio', '$data', '$valor', '$descricao', '$entrada_saida');";
@@ -40,6 +40,7 @@ class financeirocontroller {
     }
 
     function Relatorio($condominio) {
+        include_once '../config/conexao.php';
         $db = new Conexao();
         $relatorio = '
             <table class="table table-hover">
@@ -62,7 +63,7 @@ class financeirocontroller {
         while ($row = mysqli_fetch_row($result)) {
             $relatorio .= "<tr>";
             $relatorio .= "<td>$row[0]</td>";
-            $relatorio .= "<td>R$ ".number_format ($row[1], 2,',','.')."</td>";
+            $relatorio .= "<td>R$ " . number_format($row[1], 2, ',', '.') . "</td>";
             $relatorio .= "<td>$row[2]</td>";
             $relatorio .= "<td>$row[3]</td>";
             $relatorio .= "</tr>";
@@ -179,6 +180,88 @@ class financeirocontroller {
                 }
             });</script>
         <?php
+    }
+
+    function GerarBoletos($array) {
+        include_once '../../config/conexao.php';
+        $db = new Conexao();
+        ?><pre><?php
+                //print_r($array);        exit();
+                ?></pre><?php
+        include '../../web/vendor/autoload.php';
+        \Sounoob\pagseguro\config\Config::setAccountCredentials('ivangzyk@gmail.com', '710e1100-a3a1-4df1-b952-535ff57d0ae1cb1bd94a4da2a1c4c4a90bde3a7fca2634ee-bbe7-4f76-ab31-4bcd60ed0287');
+
+        foreach ($array as $key => $value) {
+            $boleto = new \Sounoob\pagseguro\Boleto();
+
+            $id = $value['id'];
+            $valor = $value['valor'];
+            $descricao = "Prestação de condominio referente ao apartamento " . $value['blc'] . "-" . $value['ap'];
+            $doc = $value['doc'];
+            $nome = $value['nome'];
+            $email = $value['email'];
+            if ($value['telfixo'] == null) {
+                $fone = $value['telCel'];
+            } else {
+                $fone = $value['telfixo'];
+            }
+            $data_venc = date("Y-m-d", strtotime("+9 days", time()));
+            $cep = $value['cep'];
+            $rua = $value['rua'];
+            $numero = $value['numero'];
+            $bairro = $value['bairro'];
+            $cidade = $value['cidade'];
+            $estado = $value['estado'];
+
+            $search = array('(', ')', '-', ' ');
+            $replace = array('', '', '', '');
+            $fone = str_replace($search, $replace, $fone);
+            $ddd_cliente = preg_replace('/\A.{2}?\K[\d]+/', '', $fone);
+            $numero_cliente = preg_replace('/^\d{2}/', '', $fone);
+            //Valor de cada boleto. Caso sua conta não absorver a taxa do boleto, será acrescentado 1 real no valor do boleto.
+            $boleto->setAmount($valor);
+            //Descrição do boleto
+            $boleto->setDescription($descricao);
+            //O CPF do comprador
+            if ((strlen($doc)) < 16) {
+                $boleto->setCustomerCPF($doc);
+            } else {
+                $boleto->setCustomerCNPJ($doc);
+            }
+
+            //Nome do comprador
+            $boleto->setCustomerName($nome);
+            //Email do comprador
+            $boleto->setCustomerEmail($email);
+            //Telefone do comprador
+            $boleto->setCustomerPhone($ddd_cliente, $numero_cliente);
+            //Data de vencimento do boleto no formato de Ano-Mês-Dia. Essa data precisa ser no futuro, e no máximo 30 dias apatir do dia atual.
+            $boleto->setFirstDueDate(date("Y-m-d", strtotime("+9 days", time())));
+            //Instruções para quem irá receber o pagamento
+            $boleto->setInstructions('APÓS ' . date("Y-m-d", strtotime("+9 days", time())) . ' MULTA DE R$ 2,55 (2%');
+            //CEP do comprador
+            $boleto->setCustomerAddressPostalCode($cep);
+            //Endereço do comprador
+            $boleto->setCustomerAddress($rua, $numero);
+            //Bairro do comprador
+            $boleto->setCustomerAddressDistrict($bairro);
+            //Cidade do comprador
+            $boleto->setCustomerAddressCity($cidade);
+            //Estado do comprador
+            $boleto->setCustomerAddressState($estado);
+
+
+            //Executa a conexão e captura a resposta do PagSeguro.
+            $data = $boleto->send();
+
+            //Você terá uma array de objeto, precisará de uma estrutura de laço para percorrer um a um.
+            foreach ($data->boletos as $row) {
+                $link = $row->paymentLink;
+                $cod = $row->code;
+                $insert = "INSERT INTO boleto(ap, venc, link, cod, status) VALUES ('$id', '$data_venc', '$link', '$cod', '1');";
+                $execut = mysqli_query($db->con, $insert);
+            }
+        }
     }
 
 }

@@ -20,9 +20,9 @@ class salaocontroller {
         return $salao;
     }
 
-    function ReservaSalao($id_salao, $data, $cpf) {
+    function ReservaSalao($id_salao, $data, $apartamento) {
         $salao = new Salao("", "");
-        $reserva = $salao->setReservas($id_salao, $cpf, $data);
+        $reserva = $salao->setReservas($id_salao, $apartamento, $data);
         return $reserva;
     }
 

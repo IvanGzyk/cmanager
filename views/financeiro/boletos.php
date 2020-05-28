@@ -19,7 +19,9 @@ $boletos = $financeiro->CarregoBletos($doc);
                 <h1 class="mt-3">Boletos</h1>
                 <div class="card mb-2"></div>
                 <div class="col-lg-6">
+                    
                     <?php echo $boletos; ?>
+                    
                 </div>
             </div>
         </div>

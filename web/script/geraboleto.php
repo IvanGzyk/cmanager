@@ -12,7 +12,7 @@ $boleto = new \Sounoob\pagseguro\Boleto();
 $link = ""; //link para abrir o boleto
 $cod = ""; //codigo para buscar o status do boleto
 $venc = ""; //data de vencimento do boleto
-//Conexão sql
+//ConexÃ£o sql
 $caminho = 'cmanager.com.br';
 $usuario = 'cmanag62';
 $senha = 'WyR1eo58j4';

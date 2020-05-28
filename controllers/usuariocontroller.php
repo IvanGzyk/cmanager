@@ -289,8 +289,8 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
     function SelectCon() {
         return $condo;
     }
-
-    function Relatorio($nome, $tipo, $doc, $id_tipo, $dados) {
+	
+	function Relatorio($nome, $tipo, $doc, $id_tipo, $dados) {
         $Usuario = unserialize($_SESSION['usuario']);
         //Recebe o Array com os dados do usuario que logou...
         $Usuario = unserialize($_SESSION['usuario']);
@@ -340,7 +340,7 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
 
         $result = mysqli_query($con, $query);
         $tipo = "";
-?>
+        ?>
         <?php
 
         $relatorio = '';
@@ -397,28 +397,28 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
             }
             $tipo = $row[2];
             $id = $row[0];
-            // if ($id_tipo == 0) {
-            $atualiza = "'../views/usuario/form_update.php?atualiza=" . $id . "&tipo=" . $id_tipo . "'";
-            // } else {
+           // if ($id_tipo == 0) {
+                $atualiza = "'../views/usuario/form_update.php?atualiza=" . $id . "&tipo=" . $id_tipo . "'";
+           // } else {
             //    $atualiza = "'../views/usuario/form_update.php?atualiza=" . $id . "'";
             //}
-            if ($row[5] == 1) {
-                $row[5] = "Ativo";
-            } else {
-                $row[5] = "Pendente";
-            }
-
-            if ($row[2] == 0) {
-                $row[2] = "Condomino";
-            }if ($row[2] == 1) {
-                $row[2] = "Síndico";
-            }if ($row[2] == 2) {
-                $row[2] = "Fornecedor";
-            }if ($row[2] == 3) {
-                $row[2] = "Administrador";
-            }if ($row[2] == 4) {
-                $row[2] = "Condomínio";
-            }
+                if($row[5] == 1){
+                    $row[5] = "Ativo";
+                }else{
+                    $row[5] = "Pendente";
+                }
+				
+				if($row[2] == 0){
+                    $row[2] = "Condomino";
+                }if($row[2] == 1){
+                    $row[2] = "Síndico";
+                }if($row[2] == 2){
+                    $row[2] = "Fornecedor";
+                }if($row[2] == 3){
+                    $row[2] = "Administrador";
+                }if($row[2] == 4){
+                    $row[2] = "Condomínio";
+                }
             $deleta = "'../views/usuario/delete.php?deleta=" . $id . "'";
             $relatorio .= "<tr>";
             $relatorio .= "<td>$row[8]</td>"; //nome
@@ -426,13 +426,13 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
             $relatorio .= "<td>$nome_condo</td>"; //doc
             $relatorio .= "<td>$apartamento</td>"; //Apartamento
             $relatorio .= "<td>$row[5]</td>"; //ativo
-            if ($id_tipo == 3 && $dados != "true") {
-                $relatorio .= '<td><input type="button" value="Atualizar" class="btn btn-info btn-sm" onclick="Conteudo(' . $atualiza . ')">&nbsp;<input type="button" value="Deletar" class="btn btn-danger btn-sm" onclick="Conteudo(' . $deleta . ')"></td>'; //lincar em uma função de Delete.php row[0]
-            } else {
-                $relatorio .= '<td><input type="button" value="Atualizar" class="btn btn-info btn-sm" onclick="Conteudo(' . $atualiza . ')"></td>'; //lincar em uma função de Update.php row[0]
-                $relatorio .= "</tr>";
-            }
-        }
+			if ($id_tipo == 3 && $dados != "true") {
+            $relatorio .= '<td><input type="button" value="Atualizar" class="btn btn-info btn-sm" onclick="Conteudo(' . $atualiza . ')">&nbsp;<input type="button" value="Deletar" class="btn btn-danger btn-sm" onclick="Conteudo(' . $deleta . ')"></td>'; //lincar em uma função de Delete.php row[0]
+            }else{
+            $relatorio .= '<td><input type="button" value="Atualizar" class="btn btn-info btn-sm" onclick="Conteudo(' . $atualiza . ')"></td>'; //lincar em uma função de Update.php row[0]
+            $relatorio .= "</tr>";
+        	}
+		}
         $relatorio .= '  
             </tbody>
         </table>';
@@ -519,5 +519,4 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
     }
 
 }
-
-        ?>
+?>

@@ -29,12 +29,15 @@ Class UsuarioController {
         } else {
 
             if (mysqli_num_rows($executar) > 0) {
+                //print_r($row['condominio']);exit();
                 session_start();
                 $doc = $dados[0];
                 $tipo = $dados[2];
+                $cond = $row['condominio'];
                 $Usuario = Array();
                 $Usuario['doc'] = $doc;
                 $Usuario['tipo'] = $tipo;
+                $Usuario['cond'] = $cond;
                 $_SESSION['usuario'] = serialize($Usuario);
                 header('location: ../../web/index.php');
             } else {

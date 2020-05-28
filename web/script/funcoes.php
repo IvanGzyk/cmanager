@@ -1,4 +1,10 @@
 <?php
+if (isset($_POST['data'])) {
+    $data = $_POST['data'];
+    ?><script language="javascript" type="text/javascript">
+        Conteudo('../views/salao/views.php?data=<?= $data  ?>');
+    </script><?php
+}
 if (isset($_POST['condominio'])) {
     $cond = $_POST['condominio'];
     ?>
@@ -44,11 +50,5 @@ if (isset($_POST['doc'])) {
         Conteudo('../views/usuario/views.php?doc=<?= $_POST['doc'] ?>');
     </script>
     <?php
-}
-if (isset($_POST['data'])) {
-    $data = $_POST['data'];
-    ?><script language="javascript" type="text/javascript">
-        Conteudo('../views/salao/views.php?data=<?= $data  ?>');
-    </script><?php
 }
 ?>

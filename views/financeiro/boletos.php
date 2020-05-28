@@ -1,12 +1,9 @@
 <?php
+//session_start();
 include '../../web/vendor/autoload.php';
-
 \Sounoob\pagseguro\config\Config::setAccountCredentials('ivangzyk@gmail.com', '710e1100-a3a1-4df1-b952-535ff57d0ae1cb1bd94a4da2a1c4c4a90bde3a7fca2634ee-bbe7-4f76-ab31-4bcd60ed0287');
 
 $boleto = new \Sounoob\pagseguro\Boleto();
-/*
- * Campos obrigatórios
- */
 
 //Valor de cada boleto. Caso sua conta não absorver a taxa do boleto, será acrescentado 1 real no valor do boleto.
 $boleto->setAmount('5.12');
@@ -20,14 +17,11 @@ $boleto->setCustomerName('Noob Master');
 $boleto->setCustomerEmail('email.comprador@sounoob.com.br');
 //Telefone do comprador
 $boleto->setCustomerPhone('41', '98909084');
-
-
 /*
  * Campos opcionais
  */
-
 //Data de vencimento do boleto no formato de Ano-Mês-Dia. Essa data precisa ser no futuro, e no máximo 30 dias apatir do dia atual.
-$boleto->setFirstDueDate(date("Y-m-d", strtotime("+3 days", time())));
+$boleto->setFirstDueDate(date("Y-m-d", strtotime("+9 days", time())));
 //Esse é o numero de boletos a ser gerado.
 $boleto->setNumberOfPayments(2);
 //Uma referência de quem é o boleto (note que terá multiplos boletos com a mesma referência)
@@ -44,8 +38,6 @@ $boleto->setCustomerAddressDistrict('Vila Olimpia');
 $boleto->setCustomerAddressCity('Curitiba');
 //Estado do comprador
 $boleto->setCustomerAddressState('PR');
-
-
 //Executa a conexão e captura a resposta do PagSeguro.
 $data = $boleto->send();
 

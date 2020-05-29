@@ -14,12 +14,14 @@ $boletos = $financeiro->CarregoBletos($doc);
         <script src="../web/js/all.min.js"></script>
     </head>
     <body>
-        <div id="layoutSidenav_content">
-            <div class="container-fluid">
-                <h1 class="mt-3">Boletos</h1>
-                <div class="card mb-2"></div>
-                <div class="col-lg-6">
-                    <?php echo $boletos; ?>
+        <div class="row">
+            <div id="layoutSidenav_content" class="table col-lg-12">
+                <div class="container-fluid">
+                    <h1 class="mt-3">Boletos</h1>
+                    <div class="card mb-2"></div>
+                    <div class="col-lg-6" algin="center">
+                        <?php echo $boletos; ?>
+                    </div>
                 </div>
             </div>
         </div>

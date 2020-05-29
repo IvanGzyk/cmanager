@@ -271,7 +271,15 @@ class financeirocontroller {
         $data_venc = "";
         $link = "";
         $status = "";
-        $relatorio = "";
+        $relatorio = '<table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">VENCIMENTO</th>
+                            <th scope="col">STATUS</th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>';
         $query = "SELECT ap FROM apUser WHERE cpf_cnpj = '".$doc."';";
         $result = mysqli_query($db->con, $query);
         while ($row = mysqli_fetch_row($result)){
@@ -286,20 +294,15 @@ class financeirocontroller {
                 }else{
                     $status = "Pago";
                 }
-                $relatorio .= '
-                <table">
-                <tbody>
-                <thead>
-                <tr>
-                <td>'.$data_venc.' </td>
-                <td><a href="'.$link.'"><button type="button" class="btn btn-info btn-sm float-right">GERAR BOLETO</button></a></td>
-                <td>'.$status.' </td>
-                </tr>
-                </thead>  
-                </tbody>
-                </table>';
+                $relatorio .= '<tr>
+                            <td>'.$data_venc.' </td>
+                            <td>'.$status.' </td>
+                            <td><a href="'.$link.'"><button type="button" class="btn btn-info btn-sm">GERAR BOLETO</button></a></td>
+                            </tr>';
             }
         }
+        $relatorio .= '</tbody>
+                </table>';
         return $relatorio;
     }
 }

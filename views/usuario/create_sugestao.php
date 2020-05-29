@@ -11,12 +11,12 @@ if (isset($_FILES['pic']))
     $img = $dir.$new_name;
     move_uploaded_file($_FILES['pic']['tmp_name'], $dir . $new_name); //Fazer upload do arquivo
 }
-
 $data = $_POST['data'] . " " . $_POST['hora'];
 $descricao = $_POST['descricao'];
 $condominio = $usuario['cond'];
+$doc = $usuario['doc'];
 
-$insert = "INSERT INTO sugestao(data, img, descricao, condominio) VALUES ('$data', '$img', '$descricao', '$condominio');";
+$insert = "INSERT INTO sugestao(data, img, descricao, condominio, morador) VALUES ('$data', '$img', '$descricao', '$condominio', '$doc');";
 $execut = mysqli_query($db->con, $insert);
 echo '<script>
         alert("O cadastro realizado com sucesso.");

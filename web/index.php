@@ -1,19 +1,53 @@
 <?php
 include_once '../controllers/menucontroller.php';
+include_once '../config/conexao.php';
+
+$db = new Conexao();
+$con = $db->con;
 
 session_start();
 //Recebe o Array com os dados do usuario que logou...
 $Usuario = unserialize($_SESSION['usuario']);
-//print_r($Usuario);
 //Pega o id do Tipo...
 $tipo = $Usuario['tipo'];
 $doc = $Usuario['doc'];
+$cnpj = $Usuario['cond'];
 $menucontrole = new MenuController();
 $menu = $menucontrole->Menu($tipo, $doc);
+$sugestao = "";
 
 //Verifica se a sessão do usuário foi iniciada. Caso contrário, informa que deve fazer login.
 if (!isset($_SESSION['usuario'])) {
     header('location: ../web/script/naologado.php');
+}
+if ($tipo == 1) {
+    $query = "SELECT DATA, id, img, descricao, condominio, CadastrCpf_Cnpj.nome FROM sugestao
+            INNER JOIN CadastrCpf_Cnpj ON CadastrCpf_Cnpj.cpf_cnpj = sugestao.morador
+            WHERE visualizada = 'não'
+            AND 
+            condominio = '$cnpj';";
+    $result = mysqli_query($con, $query);
+    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+    @$id = $row['id'];
+    @$img = $row['img'];
+    @$descricao = $row['descricao'];
+    @$data = $row['DATA'];
+    @$nome = $row['nome'];
+    @$ver = "'../views/noticias/noticias.php?sugestao=" . $id . "'";
+    if (mysqli_num_rows($result) > 0) {
+        $sugestao = '<center>'
+                . '<div class="alert alert-warning" style="width: 94%;" role="alert">'
+                . '<button type="button" class="close" data-dismiss="alert" aria-label="Fechar">'
+                . '<span aria-hidden="true">&times;</span>'
+                . '</button>'
+                . '<h5 class="alert-heading text-left">Uma nova sugestão está disponível!</h5>'
+                . '<hr><p class="mb-0 text-left">'
+                . 'Data postagem: ' . $data . '<br>Autor: ' . $nome . ' '
+                . '<a class="btn btn-info btn-sm float-right" href="#" onclick="Conteudo(' . $ver . ')">Visualizar sugestão</a></p>'
+                . '</div>'
+                . '</center>';
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -51,10 +85,6 @@ if (!isset($_SESSION['usuario'])) {
                             include_once 'script/funcoes.php';
                         }
                         if ($_POST == NULL) {
-                            include_once '../config/conexao.php';
-
-                            $db = new Conexao();
-                            $con = $db->con;
 
                             $query = "SELECT * FROM Noticias ORDER BY id DESC";
                             $result = mysqli_query($con, $query);
@@ -66,7 +96,7 @@ if (!isset($_SESSION['usuario'])) {
                             @$data = $row['data_postagem'];
                             @$ver = "'../views/noticias/noticias.php?id=" . $id . "'";
                             @$noticia = "'../views/noticias/views_noticia.php'";
-
+                            echo $sugestao;
                             if (mysqli_num_rows($result) == 0) {
                                 echo '<center><div class="alert alert-danger alert-dismissible fade show text-left" style="width: 94%;" role="alert">Não foi encontrada nenhuma notícia.<button type="button" class="close" data-dismiss="alert" aria-label="Fechar"><span aria-hidden="true">&times;</span></button></div></center>';
                             } else {
@@ -147,9 +177,9 @@ if (@$status == '0') {
         </div>
     </div>
     <script>
-                            $(document).ready(function () {
-                                $('#notificacao').modal('show');
-                            });
+                                        $(document).ready(function () {
+                                            $('#notificacao').modal('show');
+                                        });
     </script>
 
     <?php

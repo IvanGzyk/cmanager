@@ -35,13 +35,22 @@ if (!isset($_SESSION['usuario'])) {
         <div id="layoutSidenav">
             <div id="layoutSidenav_content">
                 <main>
+                    <div class="container-fluid">
+                        <div class="row p-3">
+                            <div class="col-lg-6">
+                                <div class="sugestao">
+                                    <button type="button" class="btn btn-info" onclick="Conteudo('../views/usuario/form_sugestao.php')">Deixe sua sugestão</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div id="principal">
                         <br>
                         <?php
                         if (isset($_POST)) {
                             include_once 'script/funcoes.php';
                         }
-                        if($_POST == NULL){
+                        if ($_POST == NULL) {
                             include_once '../config/conexao.php';
 
                             $db = new Conexao();
@@ -138,9 +147,9 @@ if (@$status == '0') {
         </div>
     </div>
     <script>
-        $(document).ready(function () {
-            $('#notificacao').modal('show');
-        });
+                            $(document).ready(function () {
+                                $('#notificacao').modal('show');
+                            });
     </script>
 
     <?php

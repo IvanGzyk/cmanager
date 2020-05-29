@@ -12,19 +12,19 @@ mysqli_select_db($con, $banco) or die("Falha ao selecionar o banco de dados." . 
 //include_once '../config/conexao.php';
 $query = "SELECT * FROM Saldo;";
 $result = mysqli_query($con, $query);
-$data = date("Y-m-d");
+$data = date("Y-m-d H:i:s");
 while ($row = mysqli_fetch_row($result)) {
     $entradas = "";
     $saidas = "";
     $saldo = "";
-    $query = "SELECT SUM(valor) valor FROM Financeira WHERE `data` = '$data' - INTERVAL 1 DAY "
+    $query = "SELECT SUM(valor) valor FROM Financeira WHERE `data_registro` = '$data' - INTERVAL 1 DAY "
             . "AND entrada_saida = 'entarda'"
             . "AND condominio = '$row[1]'";
     $resultado = mysqli_query($con, $query);
     while ($row1 = mysqli_fetch_row($resultado)) {
         $entradas = $row1[0];
     }
-    $query = "SELECT SUM(valor) valor FROM Financeira WHERE `data` = '$data' - INTERVAL 1 DAY "
+    $query = "SELECT SUM(valor) valor FROM Financeira WHERE `data_registro` = '$data' - INTERVAL 1 DAY "
             . "AND entrada_saida = 'saida'"
             . "AND condominio = '$row[1]'";
     $resultado = mysqli_query($con, $query);

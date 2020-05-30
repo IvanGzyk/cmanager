@@ -6,7 +6,11 @@ include_once '../../config/conexao.php';
 $db = new Conexao();
 $con = $db->con;
 
-$query = "SELECT * FROM Noticias";
+session_start();
+$Usuario = unserialize($_SESSION['usuario']);
+$cnpj = $Usuario['cond'];
+
+$query = "SELECT * FROM Noticias WHERE condominio = '$cnpj'";
 $result = mysqli_query($con, $query);
 $tabela = "";
 
@@ -40,12 +44,12 @@ while ($row = mysqli_fetch_row($result)) {
         <div id="layoutSidenav_content">
             <div class="container-fluid">
                 <h1 class="mt-3">Gerenciar Notícias</h1>
-                <div class="w-100"><button type="button" class="btn btn-info btn-sm float-right" onclick="Conteudo('../views/noticias/form.php')">CADASTRAR NOVA NOTÍCIA</button><br><br></div>
+                <div class="w-100"><button type="button" class="btn btn-info btn-sm float-right" onclick="Conteudo('../views/noticias/form_sindico.php')">CADASTRAR NOVA NOTÍCIA</button><br><br></div>
 <table class="table table-hover">
     <thead>
         <tr>
-            <td>Posição</td>
-            <td>Nome do Condomínio</td>
+            <td>ID</td>
+            <td>Condomínio</td>
             <td>Tipo</td>
             <td>Título</td>
             <td>Data Publicação</td>

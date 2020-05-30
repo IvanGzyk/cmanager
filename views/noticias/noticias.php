@@ -10,17 +10,24 @@ if (isset($_GET['id'])) {
     $result = mysqli_query($con, $buscar);
 
     while ($row = mysqli_fetch_row($result)) {
-        if ($row[4] != '' or NULL) {
+        if ($row[5] != '' or NULL) {
             $anexo = '<a href="../web/img/upload/' . $row[4] . '">Efetuar download do anexo</a>';
         } else {
-            $anexo = 'Nenhum anexo foi adicionado nesta notícia.';
-        }
+            $anexo = 'Nenhum anexo foi adicionado a esta notícia.';
+		}
 
         $id_noticia = $row[0];
-        $tipo = $row[1];
-        $titulo = $row[2];
-        $texto = $row[3];
-        $publicacao = $row[5];
+        $tipo = $row[2];
+        $titulo = $row[3];
+        $texto = $row[4];
+        $publicacao = $row[6];
+		
+		$nome = "SELECT nome FROM Noticias INNER JOIN CadastrCpf_Cnpj ON CadastrCpf_Cnpj.cpf_cnpj = '" . $row[7] . "';";
+	$result = mysqli_query($con, $nome);
+	
+	while ($row = mysqli_fetch_row($result)) {
+                $autor = $row[0];
+    }
         ?>
         <!DOCTYPE html>
         <html lang="pt-BR">
@@ -36,7 +43,7 @@ if (isset($_GET['id'])) {
                         <div class="card mb-2">
                             <div class="card-body">
                                 Título completo: <?php echo '<b>[' . $tipo . '] - ' . $titulo . '</b>'; ?><br />
-                                Publicado em: <?php echo $publicacao; ?><br />
+                                Publicado em: <?php echo $publicacao; ?> por <?php echo $autor; ?><br />
                                 Anexo: <?php echo $anexo; ?><br />
                             </div>
                         </div>

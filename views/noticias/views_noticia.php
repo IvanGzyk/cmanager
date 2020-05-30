@@ -6,13 +6,17 @@ include_once '../../config/conexao.php';
 $db = new Conexao();
 $con = $db->con;
 
-$query = "SELECT * FROM Noticias ORDER BY id DESC";
+session_start();
+$Usuario = unserialize($_SESSION['usuario']);
+$cnpj = $Usuario['cond'];
+
+$query = "SELECT * FROM Noticias WHERE condominio = '$cnpj' ORDER BY id DESC";
 $result = mysqli_query($con, $query);
 $tabela = "";
 
 while ($row = mysqli_fetch_row($result)) {
     $id = $row[0];
-	if($row[4] != '' or NULL){
+	if($row[5] != '' or NULL){
 		$anexo = 'Sim';
 	}else{
 		$anexo = 'Não';
@@ -20,11 +24,11 @@ while ($row = mysqli_fetch_row($result)) {
 	
     $ver = "'../views/noticias/noticias.php?id=" . $id . "'";
     $tabela .= "<tr>";
-	$tabela .= "<td>[$row[1]]</td>";
-    $tabela .= "<td>$row[2]</td>";
+	$tabela .= "<td>[$row[2]]</td>";
+    $tabela .= "<td>$row[3]</td>";
     $tabela .= "<td>$anexo</td>";
-	$tabela .= "<td>$row[5]</td>";
-    $tabela .= '<td><input type="button" value="Visualizar notícia" class="btn btn-info btn-sm" onclick="Conteudo(' . $ver . ')"></td>'; //lincar em uma função de Delete.php row[0]
+	$tabela .= "<td>$row[6]</td>";
+    $tabela .= '<td><input type="button" value="VISUALIZAR NOTÍCIA" class="btn btn-info btn-sm" onclick="Conteudo(' . $ver . ')"></td>'; //lincar em uma função de Delete.php row[0]
     $tabela .= "</tr>";
 }
 ?>

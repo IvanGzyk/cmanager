@@ -6,6 +6,8 @@ include '../../config/conexao.php';
 $db = new Conexao();
 $con = $db->con;
 
+$condominio = $_POST['condominio'];
+$autor = $_POST['autor'];
 $tipo = $_POST['tipo'];
 $titulo = $_POST['titulo'];
 $mensagem = $_POST['mensagem'];
@@ -19,7 +21,7 @@ if(isset($_FILES['imagem'])){
     $diretorio = "../../web/img/upload/";
     
 	if(move_uploaded_file($_FILES['imagem']['tmp_name'], $diretorio.$novo_nome)){
-	$query_noticia = "INSERT INTO Noticias (tipo, titulo, texto, anexo, data_postagem) VALUES ('$tipo', '$titulo', '$mensagem', '$novo_nome', '$data_atual');";
+	$query_noticia = "INSERT INTO Noticias (condominio, tipo, titulo, texto, anexo, data_postagem, autor) VALUES ('$condominio', '$tipo', '$titulo', '$mensagem', '$novo_nome', '$data_atual', '$autor');";
 	$execute = mysqli_query($db->con, $query_noticia);
 	
     echo '<script>
@@ -27,7 +29,7 @@ if(isset($_FILES['imagem'])){
 		window.location.href = "../../web/index.php";
         </script>';
 }else{
-	$query_noticia = "INSERT INTO Noticias (tipo, titulo, texto, anexo, data_postagem) VALUES ('$tipo', '$titulo', '$mensagem', '', '$data_atual');";
+	$query_noticia = "INSERT INTO Noticias (condominio, tipo, titulo, texto, anexo, data_postagem, autor) VALUES ('$condominio', '$tipo', '$titulo', '$mensagem', '', '$data_atual', '$autor');";
 	$execute = mysqli_query($db->con, $query_noticia);
 	
     echo '<script>

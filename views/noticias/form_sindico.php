@@ -7,9 +7,10 @@ $opcao_condo = "";
 
 session_start();
 $Usuario = unserialize($_SESSION['usuario']);
+$cnpj = $Usuario['cond'];
 $doc = $Usuario['doc'];
 
-$condominio = "SELECT * FROM CadastrCpf_Cnpj WHERE length(cpf_cnpj) = 18";
+$condominio = "SELECT * FROM CadastrCpf_Cnpj WHERE cpf_cnpj = '$cnpj';";
 $result = mysqli_query($con, $condominio);
 
 while ($row = mysqli_fetch_row($result)){
@@ -47,17 +48,16 @@ while ($row = mysqli_fetch_row($result_1)){
         <form action="../views/noticias/create.php" method="POST" class="form-group" enctype="multipart/form-data">
          <div class="form-group">
     		<label>Condomínio que receberá a notícia</label>
-                <select name="condominio" class="form-control">
+                <select name="condominio" class="form-control" readonly>
                     <?= $opcao_condo ?>
                 </select>
-            </div>  
-            
+            </div> 
             <div class="form-group">
     		<label>Autor da publicação</label>
                 <select name="autor" class="form-control" readonly>
                     <?= $opcao_autor ?>
                 </select>
-            </div>           
+            </div>          
             
              <div class="form-row">
                             <div class="form-group col-md-6">

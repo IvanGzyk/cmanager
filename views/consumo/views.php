@@ -93,7 +93,7 @@ $esgoto = $porcentagem * $valor;
 
                         <div class="col-lg-6">
                             <div class="card mb-4">
-                                <div class="card-header"><i class="fas fa-chart-bar mr-1"></i> Dashboard de consumo mensal em litros (últimos 6 meses)</div>
+                                <div class="card-header"><i class="fas fa-chart-bar mr-1"></i> Dashboard de consumo em litros e valores (últimos 6 meses)</div>
                                 <div class="card-body"><canvas id="myBarChart" width="100%" height="49"></canvas></div>
 
                             </div>

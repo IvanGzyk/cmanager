@@ -238,7 +238,7 @@ class financeirocontroller {
             //Data de vencimento do boleto no formato de Ano-Mês-Dia. Essa data precisa ser no futuro, e no máximo 30 dias apatir do dia atual.
             $boleto->setFirstDueDate(date("Y-m-d", strtotime("+9 days", time())));
             //Instruções para quem irá receber o pagamento
-            $boleto->setInstructions('APÓS ' . date("Y-m-d", strtotime("+9 days", time())) . ' MULTA DE R$ 2,55 (2%');
+            $boleto->setInstructions('APÓS ' . date("Y-m-d", strtotime("+9 days", time())) . ' MULTA DE R$ 2,55 (2%)');
             //CEP do comprador
             $boleto->setCustomerAddressPostalCode($cep);
             //Endereço do comprador

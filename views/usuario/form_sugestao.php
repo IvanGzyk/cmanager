@@ -31,7 +31,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <label>Descrição:</label>
-                                <textarea cols="50" rows="10" name="descricao" class="form-control"></textarea>
+                                <textarea cols="50" rows="10" name="descricao" class="form-control" required="required"></textarea>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Salvar</button>

@@ -45,17 +45,17 @@ $opcao_ap = $usuario->SelectApartamento();
 
                         <div class="form-group">
                             <label>CPF/CNPJ</label>
-                            <input id="doc" type="text" maxlength="18" class="form-control" name="doc">
+                            <input id="doc" type="text" maxlength="18" class="form-control" name="doc" required="required">
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>Nome Completo</label>
-                                <input type="text" class="form-control" name="nome">
+                                <input type="text" class="form-control" name="nome" required="required">
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Tipo</label>
-                                <select name="tipo" class="form-control">
+                                <select name="tipo" class="form-control" required="required">
                                     <?= $opcao ?>
                                 </select>
                             </div>
@@ -64,11 +64,11 @@ $opcao_ap = $usuario->SelectApartamento();
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>Senha</label>
-                                <input type="password" class="form-control" name="senha">
+                                <input type="password" class="form-control" name="senha" required="required">
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Condomínio</label>
-                                <select name="tipoCond" class="form-control">
+                                <select name="tipoCond" class="form-control" required="required">
                                     <?= $opcao_cond ?>
                                 </select>
                             </div>
@@ -77,13 +77,13 @@ $opcao_ap = $usuario->SelectApartamento();
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>Bloco</label>
-                                <select name="blc" class="form-control">
+                                <select name="blc" class="form-control" required="required">
                                     <?= $opcao_bl ?>
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Apartamento</label>
-                                <select name="ap" class="form-control">
+                                <select name="ap" class="form-control" required="required">
                                     <?= $opcao_ap ?>
                                 </select>
                             </div>
@@ -92,7 +92,7 @@ $opcao_ap = $usuario->SelectApartamento();
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>Telefone fixo</label>
-                                <input id="telfixo" type="text" maxlength="14" class="form-control" name="telfixo">
+                                <input id="telfixo" type="text" maxlength="14" class="form-control" name="telfixo" required="required">
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Telefone celular</label>
@@ -103,7 +103,7 @@ $opcao_ap = $usuario->SelectApartamento();
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>E-mail principal</label>
-                                <input id="emailprinc" type="text" class="form-control" name="emailprinc">
+                                <input id="emailprinc" type="text" class="form-control" name="emailprinc" required="required">
                             </div>
                             <div class="form-group col-md-6">
                                 <label>E-mail alternativo</label>

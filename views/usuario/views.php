@@ -25,6 +25,7 @@ if (isset($_GET['doc'])) {
 if (isset($_GET['dados'])) {
     @$dados = $_GET['dados'];
 }
+
 $usuario = new UsuarioController();
 $tabela = $usuario->Relatorio($nome, $tipo, $doc, $id_tipo, $dados);
 ?>

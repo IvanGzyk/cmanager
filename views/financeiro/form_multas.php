@@ -5,9 +5,9 @@ $db = new Conexao();
 $query = "SELECT id, blc, ap FROM Predio WHERE condominio = '13.457.853/0001-07'";
 $result = mysqli_query($db->con, $query);
 $option = "<option value='0'></option>";
-while ($row = mysqli_fetch_row($result)){
+while ($row = mysqli_fetch_row($result)) {
     $value = $row[0];
-    $campo = $row[1].$row[2];
+    $campo = $row[1] . $row[2];
     $option .= "<option value='$value'>$campo</option>";
 }
 ?>
@@ -29,12 +29,12 @@ while ($row = mysqli_fetch_row($result)){
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>Data:</label>
-                                <input type="date" name="data" class='form-control'>
+                                <input type="date" name="data" class='form-control' required="required">
                                 <label>Valor:</label>
-                                <input type="text" name="valor" class='form-control'>
+                                <input type="text" name="valor" class='form-control' required="required">
                                 <label>Apartamento:</label>
-                                <select name='ap' class='form-control'>
-                                    <?=$option?>
+                                <select name='ap' class='form-control' required="required">
+                                    <?= $option ?>
                                 </select>
                             </div>
                             <div class="form-group col-md-6">

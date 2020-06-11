@@ -33,7 +33,7 @@ while ($row = mysqli_fetch_row($result)) {
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Salão</label>
-                                <input type="text" class="form-control" name="nome">
+                                <input type="text" class="form-control" name="nome" required="required">
                             </div>
                         </div>
                         <input type="submit" value="Cadastrar Salão" class="btn btn-primary float-right">

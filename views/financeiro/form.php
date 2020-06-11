@@ -32,11 +32,11 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>Valor:</label>
-                                <input class='form-control' type="text" name="valor">
+                                <input class='form-control' type="text" name="valor" required="required">
                                 <label>Data:</label>
-                                <input class='form-control' type="date" name="data">
+                                <input class='form-control' type="date" name="data" required="required">
                                 <label>Tipo:</label>
-                                <select name='entrada_saida' class='form-control'>
+                                <select name='entrada_saida' class='form-control' required="required">
                                     <option value='entrada'>Entarda</option>
                                     <option value='saida'>Saída</option>
                                 </select>

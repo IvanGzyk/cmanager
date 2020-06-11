@@ -29,11 +29,11 @@ while ($row = mysqli_fetch_row($result)) {
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>Selecione o dia</label>
-                        <input class="form-control" type="date" value="<?= date('d-m-Y') ?>" name="data"> 
+                        <input class="form-control" type="date" value="<?= date('d-m-Y') ?>" name="data" required="required"> 
                     </div>
                     <div class="form-group col-md-6">
                         <label>Salão</label>
-                        <select name="salao" class="form-control">
+                        <select name="salao" class="form-control" required="required">
                             <?= $opcao ?>
                         </select>
                     </div>

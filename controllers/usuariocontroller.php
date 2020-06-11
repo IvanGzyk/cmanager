@@ -291,11 +291,11 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
     }
 	
 	function Relatorio($nome, $tipo, $doc, $id_tipo, $dados) {
-        $Usuario = unserialize($_SESSION['usuario']);
         //Recebe o Array com os dados do usuario que logou...
         $Usuario = unserialize($_SESSION['usuario']);
         $db = new Conexao();
         $con = $db->con;
+        $cnpj_condo = $Usuario['cond'];
         $condominio = "SELECT * FROM Usuario
                     INNER JOIN CadastrCpf_Cnpj ON CadastrCpf_Cnpj.cpf_cnpj = cpfCnpj
                     WHERE tipoUser = '4';";
@@ -319,12 +319,12 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
             AND
             cpfCnpj LIKE '%$doc%'
             AND    
-            condominio = 13457853000107;"; //cnpj do condominio
+            condominio = '$cnpj_condo';"; //cnpj do condominio
         } else if ($id_tipo == 2) {
             $query = "SELECT * FROM Usuario
             INNER JOIN CadastrCpf_Cnpj ON CadastrCpf_Cnpj.cpf_cnpj = cpfCnpj
             INNER JOIN Tipo ON Tipo.id = tipoUser
-            WHERE cpfCnpj = 03433386960;"; //cpf do usuario
+            WHERE cpfCnpj = '%$doc%';"; //cpf do usuario
         } else if ($id_tipo == 3) {
             $query = "SELECT * FROM Usuario
             INNER JOIN CadastrCpf_Cnpj ON CadastrCpf_Cnpj.cpf_cnpj = cpfCnpj

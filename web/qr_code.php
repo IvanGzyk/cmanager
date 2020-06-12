@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 require_once __DIR__ . '/vendor/autoload.php';
 include_once '../config/conexao.php';
@@ -12,13 +13,13 @@ class qr_code {
         $usuario = unserialize($_SESSION['usuario']);
         $cpf = $usuario['doc'];
         $doc = "";
-        
+
         $query = "SELECT condominio FROM Usuario WHERE cpfCnpj = '$cpf';";
         $execute = mysqli_query($db->con, $query);
-        while ($row = mysqli_fetch_row($execute)){
+        while ($row = mysqli_fetch_row($execute)) {
             $doc = $row[0];
         }
-        
+
         $codigo = base64_encode(sha1(md5('$doc')));
         $cnpj = $doc;
         $data = "http://cmanager.com.br/web/login/cadastrar.php?codigo=$codigo&cnpj=$cnpj"; //inserindo a URL
@@ -28,15 +29,17 @@ class qr_code {
     }
 
     function geraPdf() {
-        $codigo = base64_encode(sha1(md5('13.457.853/0001-07')));
-        $cnpj = '13.457.853/0001-07';
-        $data = "http://cmanager.com.br/web/login/cadastrar.php?codigo=$codigo&cnpj=$cnpj"; //inserindo a URL        
+        session_start();
+        $Usuario = unserialize($_SESSION['usuario']);
+        $cnpj = $Usuario['cond'];
+        $codigo = base64_encode(sha1(md5("$cnpj")));
+        $data = "http://cmanager.com.br/web/login/cadastrar.php?codigo=$codigo&cnpj=$cnpj"; //inserindo a URL     
         $url = '<div  align="center"><img src="' . (new QRCode)->render($data) . '" /></div>';
         $stylesheet = file_get_contents('css/dataTables.bootstrap4.min.css');
         $mpdf = new \Mpdf\Mpdf();
         $mpdf->SetHeader('<div style="text-align: center; font-weight: bold; font-size: 2em;">
     QrCode para cadastro de Condomino.
-</div>','O');
+</div>', 'O');
         $mpdf->SetFooter('<footer class="py-3 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-end justify-content-end small">
@@ -52,4 +55,5 @@ class qr_code {
     }
 
 }
+
 ?>

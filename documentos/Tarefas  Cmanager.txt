@@ -6,7 +6,7 @@ OK - Gerar Formulario de Reservas de salão.
 OK - Gerar cadastro de regras para salão.
 OK - Gerar cadastro de Multas.
 OK - Gerar Financeiro(Dashboard, Relatório,Perestação de contas, gerar boleto).
-- Gerar uma pagina de reclame aqui, sugestoes.(Falta tabela no DER).
+OK - Gerar uma pagina de reclame aqui, sugestoes.(Falta tabela no DER).
 
 
 OBS:
@@ -22,3 +22,14 @@ Reserva tabela, acrecentar usuario chave cpf
 Regras de salão deverão conter regras para aluguel, por exemplo se um condomino ja alugou esse mês não podeá alugar mais.
 
 Criado um script para atualizar o saldo dos condominios diariamente, esse script sera colocado no servidor rodando atraves do crontab.
+
+TESTES
+OK 1 - cadastrar novo condominio como admin
+OK 2 - cadastrar usuario como sindico
+OK 3 - acessar como sindico no novo condominio e gerar QR-CODE para cadastro dos moradores
+OK 4 - Acessar cadastro via qrcode e se cadastrar como morador.
+OK 5 - acessar como sindico e liberar acesso do morador
+OK 6 - entrar como sindico e cadastrar salão de festas
+7 - gerar multa
+OK 8 - cadastrar financeiro
+OK 9 - entrar como morador e testar aluguel de salão

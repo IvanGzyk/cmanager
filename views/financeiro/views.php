@@ -3,6 +3,7 @@
 include_once '../controllers/financeirocontroller.php';
 include_once '../views/financeiro/constroe_dados_grafico.php';
 $financeiro = new financeirocontroller();
+$cnpj = $Usuario['cond'];
 ?>
 <html lang="pt-BR">
     <head>
@@ -23,7 +24,7 @@ $financeiro = new financeirocontroller();
                         <div class="col-lg-6">
                             <div class="card mb-4">
                                 <div class="card-header">
-                                    <i class="fas fa-chart-pie mr-1"></i>Gráfico financeiro <small>(referência: <?php echo date('m/Y', strtotime('-1 months', strtotime(date('Y-m')))); ?>)</small>                                
+                                    <i class="fas fa-chart-pie mr-1"></i>Gráfico financeiro <small>(referência: <?php echo date('m/Y', strtotime('-1 months', strtotime(date('Y-m')))); ?>)</small><button type="button" class="btn btn-info btn-sm float-right" data-toggle="modal" data-target="#extrato">EXTRATO DETALHADO</button>                                
                                 </div>
                                 <?php $financeiro->grafico_pizza($valores, $valores, $dados, $id1, $cores); ?>  
                             </div>
@@ -32,7 +33,7 @@ $financeiro = new financeirocontroller();
                         <div class="col-lg-6">
                             <div class="card mb-4">
                                 <div class="card-header">
-                                    <i class="fas fa-chart-bar mr-1"></i>Balanço financeiro <small>(últimos 6 meses)</small><button type="button" class="btn btn-info btn-sm float-right" data-toggle="modal" data-target="#extrato">EXTRATO DETALHADO</button>
+                                    <i class="fas fa-chart-bar mr-1"></i>Balanço financeiro <small>(últimos 6 meses)</small>
                                 </div>
                                 <?php $financeiro->carrega_grafico_barras2($data, $tipo, $tipo1, $soma, $soma1, "'#8A2BE2'", "'#FF6347'", $id) ?>
                             </div>

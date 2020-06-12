@@ -119,14 +119,14 @@ Class UsuarioController {
             $mail->IsHTML(true);
             $mail->Subject = "Cadastro Concluído";
             $mail->Body = '
-<link href="http://cmanager.com.br/web/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-<body><img src="http://cmanager.com.br/web/img/email/cabecalho.jpg"  />
-<p class="small">Olá, ' . $dados[1] . '.</p>
-<p class="small">O seu cadastro no <b>Portal CManager</b> foi concluído com sucesso.</p>
-<p  class="small">Lembre-se, o seu acesso será feito mediante CPF e senha cadastrados.<br />Caso necessite de uma recuperação de acesso, basta <a href="http://cmanager.com.br/web/login/recuperar.php">clicar aqui</a>.</p>
-<p class="small">Aproveite mais essa facilidade que só a CManager oferece para você!</p><br />
-<p class="small"><font color="#333333"><b>Atenção: Esta é uma mensagem automática. Não é necessário respondê-la.</b></font></p>
-<img src="http://cmanager.com.br/web/img/email/rodape.jpg"/>';
+                    <link href="http://cmanager.com.br/web/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+                    <body><img src="http://cmanager.com.br/web/img/email/cabecalho.jpg"  />
+                    <p class="small">Olá, ' . $dados[1] . '.</p>
+                    <p class="small">O seu cadastro no <b>Portal CManager</b> foi concluído com sucesso.</p>
+                    <p  class="small">Lembre-se, o seu acesso será feito mediante CPF e senha cadastrados.<br />Caso necessite de uma recuperação de acesso, basta <a href="http://cmanager.com.br/web/login/recuperar.php">clicar aqui</a>.</p>
+                    <p class="small">Aproveite mais essa facilidade que só a CManager oferece para você!</p><br />
+                    <p class="small"><font color="#333333"><b>Atenção: Esta é uma mensagem automática. Não é necessário respondê-la.</b></font></p>
+                    <img src="http://cmanager.com.br/web/img/email/rodape.jpg"/>';
 
             if ($result1 && $result2 && $result3) {
                 $mail->Send();
@@ -189,16 +189,16 @@ Class UsuarioController {
         $mail->IsHTML(true);
         $mail->Subject = "Recuperação de Acesso";
         $mail->Body = '
-<link href="http://cmanager.com.br/web/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-<body><img src="http://cmanager.com.br/web/img/email/cabecalho.jpg"  />
-<p class="small">Olá, ' . $nome . '.</p>
-<p class="small">Você solicitou através do <b>Portal CManager</b> a recuperação de acesso à plataforma.<br />
-Por favor, pedimos que siga os procedimentos abaixo para a recuperação da sua conta.</p>
-<p  class="small">1 - <a href="http://cmanager.com.br/web/login/redefinir_acesso.php?token=' . $token . '&cpfCnpj=' . $dado_cript . '">Clique aqui</a> para ser redirecionado a página de recuperação.<br />2 - Valide os seus dados e crie uma nova senha.<br />3 - Pronto! Seu acesso foi recuperado.</p>
-<p class="small">O link é válido para um único uso.<br />
-Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/login/recuperar.php">clique aqui</a>.</p><br />
-<p class="small"><font color="#333333"><b>Atenção: Esta é uma mensagem automática. Não é necessário respondê-la.</b></font></p>
-<img src="http://cmanager.com.br/web/img/email/rodape.jpg"/>';
+                <link href="http://cmanager.com.br/web/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+                <body><img src="http://cmanager.com.br/web/img/email/cabecalho.jpg"  />
+                <p class="small">Olá, ' . $nome . '.</p>
+                <p class="small">Você solicitou através do <b>Portal CManager</b> a recuperação de acesso à plataforma.<br />
+                Por favor, pedimos que siga os procedimentos abaixo para a recuperação da sua conta.</p>
+                <p  class="small">1 - <a href="http://cmanager.com.br/web/login/redefinir_acesso.php?token=' . $token . '&cpfCnpj=' . $dado_cript . '">Clique aqui</a> para ser redirecionado a página de recuperação.<br />2 - Valide os seus dados e crie uma nova senha.<br />3 - Pronto! Seu acesso foi recuperado.</p>
+                <p class="small">O link é válido para um único uso.<br />
+                Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/login/recuperar.php">clique aqui</a>.</p><br />
+                <p class="small"><font color="#333333"><b>Atenção: Esta é uma mensagem automática. Não é necessário respondê-la.</b></font></p>
+                <img src="http://cmanager.com.br/web/img/email/rodape.jpg"/>';
 
         if ($update_resultado) {
             $mail->Send();
@@ -268,7 +268,8 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
     }
 
     function AtualizaPeloSindico($doc, $nome, $senha, $condominio) {
-        $user = new Usuario($doc, $nome, $senha, '', $condominio);
+        $tipo = '';
+        $user = new Usuario($doc, $nome, $senha, $tipo, $condominio);
         return $user;
     }
 
@@ -469,10 +470,13 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
     }
 
     function SelectBloco() {
+        session_start();
+        $Usuario = unserialize($_SESSION['usuario']);
+        $condo = $Usuario['cond'];
         $db = new Conexao();
         $con = $db->con;
         $opcaoBL = "<option value=''></option>";
-        $tipo = "SELECT * FROM Predio WHERE condominio = '13.457.853/0001-07' GROUP BY blc;";
+        $tipo = "SELECT * FROM Predio WHERE condominio = '$condo' GROUP BY blc;";
         $result = mysqli_query($con, $tipo);
         while ($row = mysqli_fetch_row($result)) {
             $opcaoBL .= "<option value='$row[2]'>$row[2]</option> ";
@@ -481,10 +485,12 @@ Caso necessite de uma nova recuperação, <a href="http://cmanager.com.br/web/lo
     }
 
     function SelectApartamento() {
+        $Usuario = unserialize($_SESSION['usuario']);
+        $condo = $Usuario['cond'];
         $db = new Conexao();
         $con = $db->con;
         $opcaoAp = "<option value=''></option>";
-        $tipo = "SELECT * FROM Predio WHERE condominio = '13.457.853/0001-07' GROUP BY ap;";
+        $tipo = "SELECT * FROM Predio WHERE condominio = '$condo' GROUP BY ap;";
         $result = mysqli_query($con, $tipo);
         while ($row = mysqli_fetch_row($result)) {
             $opcaoAp .= "<option value='$row[3]'>$row[3]</option> ";

@@ -77,13 +77,13 @@ $opcao_ap = $usuario->SelectApartamento();
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label>Bloco</label>
-                                <select name="blc" class="form-control" required="required">
+                                <select name="blc" class="form-control">
                                     <?= $opcao_bl ?>
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
                                 <label>Apartamento</label>
-                                <select name="ap" class="form-control" required="required">
+                                <select name="ap" class="form-control">
                                     <?= $opcao_ap ?>
                                 </select>
                             </div>

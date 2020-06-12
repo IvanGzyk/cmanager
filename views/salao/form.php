@@ -27,13 +27,17 @@ while ($row = mysqli_fetch_row($result)) {
                 <div class="container">
                     <form action="../views/salao/create.php" method="POST" class="form-group">
                         <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-4">
                                 <label>Condominio</label>
                                 <input type="text" class="form-control" name="cnpj" value="<?= $condominio ?>" readonly>
                             </div>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-4">
                                 <label>Salão</label>
                                 <input type="text" class="form-control" name="nome" required="required">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>Valor reserva</label>
+                                <input type="text" class="form-control" name="valor" required="required">
                             </div>
                         </div>
                         <input type="submit" value="Cadastrar Salão" class="btn btn-primary float-right">

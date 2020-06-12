@@ -20,7 +20,7 @@ class qr_code {
             $doc = $row[0];
         }
 
-        $codigo = base64_encode(sha1(md5('$doc')));
+        $codigo = base64_encode(sha1(md5($doc)));
         $cnpj = $doc;
         $data = "http://cmanager.com.br/web/login/cadastrar.php?codigo=$codigo&cnpj=$cnpj"; //inserindo a URL
 

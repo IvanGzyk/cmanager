@@ -6,7 +6,7 @@ include '../../controllers/usuariocontroller.php';
 $usuario = new UsuarioController();
 $TipoDeAtualiza = "";
 if (isset($_POST['doc']) && !isset($_POST['tipo'])) {
-    $user = $usuario->AtualizaPeloSindico($_POST['doc'], $_POST['senha'], $_POST['tipoCond']);
+    $user = $usuario->AtualizaPeloSindico($_POST['doc'], $_POST['nome'], $_POST['senha'], $_POST['tipoCond']);
     $id = $_GET['id'];
     $ativo = $_POST['ativo'];
     $doc = $user->getCpf_cnpj();
@@ -38,7 +38,7 @@ $result = mysqli_query($db->con, $user);
 $docu = "";
 while ($row = mysqli_fetch_row($result)) {
     $docu = $row[1];
-    if ($senha != $row[3]) {
+    if ($senha != $row[4]) {
         $senha = md5($senha);
     }
 }

@@ -55,7 +55,6 @@ $esgoto = $porcentagem * $valor;
         <meta charset="utf-8" />
         <link href="../../web/css/styles.css" rel="stylesheet" />
         <script src="../../web/js/all.min.js"></script>
-        <script src="charts-consumo.js"></script>
     </head>
     <body>
         <div id="layoutSidenav_content">

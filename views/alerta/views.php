@@ -1,5 +1,3 @@
-<script src="../../web/js/funcoes.js" type="text/javascript"></script>
-<script src="../../web/jquery.min.js" type="text/javascript"></script>
 <?php
 include_once '../../config/conexao.php';
 
@@ -31,8 +29,8 @@ while ($row = mysqli_fetch_row($result)) {
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8" />
-        <link href="../../web/css/styles.css" rel="stylesheet" />
-        <script src="../web/js/all.min.js"></script>
+        <!--<link href="../../web/css/styles.css" rel="stylesheet" />
+        <script src="../web/js/all.min.js"></script>-->
     </head>
     <body>
             <div id="layoutSidenav_content">

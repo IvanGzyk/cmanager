@@ -16,8 +16,8 @@ while ($row = mysqli_fetch_row($result)) {
 }
 ?>
 <meta charset="utf-8" />
-<link href="../../web/css/styles.css" rel="stylesheet" />
-<script src="../web/js/all.min.js"></script>
+<!--<link href="../../web/css/styles.css" rel="stylesheet" />
+<script src="../web/js/all.min.js"></script>-->
 
 <div id="layoutSidenav_content">
     <div class="container-fluid">

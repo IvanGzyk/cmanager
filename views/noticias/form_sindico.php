@@ -29,9 +29,9 @@ while ($row = mysqli_fetch_row($result_1)){
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8" />
-        <link href="../../web/css/styles.css" rel="stylesheet" />
+        <!--<link href="../../web/css/styles.css" rel="stylesheet" />
         <script src="../web/js/all.min.js"></script>
-        <script src="../web/js/tinymce.min.js"></script>
+        <script src="../web/js/tinymce.min.js"></script>-->
         <script>
     	tinymce.init({
       	selector: '#mensagem'

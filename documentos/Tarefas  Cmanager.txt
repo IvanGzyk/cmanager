@@ -30,6 +30,7 @@ OK 3 - acessar como sindico no novo condominio e gerar QR-CODE para cadastro dos
 OK 4 - Acessar cadastro via qrcode e se cadastrar como morador.
 OK 5 - acessar como sindico e liberar acesso do morador
 OK 6 - entrar como sindico e cadastrar salão de festas
-7 - gerar multa
-OK 8 - cadastrar financeiro
-OK 9 - entrar como morador e testar aluguel de salão
+OK 7 - cadastrar financeiro
+OK 8 - entrar como morador e testar aluguel de salão
+9 - cadastrar apartaentos
+10 - gerar multa

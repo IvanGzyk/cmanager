@@ -443,7 +443,7 @@ Class UsuarioController {
     function SelectCondominio() {
         $db = new Conexao();
         $con = $db->con;
-        $opcao_cond = "<option value=''></option>";
+        $opcao_cond = "<option value=' '></option>";
         $condo = array();
         $condominio = "SELECT * FROM Usuario
                     INNER JOIN CadastrCpf_Cnpj ON CadastrCpf_Cnpj.cpf_cnpj = cpfCnpj
@@ -512,7 +512,7 @@ Class UsuarioController {
         while ($row = mysqli_fetch_row($resultado)) {
             $user['doc'] = $row[3];
             $user['nome'] = $row[1];
-            $user['senha'] = $row[4];
+            $user['senha'] = $row[2];
             $user['tipo'] = $row[5];
         }
         return $user;

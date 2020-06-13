@@ -76,7 +76,7 @@ if ($tipo == 3 || $tipo == 1) {
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label>Condomínio</label>
-                                    <select name="tipoCond" class="form-control" required="required">
+                                    <select name="tipoCond" class="form-control">
                                         <?= $opcao_cond ?>
                                     </select>
                                 </div>

@@ -10,11 +10,6 @@ $cnpj = $Usuario['cond'];
         <meta charset="utf-8" />
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
         <link href="../../web/css/styles.css" rel="stylesheet" />
-        <script src="../../web/js/all.min.js"></script>
-        <script src="charts-consumo.js"></script>
-        <script src="../../web/js/jquery-3.4.1.min.js"></script>
-        <script src="../../web/js/bootstrap.bundle.min.js"></script>
-        <script src="../../web/js/scripts.js"></script>
     </head>
     <body>
         <div id="layoutSidenav_content">

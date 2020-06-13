@@ -55,13 +55,14 @@ if ($tipo == 1) {
     <head>
         <meta charset="utf-8" />
         <title>CManager - Gestão de Condomínios</title>
-        <link href="css/styles.css" rel="stylesheet" />
-        <script src="js/funcoes.js" type="text/javascript"></script>
-        <link href="vendor/benhall14/php-calendar/html/css/calendar.css" rel="stylesheet" type="text/css"/>
-        <link href="css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-        <script src="js/all.min.js"></script>
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+<link href="vendor/benhall14/php-calendar/html/css/calendar.css" rel="stylesheet" type="text/css"/>
+<link href="css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+<link href="css/styles.css" rel="stylesheet" />
+<script src="js/jquery-2.2.4.js"></script>
+<script src="js/funcoes.js"></script>
+<script src="js/all.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.js"></script>
     <body style="overflow-x:hidden;">
         <!-- Carregar menu aqui-->
         <?= $menu ?>
@@ -110,16 +111,6 @@ if ($tipo == 1) {
                 </div>
             </div>
         </footer>
-        <script src="js/scripts.js"></script>
-        <script src="js/Chart.min.js"></script>
-        <script src="js/chart-area-demo.js"></script>
-        <script src="js/chart-bar-demo.js"></script>
-        <script src="js/jquery.dataTables.min.js"></script>
-        <script src="js/dataTables.bootstrap4.min.js"></script>
-        <script src="js/datatables-demo.js"></script>
-    </body>
-</html>
-
 <?php
 //inicia verificaçãode notificações de correio.
 include_once '../config/conexao.php';

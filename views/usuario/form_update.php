@@ -18,10 +18,10 @@ if ($tipo == 3 || $tipo == 1) {
     <html lang="pt-BR">
         <head>
             <meta charset="utf-8" />
-            <link href="../../web/css/styles.css" rel="stylesheet" />
+            <!--<link href="../../web/css/styles.css" rel="stylesheet" />
             <script src="../web/js/all.min.js"></script>
             <script src="../web/js/jquery-3.3.1.slim.min.js"></script>
-            <script src="../web/js/mascara.js"></script>
+            <script src="../web/js/mascara.js"></script>-->
             <script>
                 var maskDoc = IMask(document.getElementById('doc'), {
                     mask: [{

@@ -9,7 +9,7 @@ $cnpj = $Usuario['cond'];
     <head>
         <meta charset="utf-8" />
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-        <link href="../../web/css/styles.css" rel="stylesheet" />
+        <!--<link href="../../web/css/styles.css" rel="stylesheet" />-->
     </head>
     <body>
         <div id="layoutSidenav_content">

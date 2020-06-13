@@ -1,5 +1,5 @@
-<script src="../../web/js/funcoes.js" type="text/javascript"></script>
-<script src="../../web/jquery.min.js" type="text/javascript"></script>
+<!--<script src="../../web/js/funcoes.js" type="text/javascript"></script>
+<script src="../../web/jquery.min.js" type="text/javascript"></script>-->
 <?php
 session_start();
 //Recebe o Array com os dados do usuario que logou...

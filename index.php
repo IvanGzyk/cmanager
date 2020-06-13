@@ -8,6 +8,10 @@
         <script src="web/js/funcoes.js" type="text/javascript"></script>
         <link href="web/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
         <script src="web/js/all.min.js"></script>
+        <script src="../../web/jquery.min.js" type="text/javascript"></script>
+        <script src="../web/js/jquery-3.3.1.slim.min.js"></script>
+        <script src="../web/js/mascara.js"></script>
+        <script src="../web/js/tinymce.min.js"></script>
         <title>CMANAGER</title>
     </head>
     <body>

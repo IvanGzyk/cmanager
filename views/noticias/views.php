@@ -33,8 +33,8 @@ while ($row = mysqli_fetch_row($result)) {
 <html lang="pt-BR">
     <head>
         <meta charset="utf-8" />
-        <link href="../../web/css/styles.css" rel="stylesheet" />
-        <script src="../web/js/all.min.js"></script>
+        <!--<link href="../../web/css/styles.css" rel="stylesheet" />
+        <script src="../web/js/all.min.js"></script>-->
     </head>
     <body>
         <div id="layoutSidenav_content">

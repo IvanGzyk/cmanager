@@ -51,15 +51,15 @@ if ($tipo == 3 || $tipo == 1) {
                                 </div>
                             </div>
 
-                            <?php if ($tipo == 3) { ?>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label>Tipo</label>
-                                        <select name="tipo" class="form-control" required="required">
-                                            <?= $opcao ?>
-                                        </select>
-                                    <?php } ?>
+                            <div class="form-row">
+                                <?php if ($tipo == 3) { ?>
+                                <div class="form-group col-md-6">
+                                    <label>Tipo</label>
+                                    <select name="tipo" class="form-control" required="required">
+                                        <?= $opcao ?>
+                                    </select>
                                 </div>
+                                <?php  } ?>
                                 <div class="form-group col-md-6">
                                     <label>Senha</label>
                                     <input type="password" class="form-control" name="senha" value="<?= $user['senha'] ?>" required="required">
@@ -76,7 +76,7 @@ if ($tipo == 3 || $tipo == 1) {
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label>Condomínio</label>
-                                    <select name="tipoCond" class="form-control" required="required">
+                                    <select name="tipoCond" class="form-control">
                                         <?= $opcao_cond ?>
                                     </select>
                                 </div>

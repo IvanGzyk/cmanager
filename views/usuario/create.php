@@ -21,8 +21,11 @@ $email = $model_contato->getEmail();
 $emailAlternativo = $model_contato->getEmail_altenativo();
 
 $query_cpfCpnpj = "INSERT INTO CadastrCpf_Cnpj(cpf_cnpj, nome) VALUES ('$doc', '$nome');";
+
 $cadastra_contato = "INSERT INTO Contato (cpf_cnpj, telefoneFixo, telefoneCelular, email, emailAlternativo) VALUES ('$doc', '$telefoneFixo', '$telefoneCelular', '$email', '$emailAlternativo');";
+
 $query_Usuario = "INSERT INTO Usuario(cpfCnpj, tipoUser, senha, condominio) VALUES ('$doc', '$tipo', '$senha', '$condominio');";
+
 $query_idAp = "SELECT id FROM Predio WHERE blc = '$bloco' AND ap = '$apartamento';";
 $id = "";
 $result = mysqli_query($db->con, $query_idAp);

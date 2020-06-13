@@ -40,6 +40,7 @@ class financeirocontroller {
     }
 
     function Relatorio($condominio) {
+        
         include_once '../config/conexao.php';
         $db = new Conexao();
         $relatorio = '
@@ -55,7 +56,7 @@ class financeirocontroller {
                 <tbody>';
         $query = "SELECT descricao, valor, date_format(data, '%d-%m-%Y') data, entrada_saida FROM Financeira
                     WHERE 
-                    condominio = '13.457.853/0001-07' 
+                    condominio = '$condominio'
                     AND 
                     date_format(data, '%Y-%m') = DATE_FORMAT(ADDDATE(CURDATE(), INTERVAL -1 MONTH), '%Y-%m')
                     ORDER BY data";

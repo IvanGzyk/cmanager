@@ -9,13 +9,22 @@ class Salao extends Regra {
 
     private $cpf_cnpj;
     private $salao;
+    private $valor;
 
-    function __construct($cpf_cnpj, $salao) {
+    function __construct($cpf_cnpj, $salao, $valor) {
         $this->cpf_cnpj = $cpf_cnpj;
-        $this->$salao = $salao;
+        $this->salao = $salao;
+        $this->valor = $valor;
+    }
+    function getValor() {
+        return $this->valor;
     }
 
-    function getCpf_cnpj() {
+    function setValor($valor): void {
+        $this->valor = $valor;
+    }
+
+        function getCpf_cnpj() {
         return $this->cpf_cnpj;
     }
 

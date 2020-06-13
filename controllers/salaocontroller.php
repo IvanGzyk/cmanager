@@ -14,8 +14,8 @@ use benhall14\phpCalendar\Calendar as Calendar;
  */
 class salaocontroller {
 
-    function CadastraSalao($cnpj, $nome) {
-        $salao = new Salao($cnpj, $nome);
+    function CadastraSalao($cnpj, $nome, $valor) {
+        $salao = new Salao($cnpj, $nome, $valor);
         $salao->setSalao($nome);
         return $salao;
     }

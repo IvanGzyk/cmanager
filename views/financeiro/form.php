@@ -37,7 +37,7 @@
                                 <input class='form-control' type="date" name="data" required="required">
                                 <label>Tipo:</label>
                                 <select name='entrada_saida' class='form-control' required="required">
-                                    <option value='entrada'>Entarda</option>
+                                    <option value='entrada'>Entrada</option>
                                     <option value='saida'>Saída</option>
                                 </select>
                             </div>

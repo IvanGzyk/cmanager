@@ -521,7 +521,7 @@ Class UsuarioController {
     function Desconecta() {
         session_start();
         session_destroy();
-        header("Refresh: 5;url=../../web/login/index.php");
+        header("Refresh: 5;url=../../");
     }
 
 }

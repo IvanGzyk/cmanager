@@ -6,7 +6,7 @@ $con = $db->con;
 $opcao_query = "";
 
 $query = "SELECT * FROM Usuario
-INNER JOIN CadastrCpf_Cnpj ON CadastrCpf_Cnpj.cpf_cnpj = cpfCnpj;";
+INNER JOIN CadastrCpf_Cnpj ON CadastrCpf_Cnpj.cpf_cnpj = cpfCnpj WHERE length(cpf_cnpj) = 14;";
 
 $result = mysqli_query($con, $query);
 

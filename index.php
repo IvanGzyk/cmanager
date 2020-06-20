@@ -38,8 +38,8 @@ if($_POST) {
                     <link href="http://cmanager.com.br/web/css/bootstrap.css" rel="stylesheet" type="text/css"/>
                     <body><img src="http://cmanager.com.br/web/img/email/cabecalho.jpg"  />
                     <p class="small">Olá, ' . $representante . '.</p>
-                    <p class="small">Você solicitou uma cotação em nosso site! Ficamos felizes com o seu interesse.</p>
-                    <p  class="small">Pedimos encarecidamente que aguarde a resposta da nossa equipe técnica, que entrará em contato via e-mail e telefone. Esperamos que em breve, você possa desfrutar de todas as vantagens que o CManager pode oferecer para o seu condomínio.</p>
+                    <p class="small">Você solicitou uma cotação em nosso site.<br />Ficamos felizes com o seu interesse.</p>
+                    <p class="small">Pedimos encarecidamente que aguarde a resposta da nossa equipe técnica, que entrará em contato via e-mail e telefone.<br />Esperamos que em breve, você possa desfrutar de todas as vantagens que o CManager pode oferecer para o seu condomínio.</p><br />
                     <p class="small">Abraços da equipe CManager!</p>
                     <img src="http://cmanager.com.br/web/img/email/rodape.jpg"/>';
 					
@@ -222,7 +222,7 @@ if($_POST) {
                     	</p><br />
                         <span id="alerta"></span>
                         <br/>
-<form id="interesse" action="#" method="POST" onsubmit="return validarInteresse()">
+<form id="interesse" action="#" method="POST" onSubmit="return validarInteresse()">
   <div class="form-row">
     <div class="form-group col-md-6">
       <label>Nome do Representante</label>

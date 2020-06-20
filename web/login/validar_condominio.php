@@ -13,6 +13,7 @@ if ($_POST) {
     <meta charset="utf-8">
     <title>CManager - Gestão de Condomínios</title>
     <link href="../../web/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="../img/ico/condo.png">
     <link rel="stylesheet" type="text/css" href="../../web/css/login.css">
 </head>
 <body class="login">

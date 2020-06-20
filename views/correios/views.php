@@ -4,7 +4,7 @@ include_once '../../config/conexao.php';
 $db = new Conexao();
 $con = $db->con;
 
-$query = "SELECT * FROM Correio";
+$query = "SELECT * FROM Correio ORDER BY id DESC";
 $result = mysqli_query($con, $query);
 $tabela = "";
 

@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>CManager - Gestão de Condomínios</title>
     <link href="../css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="img/ico/condo.png">
 </head>
 <body>
 <center><img src="../img/loading.gif" width="292px" height="247px"/></center>

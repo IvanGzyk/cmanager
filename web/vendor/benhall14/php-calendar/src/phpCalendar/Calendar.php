@@ -155,7 +155,7 @@ class Calendar
     
         $calendar .= '<th colspan="7">';
                     
-        $calendar .= $date->format('F Y');
+        $calendar .= $date->format('M Y');
 
         $calendar .= '</th>';
 
@@ -165,7 +165,7 @@ class Calendar
 
         $calendar .= '<th>';
                     
-        $calendar .= implode('</th><th>', array('S','M','T','W','T','F','S'));
+        $calendar .= implode('</th><th>', array('Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'));
                 
         $calendar .= '</th>';
 

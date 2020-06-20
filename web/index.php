@@ -44,7 +44,7 @@ if ($tipo == 1) {
                 . '<h5 class="alert-heading text-left">Uma nova sugestão está disponível!</h5>'
                 . '<hr><p class="mb-0 text-left">'
                 . 'Data postagem: ' . $data . '<br>Autor: ' . $nome . ' '
-                . '<a class="btn btn-info btn-sm float-right" href="#" onclick="Conteudo(' . $ver . ')">Visualizar sugestão</a></p>'
+                . '<a class="btn btn-info btn-sm float-right" href="#" onclick="Conteudo(' . $ver . ')">VISUALIZAR SUGESTÃO</a></p>'
                 . '</div>'
                 . '</center>';
     }
@@ -57,12 +57,14 @@ if ($tipo == 1) {
         <title>CManager - Gestão de Condomínios</title>
 <link href="vendor/benhall14/php-calendar/html/css/calendar.css" rel="stylesheet" type="text/css"/>
 <link href="css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="img/ico/condo.png">
 <link href="css/styles.css" rel="stylesheet" />
 <script src="js/jquery-2.2.4.js"></script>
 <script src="js/funcoes.js"></script>
 <script src="js/all.min.js"></script>
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.js"></script>
+</head>
     <body style="overflow-x:hidden;">
         <!-- Carregar menu aqui-->
         <?= $menu ?>
@@ -107,7 +109,7 @@ if ($tipo == 1) {
         <footer class="py-3 bg-light mt-auto">
             <div class="container-fluid">
                 <div class="d-flex align-items-end justify-content-end small">
-                    <div class="text-muted">Copyright &copy; 2020 Condominium Manager - CManager. Todos os direitos reservados.</div>
+                    <div class="text-muted">&copy;2020 CManager - Gestão de Condomínios. Todos os direitos reservados.</div>
                 </div>
             </div>
         </footer>
@@ -166,5 +168,5 @@ if (@$status == '0') {
     <?php
 }
 ?>
-</head>
+</body>
 </html>

@@ -17,7 +17,7 @@ $data_atual = date('d/m/Y H:i:s');
 
 if(isset($_FILES['imagem'])){
     $extensao = strtolower(substr($_FILES['imagem']['name'], -4));
-    $novo_nome = md5(time()).".".$extensao;
+    $novo_nome = md5(time())."".$extensao;
     $diretorio = "../../web/img/upload/";
     
 	if(move_uploaded_file($_FILES['imagem']['tmp_name'], $diretorio.$novo_nome)){

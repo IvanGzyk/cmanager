@@ -40,7 +40,7 @@ if ($_POST) {
 
                                     <div class="form-group">
                                         <select class="form-control" name="tipo">
-                                            <option value="0">Condomino</option>
+                                            <option value="0">Condômino</option>
                                             <option value="1">Síndico</option>  
                                             <option value="3">Administrador</option></select>
                                     </div>
@@ -54,7 +54,7 @@ if ($_POST) {
                                     <div class="form-group m-0">
                                         <button type="submit" class="btn btn-primary btn-block">ENTRAR</button></div>
 
-                                    <div class="mt-3 text-center">Já é condomino? <a href="validar_condominio.php">Crie uma conta.</a></div>
+                                    <div class="mt-3 text-center">Já é condômino? <a href="validar_condominio.php">Crie uma conta.</a></div>
                                 </form>
                             </div>
                         </div>

@@ -21,7 +21,7 @@ class salaocontroller {
     }
 
     function ReservaSalao($id_salao, $data, $apartamento) {
-        $salao = new Salao("", "");
+        $salao = new Salao("", "", "");
         $reserva = $salao->setReservas($id_salao, $apartamento, $data);
         return $reserva;
     }

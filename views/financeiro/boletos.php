@@ -26,4 +26,3 @@ $boletos = $financeiro->CarregoBletos($doc);
             </div>
         </div>
     </body>
-<?php

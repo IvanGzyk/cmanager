@@ -11,7 +11,7 @@ if (isset($_GET['id'])) {
 
     while ($row = mysqli_fetch_row($result)) {
         if ($row[5] != '' or NULL) {
-            $anexo = '<a href="../web/img/upload/' . $row[4] . '">Efetuar download do anexo</a>';
+            $anexo = '<a href="../web/img/upload/' . $row[5] . '">Efetuar download do anexo</a>';
         } else {
             $anexo = 'Nenhum anexo foi adicionado a esta notícia.';
 		}
@@ -74,9 +74,9 @@ if (isset($_GET['sugestao'])) {
 
     while ($row = mysqli_fetch_row($result)) {
         if ($row[2] != '' or $row[2] != NULL) {
-            $anexo = '<a href="cmanager' . $row[2] . '">Vizualizar imagem</a>';
+            $anexo = '<a href="../web/img/sugestao/' . $row[2] . '">Efetuar download do anexo.</a>';
         } else {
-            $anexo = 'Nenhuma imagem foi adicionada nesta sugestão.';
+            $anexo = 'Nenhum anexo foi adicionado na sugestão.';
         }
 
         $id_sugestao = $row[0];
@@ -108,7 +108,7 @@ if (isset($_GET['sugestao'])) {
                             <?php echo $descricao; ?>
                         </div>
                         <br />
-                        <input type="button" value="Voltar para a página principal" class="btn btn-info btn-sm float-right" onclick="Conteudo('../views/noticias/views_noticia.php')">
+                        <a href="../web/index.php"><input type="button" value="Voltar para a página inicial" class="btn btn-info btn-sm float-right"></a>
                     </div>
                 </div>
             </div>            

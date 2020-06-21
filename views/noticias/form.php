@@ -31,6 +31,7 @@ while ($row = mysqli_fetch_row($result_1)){
         <!--<link href="../../web/css/styles.css" rel="stylesheet" />
         <script src="../web/js/all.min.js"></script>
         <script src="../web/js/tinymce.min.js"></script>-->
+        <script src="https://cdn.tiny.cloud/1/vrusu6xeomqrnzuwno36zejqignyegip270g0fye01j1r59z/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
         <script>
     	tinymce.init({
       	selector: '#mensagem'
@@ -45,23 +46,24 @@ while ($row = mysqli_fetch_row($result_1)){
                         <br><br>
 						<div class="container">
         <form action="../views/noticias/create.php" method="POST" class="form-group" enctype="multipart/form-data">
-         <div class="form-group">
-    		<label>Condomínio que receberá a notícia</label>
+        <div class="form-row">
+    <div class="form-group col-md-6">
+     <label>Condomínio que receberá a notícia</label>
                 <select name="condominio" class="form-control">
                     <?= $opcao_condo ?>
                 </select>
-            </div>  
-            
-            <div class="form-group">
-    		<label>Autor da publicação</label>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Autor da publicação</label>
                 <select name="autor" class="form-control" readonly>
                     <?= $opcao_autor ?>
                 </select>
-            </div>           
-            
-             <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label>Tipo da Notícia</label>
+    </div>
+  </div>
+  
+  <div class="form-row">
+    <div class="form-group col-md-6">
+    <label>Tipo da Notícia</label>
                             <select class="form-control" name="tipo">
 <option value="Notícia">Notícia</option>
 <option value="Manutenção">Manutenção</option> 
@@ -69,23 +71,22 @@ while ($row = mysqli_fetch_row($result_1)){
 <option value="Administração">Administração</option>
 <option value="Outros">Outros</option>
 </select>
-                            </div>
-                            <div class="form-group col-md-6">
-                            <label>Título</label>
-                                <input type="text" class="form-control" name="titulo">
-                            </div>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                        <label>Selecione um anexo</label>
-    <input type="file" name="imagem" class="form-control-file">
     </div>
-                            <div class="form-group col-md-6">
+    <div class="form-group col-md-6">
+      <label>Título</label>
+                                <input type="text" class="form-control" name="titulo">
+    </div>
+  </div>
+  
+  <div class="form-group">
+   <label>Selecione um anexo</label>
+    <input type="file" name="imagem" class="form-control-file">
+  </div>
+                
+                           <div class="form-group">
                             <label>Mensagem</label>
-    <textarea id="mensagem" name="mensagem" class="form-control" rows="3"></textarea>
+    <textarea id="mensagem" name="mensagem" class="form-control" rows="5"></textarea>
                              </div>
-                        </div>
             <input type="submit" value="Cadastrar notícia" class="btn btn-primary float-right">
         </form>
 </div>

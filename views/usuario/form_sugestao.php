@@ -2,7 +2,13 @@
 <html>
     <head>
         <title>Sugestões e Reclamações</title>
+         <script src="https://cdn.tiny.cloud/1/vrusu6xeomqrnzuwno36zejqignyegip270g0fye01j1r59z/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     </head>
+    <script>
+    tinymce.init({
+      selector: 'textarea'
+    });
+  </script>
     <body>
         <div id="layoutSidenav_content">
             <div class="container-fluid">
@@ -12,30 +18,16 @@
                 <div class="container">
 
                     <form action="../views/usuario/create_sugestao.php" method="post" enctype="multipart/form-data">
-                        <div class="form-row">
-                            <div class="form-group col-md-3">
-                                <label>Data:</label>
-                                <input type="date" name="data"class="form-control">
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label>Hora:</label>
-                                <input type="time" name="hora"class="form-control">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label>Carregar Imagem:</label>
-                                <input type="file" name="pic" accept="image/*" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <label>Descrição:</label>
-                                <textarea cols="50" rows="10" name="descricao" class="form-control" required="required"></textarea>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Salvar</button>
-                        <button type="reset" class="btn btn-success">Limpar</button>
+                    <div class="form-group">
+    <label>Selecione um anexo</label>
+    <input type="file" name="pic" accept="image/*" class="form-control">
+  </div>
+                
+                           <div class="form-group">
+                            <label>Mensagem</label>
+    <textarea cols="50" rows="10" name="descricao" id="descricao" class="form-control" required="required"></textarea>
+                             </div>
+                        <button type="submit" class="btn btn-primary float-right">Enviar sugestão</button>
                     </form>
                 </div>
             </div>

@@ -52,7 +52,7 @@ if ($_POST) {
 </div>
                                 
 <div class="mt-3 text-center">Já possui uma conta? <a href="index.php">Acesse agora!</a></div>
-<div class="mt-1 text-center">Já é condomino? <a href="validar_condominio.php">Crie uma conta.</a></div>
+<div class="mt-1 text-center">Já é condômino? <a href="validar_condominio.php">Crie uma conta.</a></div>
                                 
 </form>
 </div>
